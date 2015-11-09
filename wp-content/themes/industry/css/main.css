@@ -1,0 +1,27 @@
+/** CSS Reset **/
+
+/*Normalizing browsers*/
+
+html, body {
+  box-sizing: border-box;
+  font-size:16px;
+  font-family: 'Lato', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a,p,h1,h2,h3,h4,button,ul,li,ul li{
+	margin:0;
+	padding:0;
+	background:none;
+	border:none;
+	outline:none;
+	text-decoration:none;
+}
+
+h1,h2,h3, ul li, li{
+  font-family: 'Lato', sans-serif;
+  letter-spacing:1px;
+}
