@@ -2,6 +2,8 @@
 
 class FrontPage{
     
+    public $template_name;
+    
     public function FrontPage(){
     // Registering and Enqueing styles and scripts
 		add_action('init', array(&$this, 'register_styles_and_scripts') );
@@ -9,6 +11,9 @@ class FrontPage{
 		
 		//register_nav_menu('primary', __('Primary navigation', 'industry') );
 		add_filter( 'wp_nav_menu_args', array(&$this, 'my_wp_nav_menu_args') );
+		
+		
+		$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
     }
     
@@ -30,15 +35,15 @@ class FrontPage{
 	
 	public function enqueue_styles_and_scripts() {
 		// If front page, loading front page specific styles
-		if(is_front_page() ){
+		if(is_front_page() || is_page('about-us') ){
 		    wp_enqueue_style('front-page-css');
 		}
+		
+		//die(var_dump($this->template_name));
 		
 		wp_enqueue_style('bootstrap-css');
 		wp_enqueue_style('core');
 		wp_enqueue_style('main-css');
-		
-		
 		
 		wp_enqueue_script('bootstrap-js');
 	}	

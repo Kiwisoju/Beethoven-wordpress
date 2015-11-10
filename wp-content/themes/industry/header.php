@@ -55,10 +55,4 @@
                 <button type="button" class="btn btn-default">Explore our Features</button>
             </div>
         </div>
-        
     </div>
-    <div class="container">
-        
-    
-        
-   </div><!-- /container -->
