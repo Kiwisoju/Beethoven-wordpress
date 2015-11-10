@@ -61,14 +61,40 @@ ul.nav li a, a.navbar-brand{
     color:white;
 }
 
-#header h1, #header h2, #header p, #header button{
-    
+#header h1{
+    font-size:48px;
+    padding:25px 0;
 }
 
-.header-text{
-    padding-top:100px;
-    z-index:22;
-    position:relative;
+#header h2{
+    font-size:36px;
+    padding:18px 0;
+}
+
+#header p, #header button{
+    font-size:18px;
+}
+
+#header p{
+    width:80%;
+    padding:20px 0;
+}
+
+#header button{
+     width:40%;   
+     margin-right:5%;
+     margin-top:6%;
+     border:none;
+     transition: all .2s ease-in;
+}
+
+#header button:hover{
+    background-color:#5C9FCB;
+    color:white;
+}
+
+#header-text{
+    padding-top:120px;
 }
 
 .container{

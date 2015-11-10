@@ -25,3 +25,7 @@ h1,h2,h3, ul li, li{
   font-family: 'Lato', sans-serif;
   letter-spacing:1px;
 }
+
+h1,h2,h3{
+    font-weight:bold;
+}
