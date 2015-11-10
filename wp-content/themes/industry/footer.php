@@ -19,7 +19,7 @@
     </div>
     
     <!-- wp_footer() START -->
-    <?php wp_footer();?>
+    <?php //wp_footer();?> 
     <!-- wp_footer() FINISH -->
 </body> 
 
