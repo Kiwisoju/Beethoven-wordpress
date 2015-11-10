@@ -13,22 +13,7 @@
 
 
 <body>
-    <!-- Header - Rewrite the copy and set the background image in css -->
-    <div id="header">
-        <div class="large-3 columns" id="mask">
-            <h1>Name of Product</h1>
-            <h2>Online Music Classroom</h2>
-            <p>Steamline your student's workflow with this web application. Manage lessons, homework and exercises for your students and see their progress with this easy online solution</p>
-            <button>Sign Up to Get Started</button>
-            <button>Explore our Features</button>
-        </div>
-    </div>
-    <div class="container">
-        
-    
-        <!-- Fixed navigation in CSS,  Grab the wordpress nav later -->
         <!-- Navigation -->
-        
         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -43,12 +28,37 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <?php 
+                        /* First args defines the menu
+                           Second arg removes wrapping Ul element */
+                            $args = array(
+                                'menu' => 'Primary navigation',
+                                'items_wrap' => '%3$s');
+                            
+                            wp_nav_menu($args);
+                        ?>
+                            
+                      
                         <li><a href="#">Login</a></li>
                     </ul>
                 </div>    
             </div>
         </nav>
+    <!-- Header - Rewrite the copy and set the background image in css -->
+    <div id="header">
+        <div id="mask" class="row">
+            <div id="header-text" class="col-xs-6 col-xs-offset-6">
+                <h1>Name of Product</h1>
+                <h2>Online Music Classroom</h2>
+                <p>Steamline your student's workflow with this web application. Manage lessons, homework and exercises for your students and see their progress with this easy online solution</p>
+                <button type="button" class="btn btn-default">Sign Up to Get Started</button>
+                <button type="button" class="btn btn-default">Explore our Features</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container">
+        
+    
+        
    </div><!-- /container -->
