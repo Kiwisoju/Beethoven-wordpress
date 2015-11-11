@@ -1,4 +1,7 @@
 <h2>Leave a Comment</h2>
+<div id="notification">
+    <span></span>
+</div>
 <form id="contact-form">
     <div class="form-group">
         <input id="name" name="form[name]" type="text" class="form-control" placeholder="Full name">
@@ -14,6 +17,12 @@
 
 <script>
     jQuery(document).ready(function($){
+        function clearForm(){
+           jQuery('#name').val(''); 
+           jQuery('#email').val(''); 
+           jQuery('#message').val(''); 
+        }
+        
         jQuery( "#contact-form" ).submit(function(event) {
             event.preventDefault();
         
@@ -30,12 +39,14 @@
             
             jQuery.post('/wp-admin/admin-ajax.php', data, function(response){
                 console.log(response);
+                jQuery('#notification').attr('id', 'success-notification');
+                jQuery('#success-notification span').html("Thanks for your message! We'll get back to you shortly.");
+                jQuery('#success-notification').show('fast');
+                clearForm();
             });
         });
         jQuery("#clear_form").click(function(){
-           jQuery('#name').val(''); 
-           jQuery('#email').val(''); 
-           jQuery('#message').val(''); 
+            clearForm();
         });
     });
 </script>

@@ -87,7 +87,7 @@ ul.nav li a, a.navbar-brand{
     padding:18px 0;
 }
 
-#header p, #header button{
+#header p, .btn{
     font-size:18px;
 }
 
@@ -96,12 +96,15 @@ ul.nav li a, a.navbar-brand{
     padding:20px 0;
 }
 
-#header button{
-     width:40%;   
-     margin-right:5%;
-     margin-top:6%;
+.btn{
      border:none;
      transition: all .2s ease-in;
+}
+
+#header button{
+    width:40%;   
+    margin-right:5%;
+    margin-top:6%;
 }
 
 #header button:hover{
@@ -171,6 +174,38 @@ ul.nav li a, a.navbar-brand{
 
 .select-style select:focus {
     outline: none;
+}
+
+#success-notification{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    display:none;
+}
+
+#success-notification span{
+    padding-left:15px;
+    vertical-align:middle;
+}
+
+#contact-form input[type=submit]{
+    margin-right:14px;
+}
+
+#contact-form .btn{
+    background-color:#5C9FCB;
+    color:white;
+    width:48%;
+    margin-top:6%;
+}
+
+#contact-form .btn:hover{
+    background-color:#264468;
+}
+
+#contact-form textarea{
+    height:124px;
 }
 
 /* Footer */
