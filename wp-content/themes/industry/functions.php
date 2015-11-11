@@ -12,9 +12,21 @@ class FrontPage{
 		//register_nav_menu('primary', __('Primary navigation', 'industry') );
 		add_filter( 'wp_nav_menu_args', array(&$this, 'my_wp_nav_menu_args') );
 		
+		add_shortcode('svg', array(&$this, 'svg') );
 		
-		$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
+		
+		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
+    }
+    
+    public function svg($atts){
+    	$atts = shortcode_atts(
+		array(
+			'type' => $atts
+		), $atts, 'svg' );
+    	ob_start();
+    	include 'images/svg/'.$atts['type'].'.svg';
+    	return ob_get_clean();
     }
     
     /* Removing the container div from wp_nav */
