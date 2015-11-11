@@ -1,0 +1,22 @@
+[11-Nov-2015 10:17:48 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /home/ubuntu/workspace/wp-content/themes/industry/functions.php on line 36
+[11-Nov-2015 10:17:48 UTC] PHP Stack trace:
+[11-Nov-2015 10:17:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Nov-2015 10:17:48 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Nov-2015 10:17:48 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Nov-2015 10:17:48 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Nov-2015 10:44:25 UTC] WordPress database error Unknown column 'action' in 'field list' for query INSERT INTO `contact_logs` (`ip`, `action`, `browser`) VALUES ('10.240.0.44', 'test', 'default') made by do_action('wp_ajax_log'), call_user_func_array, ContactLogs->ajax_log
+[11-Nov-2015 11:24:37 UTC] PHP Warning:  get_browser(): browscap ini directive not set in /home/ubuntu/workspace/wp-content/plugins/contact-messages/contact-messages.php on line 46
+[11-Nov-2015 11:24:37 UTC] PHP Stack trace:
+[11-Nov-2015 11:24:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Nov-2015 11:24:37 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[11-Nov-2015 11:24:37 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[11-Nov-2015 11:24:37 UTC] PHP   4. ContactLogs->ajax_contact_log() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[11-Nov-2015 11:24:37 UTC] PHP   5. get_browser() /home/ubuntu/workspace/wp-content/plugins/contact-messages/contact-messages.php:46
+[11-Nov-2015 11:32:34 UTC] PHP Warning:  get_browser(): browscap ini directive not set in /home/ubuntu/workspace/wp-content/plugins/contact-messages/contact-messages.php on line 101
+[11-Nov-2015 11:32:34 UTC] PHP Stack trace:
+[11-Nov-2015 11:32:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Nov-2015 11:32:34 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[11-Nov-2015 11:32:34 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[11-Nov-2015 11:32:34 UTC] PHP   4. ContactLogs->ajax_contact_log() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[11-Nov-2015 11:32:34 UTC] PHP   5. ContactLogs->getBrowser() /home/ubuntu/workspace/wp-content/plugins/contact-messages/contact-messages.php:45
+[11-Nov-2015 11:32:34 UTC] PHP   6. get_browser() /home/ubuntu/workspace/wp-content/plugins/contact-messages/contact-messages.php:101
