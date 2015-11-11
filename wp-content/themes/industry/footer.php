@@ -1,21 +1,21 @@
             <footer class="footer row">
-                <div class="col-xs-8">
+                <div class="col-xs-8 footer-nav">
                     <ul class="nav navbar-nav">
-                        <li>Home</li>
-                        <li>About Us</li>
-                        <li>Contact</li>
-                        <li>Login</li>
-                        <li>Sitemap</li>
-                        <li>Support/Documentation</li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Sitemap</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-4">
-                    <p>Contact:</p>
+                    <span>Contact:</span><br>
                     <a href="mailto:support@website.co.nz">support@website.co.nz</a>
                     <a href="mailto:technical@website.co.nz">technical@website.co.nz</a>
-                    <button>Contact Us</button>
+                    <button class="btn btn-default">Contact Us</button>
                 </div>
-            </footer>
+            </footer>  
         </div>
         
         <!-- wp_footer() START -->
