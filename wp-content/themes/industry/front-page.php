@@ -20,7 +20,7 @@ get_header();?>
             if ( $my_query->have_posts() ) : 
     			// Start the loop.
     			while ( $my_query->have_posts() ) : $my_query->the_post();
-    			    echo '<div class="'.$slug.'-content row">';
+    			    echo '<div id="'.$slug.'" class="'.$slug.'-content row">';
                     echo the_content();
                     echo '</div>';
                     

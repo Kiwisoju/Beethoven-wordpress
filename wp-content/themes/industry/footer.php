@@ -1,7 +1,7 @@
             <footer class="footer row">
                 <div class="col-xs-8 footer-nav">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a class="navbar-brand page-scroll" href="#home">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Support</a></li>
                         <li><a href="#">Contact</a></li>

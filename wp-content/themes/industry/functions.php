@@ -53,6 +53,9 @@ class FrontPage{
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script('front-page-js', get_template_directory_uri().'/js/front-page.js', false);
+		wp_register_script('jquery-easing', get_template_directory_uri().'/js/jquery.easing.min.js', false);
+		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
+		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
 	}
 	
 	public function enqueue_styles_and_scripts() {
@@ -70,6 +73,10 @@ class FrontPage{
 		wp_enqueue_script('bootstrap-js');
 		if(is_front_page()){
 		    wp_enqueue_script('front-page-js');
+		    wp_enqueue_script('jquery-easing');
+		    wp_enqueue_script('scrolling-nav');
+		    wp_enqueue_script('waypoint');
+		    
 		}
 	}	
 	

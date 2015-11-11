@@ -71,6 +71,12 @@ ul.nav.navbar-nav li a:hover, .navbar-brand:hover, .navbar-toggle:hover{
     color:white;
 }
 
+ul.nav.navbar-nav li a:active, .navbar-brand:active, .navbar-toggle:active{
+    background-color:#5C9FCB;
+}
+
+
+
 ul.nav li a, a.navbar-brand{
     color:white;
     font-size:14px;
@@ -153,6 +159,10 @@ ul.nav li a, a.navbar-brand{
 
 .support-container{
     padding-bottom:60px;
+}
+
+#about-us{
+    padding-bottom:92px;
 }
 
 /* Custom select box */
