@@ -35,7 +35,6 @@ h3{
 }
 
 
-
 /* Navigation Bar */
 
 .navbar .container-fluid{
@@ -167,9 +166,7 @@ ul.nav li a, a.navbar-brand{
     box-shadow: none;
     background-color: transparent;
     background-image: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    appearance: none;
 }
 
 .select-style select:focus {

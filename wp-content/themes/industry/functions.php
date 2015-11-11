@@ -13,12 +13,14 @@ class FrontPage{
 		add_filter( 'wp_nav_menu_args', array(&$this, 'my_wp_nav_menu_args') );
 		
 		add_shortcode('svg', array(&$this, 'svg') );
+		add_shortcode('contact_form', array(&$this, 'contact_form') );
 		
 		
 		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
     }
     
+    //[svg] Shortcode
     public function svg($atts){
     	$atts = shortcode_atts(
 		array(
@@ -26,6 +28,13 @@ class FrontPage{
 		), $atts, 'svg' );
     	ob_start();
     	include 'images/svg/'.$atts['type'].'.svg';
+    	return ob_get_clean();
+    }
+    
+    // [contact_form] Shortcode
+    public function contact_form(){
+    	ob_start();
+    	include '_contact_form.php';
     	return ob_get_clean();
     }
     
