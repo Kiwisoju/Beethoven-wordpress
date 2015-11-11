@@ -43,21 +43,25 @@ class FrontPage{
 		wp_register_style('front-page-css', get_template_directory_uri().'/css/front-page.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
+		wp_register_script('front-page-js', get_template_directory_uri().'/js/front-page.js', false);
 	}
 	
 	public function enqueue_styles_and_scripts() {
-		// If front page, loading front page specific styles
-		if(is_front_page() || is_page('about-us') ){
-		    wp_enqueue_style('front-page-css');
-		}
+		
 		
 		//die(var_dump($this->template_name));
 		
 		wp_enqueue_style('bootstrap-css');
 		wp_enqueue_style('core');
 		wp_enqueue_style('main-css');
-		
+		// If front page, loading front page specific styles
+		if(is_front_page() || is_page('about-us') ){
+		    wp_enqueue_style('front-page-css');
+		}
 		wp_enqueue_script('bootstrap-js');
+		if(is_front_page()){
+		    wp_enqueue_script('front-page-js');
+		}
 	}	
 	
 }

@@ -1,3 +1,21 @@
+/* Text Styles */
+
+h1,h2,h3{
+    color:#4C177A;
+}
+
+h1,h2,h3,p{
+    padding-bottom:32px;
+}
+
+h2{
+    font-size:36px;
+}
+
+h3{
+    font-size:30px;
+}
+
 /* Header Styles */
 
 #header{
@@ -25,8 +43,7 @@
 }
 
 nav{
-    background-color:#264468;
-    opacity:0.7;
+    background-color:rgba(38, 68, 104, 0.7);
 }
 
 .navbar-toggle{
@@ -110,8 +127,54 @@ ul.nav li a, a.navbar-brand{
     margin:auto;
 }
 
+.row{
+    padding:32px 0;
+}
 
+.buckets, .support-content, .footer{
+    background-color:#264468;
+}
 
+.buckets h3, .buckets p, .support-content h2, .support-content p{
+    color:white;
+}
+
+.video-container{
+    padding-bottom:50px;
+}
+
+.support-container{
+    padding-bottom:60px;
+}
+
+/* Custom select box */
+
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+
+    background: #fff url("../images/svg/triangle.svg") no-repeat 95% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
 
 /* Footer */
 
