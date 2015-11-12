@@ -51,7 +51,7 @@ jQuery(function($){
             
             jQuery.post('/wp-admin/admin-ajax.php', data, function(response){
                 console.log(response);
-                if(response){
+                if(response == 'true'){
                     //redirect to student page
                     window.location.href = document.location.origin + '/somepage.html';
                 }else{

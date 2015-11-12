@@ -37,6 +37,15 @@ class FormProcessor{
         // Here try the old wp_login with the form details
         
         $loginDetails = $_POST['login'];
+        
+        // Before doing this I might need to check whether a username exists or not first.
+        // If it doesn't, then don't even try login and return a string which I can then
+        // in javascript set up the correct message. Could even have the string be the message.
+        
+        // Then if wp_login fails it means that the password is incorrect. Might need a
+        // forgotten password type thing?
+        
+        
         die(json_encode(wp_login($loginDetails['username'], $loginDetails['password']) ) );
             
         
