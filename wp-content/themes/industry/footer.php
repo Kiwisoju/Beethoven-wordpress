@@ -5,7 +5,6 @@
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Support</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Login</a></li>
                         <li><a href="#">Sitemap</a></li>
                     </ul>
                 </div>

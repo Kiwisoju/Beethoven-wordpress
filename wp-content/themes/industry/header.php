@@ -39,7 +39,19 @@
                         ?>
                             
                       
-                        <li><a href="#">Login</a></li>
+                        <li><a class="dropdown-toggle" href="#" data-toggle="dropdown">Login <strong class="caret"></strong></a>
+                            <div class="dropdown-menu" id="login-box">
+                              <form id="login-form" method="post" accept-charset="UTF-8">
+                                    <div class="form-group">
+                                        <input id="username" class="form-control" type="text" name="login[username]" size="30" placeholder="Email" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="password" class="form-control" type="password" name="login[password]" size="30" placeholder="Password" />
+                                    </div>
+                                    <input class="btn btn-default" type="submit" name="submit" value="Login" />
+                                </form>
+                            </div>
+                        </li>
                     </ul>
                 </div>    
             </div>
@@ -56,3 +68,4 @@
             </div>
         </div>
     </div>
+    

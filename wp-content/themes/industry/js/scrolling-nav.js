@@ -2,13 +2,19 @@
 jQuery(document).ready(function(){
    jQuery('li a').attr('class', 'page-scroll');
    var aTags = jQuery('li a');
+   
+   // Removing the login and sitemap buttons from page-scroll
+   aTags.splice(3);
+   aTags.splice(8);
+   aTags.splice(9);
+   
    var navItems = [];
    for(var i=0; i < aTags.length; i++){
        navItems[i] = aTags[i]['innerHTML'].toLowerCase().split(' ').join('-');
    }
    console.log(navItems);
    jQuery.each(navItems, function(key, value){
-      jQuery('li a').eq(key).attr('href','#' + value);
+      jQuery('li a').eq(key).attr('href','#' + value).attr('class', 'page-scroll');
    });
    jQuery('li a').attr('class', 'page-scroll');
    

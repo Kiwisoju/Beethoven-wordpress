@@ -82,6 +82,18 @@ ul.nav li a, a.navbar-brand{
     font-size:14px;
 }
 
+#login-box{
+    background-color:#264468;
+    padding: 15px; 
+    padding-bottom: 0px;
+    width:150%;
+}
+
+#login-box .btn{
+    width:50%;
+    margin:20px 0;
+}
+
 /* Header Text */
 
 #header h1, #header h2, #header p{
@@ -118,7 +130,7 @@ ul.nav li a, a.navbar-brand{
     margin-top:6%;
 }
 
-#header button:hover, .footer button:hover{
+#header button:hover, .footer button:hover, #login-box .btn:hover{
     background-color:#5C9FCB;
     color:white;
 }
@@ -245,7 +257,7 @@ ul.nav li a, a.navbar-brand{
     text-decoration:none;
 }
 .footer li{
-    width:100px;
+    width:120px;
     text-align:center;
 }
 
