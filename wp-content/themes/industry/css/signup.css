@@ -1,0 +1,46 @@
+#image-container img{
+    width:100%;
+}
+
+input[type=submit]{
+    background-color:#5C9FCB;
+    color:white;
+    width:100%;
+    font-size:22px;
+    margin-top:6%;
+}
+
+input[type=submit]:hover{
+    background-color:#264468;
+    color:white;
+}
+
+#teacher{
+    color:#694278;
+}
+
+#teacher:hover{
+    background-color:#694278;
+}
+
+#teacher:hover, #student:hover{
+    border:none;
+    color:#FFF;
+}
+
+#student{
+    color:#3D689B;
+    margin-left:1.1%;
+}
+
+#student:hover{
+    background-color:#3D689B;
+}
+
+.account-btn{
+    font-size:22px;
+    margin-bottom:5%;
+    border:1px solid #ccc;
+    width:49%;
+    
+}

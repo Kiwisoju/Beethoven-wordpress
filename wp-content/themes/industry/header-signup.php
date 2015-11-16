@@ -14,7 +14,7 @@
 
 <body id="home">
         <!-- Navigation -->
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                   <a class="navbar-brand page-scroll" href="#home">Home</a>
+                   <a class="navbar-brand" href="/">Home</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -56,16 +56,4 @@
                 </div>    
             </div>
         </nav>
-    <!-- Header - Rewrite the copy and set the background image in css -->
-    <div id="header">
-        <div id="mask" class="row">
-            <div id="header-text" class="col-xs-6 col-xs-offset-6">
-                <h1>Name of Product</h1>
-                <h2>Online Music Classroom</h2>
-                <p>Steamline your student's workflow with this web application. Manage lessons, homework and exercises for your students and see their progress with this easy online solution</p>
-                <a href="/signup" class="btn btn-default">Sign Up to Get Started</a>
-                <button type="button" class="btn btn-default">Explore our Features</button>
-            </div>
-        </div>
-    </div>
     

@@ -68,3 +68,51 @@
 [16-Nov-2015 07:03:37 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:99
 [16-Nov-2015 07:03:37 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
 [16-Nov-2015 07:03:37 UTC] PHP   4. FormProcessor->ajax_login() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:40:19 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 43
+[16-Nov-2015 13:40:19 UTC] PHP Stack trace:
+[16-Nov-2015 13:40:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:40:19 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:40:19 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:40:19 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:40:52 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 43
+[16-Nov-2015 13:40:52 UTC] PHP Stack trace:
+[16-Nov-2015 13:40:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:40:52 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:40:52 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:40:52 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:30 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 43
+[16-Nov-2015 13:43:30 UTC] PHP Stack trace:
+[16-Nov-2015 13:43:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:43:30 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:43:30 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:30 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:54 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 43
+[16-Nov-2015 13:43:54 UTC] PHP Stack trace:
+[16-Nov-2015 13:43:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:43:54 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:43:54 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:54 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:57 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 43
+[16-Nov-2015 13:43:57 UTC] PHP Stack trace:
+[16-Nov-2015 13:43:57 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:43:57 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:43:57 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:43:57 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:51:56 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 44
+[16-Nov-2015 13:51:56 UTC] PHP Stack trace:
+[16-Nov-2015 13:51:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:51:56 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:51:56 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:51:56 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:52:12 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 44
+[16-Nov-2015 13:52:12 UTC] PHP Stack trace:
+[16-Nov-2015 13:52:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:52:12 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:52:12 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:52:12 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:52:18 UTC] PHP Fatal error:  Call to undefined method wpdb::get_result() in /home/ubuntu/workspace/wp-content/plugins/form-processor/form-processor.php on line 44
+[16-Nov-2015 13:52:18 UTC] PHP Stack trace:
+[16-Nov-2015 13:52:18 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Nov-2015 13:52:18 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[16-Nov-2015 13:52:18 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[16-Nov-2015 13:52:18 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503

@@ -15,11 +15,10 @@ class FrontPage{
 		add_shortcode('svg', array(&$this, 'svg') );
 		add_shortcode('contact_form', array(&$this, 'industry_contact_form') );
 		
-		
 		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
     }
-   
+    
     //[svg] Shortcode
     public function svg($atts){
     	$atts = shortcode_atts(
@@ -50,9 +49,11 @@ class FrontPage{
 		wp_register_style('core', get_template_directory_uri().'/style.css', false);
 		wp_register_style('main-css', get_template_directory_uri().'/css/main.css', false);
 		wp_register_style('front-page-css', get_template_directory_uri().'/css/front-page.css', false);
+		wp_register_style('signup-css', get_template_directory_uri().'/css/signup.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script('front-page-js', get_template_directory_uri().'/js/front-page.js', false);
+		wp_register_script('signup-js', get_template_directory_uri().'/js/signup.js', false);
 		wp_register_script('jquery-easing', get_template_directory_uri().'/js/jquery.easing.min.js', false);
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
@@ -68,10 +69,18 @@ class FrontPage{
 		wp_enqueue_style('core');
 		wp_enqueue_style('main-css');
 		// If front page, loading front page specific styles
-		if(is_front_page() || is_page('about-us') ){
+		
+		if(is_front_page() || is_page('about-us' || is_page('signup')) ){
 		    wp_enqueue_style('front-page-css');
 		}
+		
 		wp_enqueue_script('bootstrap-js');
+		
+		if(is_page('signup')){
+			wp_enqueue_style('signup-css');
+			wp_enqueue_script('signup-js');
+		}
+		
 		if(is_front_page()){
 		    wp_enqueue_script('front-page-js');
 		    wp_enqueue_script('jquery-easing');

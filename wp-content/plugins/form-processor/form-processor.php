@@ -17,6 +17,9 @@ class FormProcessor{
         add_action('wp_ajax_login', array(&$this, 'ajax_login') );
         add_action('wp_ajax_nopriv_login', array(&$this, 'ajax_login') );
         
+        add_action('wp_ajax_signup', array(&$this, 'ajax_signup') );
+        add_action('wp_ajax_nopriv_signup', array(&$this, 'ajax_signup') );
+        
         add_action('wp_ajax_test', array(&$this, 'ajax_test') );
         add_action('wp_ajax_nopriv_test', array(&$this, 'ajax_test') );
         
@@ -26,6 +29,47 @@ class FormProcessor{
         add_action('admin_menu', array(&$this, 'register_menu_page') );
         
        
+    }
+    
+    public function ajax_signup(){
+        $registerDetails['first_name'] = $_POST['signup']['firstName'];
+        $registerDetails['last_name'] = $_POST['signup']['lastName'];
+        $registerDetails['user_login'] = $_POST['signup']['email'];
+        $registerDetails['user_password'] = $_POST['signup']['password'];
+        $account = $_POST['signup']['account'];
+        
+        // Check if username is taken
+        $sql = "SELECT `user_login` FROM `wp_users` WHERE `user_login` = '" . $registerDetails['user_login'] . "'";
+        
+        if(!($this->db->get_results($sql) ) ){
+            // Check if passwords match
+            if($registerDetails['user_password'] == $_POST['signup']['passwordAgain']){
+                // Create the user 
+                $user = wp_insert_user($registerDetails);
+                if($user){
+                    // Set wp_user_level depending on $account
+                    $account == 'teacher' ? $userLevel = 5 : $userLevel = 4; 
+
+                    $sql = "UPDATE wp_usermeta
+                            SET meta_value = '" . $userLevel . "'
+                            WHERE user_id = '" . $user . "'
+                            AND meta_key = 'wp_user_level'";
+                            
+                    $this->db->query($sql);
+                  
+                }
+                
+            }else{
+                $message = 'Your passwords do not match';
+                die(json_encode($message));
+            }
+        }else{
+            $message = 'This username has been taken';    
+        // Sign them in
+        }
+        // Notify that user has been created
+        //die(json_encode($account));
+        die(json_encode('you are a fool') );
     }
     
     public function ajax_test(){
