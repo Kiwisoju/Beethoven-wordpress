@@ -16,12 +16,20 @@ class FormProcessor{
         
         add_action('wp_ajax_login', array(&$this, 'ajax_login') );
         add_action('wp_ajax_nopriv_login', array(&$this, 'ajax_login') );
+        
+        add_action('wp_ajax_test', array(&$this, 'ajax_test') );
+        add_action('wp_ajax_nopriv_test', array(&$this, 'ajax_test') );
+        
         add_action('wp_ajax_contact_log', array(&$this, 'ajax_contact_log') );
         add_action('wp_ajax_nopriv_contact_log', array(&$this, 'ajax_contact_log') );
         
         add_action('admin_menu', array(&$this, 'register_menu_page') );
         
        
+    }
+    
+    public function ajax_test(){
+        die(json_encode(array('test' => 'My hovercraft is full of eels') ) );
     }
     
     public function register_menu_page(){
@@ -35,20 +43,34 @@ class FormProcessor{
     
     public function ajax_login(){
         // Here try the old wp_login with the form details
-        
         $loginDetails = $_POST['login'];
         
-        // Before doing this I might need to check whether a username exists or not first.
-        // If it doesn't, then don't even try login and return a string which I can then
-        // in javascript set up the correct message. Could even have the string be the message.
+        $creds = array( 'user_login' =>  $_POST['log'], 'user_password' => $_POST['pwd'], 'remember' => $_POST['rememberme'] );
+        $user = wp_signon( $creds, false );
         
-        // Then if wp_login fails it means that the password is incorrect. Might need a
-        // forgotten password type thing?
+        // Getting user data based on $loginDetails['username']
+        $sql = "SELECT wp_users.ID, wp_usermeta.meta_key, wp_usermeta.meta_value
+                FROM wp_usermeta
+                INNER JOIN wp_users
+                ON wp_usermeta.user_id=wp_users.ID
+                WHERE wp_users.user_login = '" . $loginDetails['username'] . "'
+                AND wp_usermeta.meta_key = 'wp_user_level'";
+                
+        $user = $this->db->get_results($sql, ARRAY_A);
         
-        
-        die(json_encode(wp_login($loginDetails['username'], $loginDetails['password']) ) );
+        // Checking if user exists
+        if($user){
+            // Store wp_login into user array, boolean result if successful or failure.        
+            $user[0]['login'] = wp_login($loginDetails['username'], $loginDetails['password']);
             
+            // Incorrect password if wp_login is unsuccessful
+            $user[0]['login'] ? true : $user[0]['notification'] = 'Incorrect Password';
+        }else{
+            // Username does not exist.
+            $user[0]['notification'] = 'This username does not exist.';
+        }
         
+        die(json_encode($user) );
     }
      
     public function ajax_contact_log(){

@@ -56,6 +56,7 @@ class FrontPage{
 		wp_register_script('jquery-easing', get_template_directory_uri().'/js/jquery.easing.min.js', false);
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
+		wp_register_script( "login-ajax", get_template_directory_uri().'/js/login-ajax.js', false);
 	}
 	
 	public function enqueue_styles_and_scripts() {
@@ -76,6 +77,9 @@ class FrontPage{
 		    wp_enqueue_script('jquery-easing');
 		    wp_enqueue_script('scrolling-nav');
 		    wp_enqueue_script('waypoint');
+		    
+   			wp_localize_script( 'login-ajax', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+   			wp_enqueue_script('login-ajax');
 		    
 		}
 	}	
