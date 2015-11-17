@@ -14,63 +14,66 @@ class FormProcessor{
         global $wpdb;
         $this->db = $wpdb;
         
-        add_action('wp_ajax_login', array(&$this, 'ajax_login') );
-        add_action('wp_ajax_nopriv_login', array(&$this, 'ajax_login') );
+        // add_action('wp_ajax_login', array(&$this, 'ajax_login') );
+        // add_action('wp_ajax_nopriv_login', array(&$this, 'ajax_login') );
         
-        add_action('wp_ajax_signup', array(&$this, 'ajax_signup') );
-        add_action('wp_ajax_nopriv_signup', array(&$this, 'ajax_signup') );
+        // add_action('wp_ajax_signup', array(&$this, 'ajax_signup') );
+        // add_action('wp_ajax_nopriv_signup', array(&$this, 'ajax_signup') );
         
-        add_action('wp_ajax_test', array(&$this, 'ajax_test') );
-        add_action('wp_ajax_nopriv_test', array(&$this, 'ajax_test') );
+        // add_action('wp_ajax_test', array(&$this, 'ajax_test') );
+        // add_action('wp_ajax_nopriv_test', array(&$this, 'ajax_test') );
         
         add_action('wp_ajax_contact_log', array(&$this, 'ajax_contact_log') );
         add_action('wp_ajax_nopriv_contact_log', array(&$this, 'ajax_contact_log') );
         
         add_action('admin_menu', array(&$this, 'register_menu_page') );
         
+        // add_shortcode('registration_form', array($this, 'industry_registration_form'));
+        
        
     }
     
-    public function ajax_signup(){
-        $registerDetails['first_name'] = $_POST['signup']['firstName'];
-        $registerDetails['last_name'] = $_POST['signup']['lastName'];
-        $registerDetails['user_login'] = $_POST['signup']['email'];
-        $registerDetails['user_password'] = $_POST['signup']['password'];
-        $account = $_POST['signup']['account'];
+    
+    // public function ajax_signup(){
+    //     $registerDetails['first_name'] = $_POST['signup']['firstName'];
+    //     $registerDetails['last_name'] = $_POST['signup']['lastName'];
+    //     $registerDetails['user_login'] = $_POST['signup']['email'];
+    //     $registerDetails['user_password'] = $_POST['signup']['password'];
+    //     $account = $_POST['signup']['account'];
         
-        // Check if username is taken
-        $sql = "SELECT `user_login` FROM `wp_users` WHERE `user_login` = '" . $registerDetails['user_login'] . "'";
+    //     // Check if username is taken
+    //     $sql = "SELECT `user_login` FROM `wp_users` WHERE `user_login` = '" . $registerDetails['user_login'] . "'";
         
-        if(!($this->db->get_results($sql) ) ){
-            // Check if passwords match
-            if($registerDetails['user_password'] == $_POST['signup']['passwordAgain']){
-                // Create the user 
-                $user = wp_insert_user($registerDetails);
-                if($user){
-                    // Set wp_user_level depending on $account
-                    $account == 'teacher' ? $userLevel = 5 : $userLevel = 4; 
+    //     if(!($this->db->get_results($sql) ) ){
+    //         // Check if passwords match
+    //         if($registerDetails['user_password'] == $_POST['signup']['passwordAgain']){
+    //             // Create the user 
+    //             $user = wp_insert_user($registerDetails);
+    //             if($user){
+    //                 // Set wp_user_level depending on $account
+    //                 $account == 'teacher' ? $userLevel = 5 : $userLevel = 4; 
 
-                    $sql = "UPDATE wp_usermeta
-                            SET meta_value = '" . $userLevel . "'
-                            WHERE user_id = '" . $user . "'
-                            AND meta_key = 'wp_user_level'";
+    //                 $sql = "UPDATE wp_usermeta
+    //                         SET meta_value = '" . $userLevel . "'
+    //                         WHERE user_id = '" . $user . "'
+    //                         AND meta_key = 'wp_user_level'";
                             
-                    $this->db->query($sql);
+    //                 $this->db->query($sql);
                   
-                }
+    //             }
                 
-            }else{
-                $message = 'Your passwords do not match';
-                die(json_encode($message));
-            }
-        }else{
-            $message = 'This username has been taken';    
-        // Sign them in
-        }
-        // Notify that user has been created
-        //die(json_encode($account));
-        die(json_encode('you are a fool') );
-    }
+    //         }else{
+    //             $message = 'Your passwords do not match';
+    //             die(json_encode($message));
+    //         }
+    //     }else{
+    //         $message = 'This username has been taken';    
+    //     // Sign them in
+    //     }
+    //     // Notify that user has been created
+    //     //die(json_encode($account));
+    //     die(json_encode('you are a fool') );
+    // }
     
     public function ajax_test(){
         die(json_encode(array('test' => 'My hovercraft is full of eels') ) );
@@ -85,37 +88,45 @@ class FormProcessor{
         include_once('_contact_logs.php');
     }
     
-    public function ajax_login(){
-        // Here try the old wp_login with the form details
-        $loginDetails = $_POST['login'];
+    // public function ajax_login(){
+    //     $loginDetails = $_POST['login'];
         
-        $creds = array( 'user_login' =>  $_POST['log'], 'user_password' => $_POST['pwd'], 'remember' => $_POST['rememberme'] );
-        $user = wp_signon( $creds, false );
+    //     $creds = array();
+    // 	$creds['user_login'] = $loginDetails['username'];
+    // 	$creds['user_password'] = $loginDetails['password'];
+    // 	$creds['remember'] = false;
         
-        // Getting user data based on $loginDetails['username']
-        $sql = "SELECT wp_users.ID, wp_usermeta.meta_key, wp_usermeta.meta_value
-                FROM wp_usermeta
-                INNER JOIN wp_users
-                ON wp_usermeta.user_id=wp_users.ID
-                WHERE wp_users.user_login = '" . $loginDetails['username'] . "'
-                AND wp_usermeta.meta_key = 'wp_user_level'";
+    //     $user = wp_signon( $creds, false );
+        
+    //     if(is_wp_error($user) ){
+	   // 	die(json_encode($user->get_error_message() ) );
+    //     }
+        
+    //     // die(json_encode($user->ID));
+    //     // Getting user data based on $loginDetails['username']
+    //     // $sql = "SELECT meta_value
+    //     //         FROM wp_usermeta
+    //     //         WHERE user_id = '" . $user->ID . "'
+    //     //         AND meta_key = 'wp_user_level'";
                 
-        $user = $this->db->get_results($sql, ARRAY_A);
+    //     // $user_level = $this->db->get_row($sql, ARRAY_A);
         
-        // Checking if user exists
-        if($user){
-            // Store wp_login into user array, boolean result if successful or failure.        
-            $user[0]['login'] = wp_login($loginDetails['username'], $loginDetails['password']);
+    //     // $user->user_level = $user_level['meta_value'];
+    //     die(json_encode($user));
+    //     // Checking if user exists
+    //     // if($user){
+    //     //     // Store wp_login into user array, boolean result if successful or failure.        
+    //     //     $user[0]['login'] = wp_login($loginDetails['username'], $loginDetails['password']);
             
-            // Incorrect password if wp_login is unsuccessful
-            $user[0]['login'] ? true : $user[0]['notification'] = 'Incorrect Password';
-        }else{
-            // Username does not exist.
-            $user[0]['notification'] = 'This username does not exist.';
-        }
+    //     //     // Incorrect password if wp_login is unsuccessful
+    //     //     $user[0]['login'] ? true : $user[0]['notification'] = 'Incorrect Password';
+    //     // }else{
+    //     //     // Username does not exist.
+    //     //     $user[0]['notification'] = 'This username does not exist.';
+    //     // }
         
-        die(json_encode($user) );
-    }
+    //     die(json_encode($user) );
+    // }
      
     public function ajax_contact_log(){
         $log = $_POST['log'];
