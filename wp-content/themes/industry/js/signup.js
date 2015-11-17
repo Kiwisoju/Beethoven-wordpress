@@ -9,7 +9,7 @@ jQuery(function($){
    }); 
 });
 
-// // Handling submitting form
+// Handling submitting form
 // jQuery(function($){
 //    $('#signup-form').submit(function(event){
 //       event.preventDefault();

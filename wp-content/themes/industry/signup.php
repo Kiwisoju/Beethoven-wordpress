@@ -5,8 +5,6 @@
  **/
  
 get_header('signup');
-
-
 ?>
 
 <div id="primary" class="content-area">
@@ -16,7 +14,7 @@ get_header('signup');
         </div>
         <div id="signup-form" class="col-xs-6">
             <h1>Sign Up</h1>
-            <form id="signup-form" method="post" action="https://industry-project-kiwisoju-1.c9users.io/wp-login.php?action=register">
+            <form id="signup-form" method="post" action="<?php echo 'https://' . $_SERVER['HTTP_HOST'] ?>/wp-login.php?action=register">
                 <div class="form-group">
                     <input class="form-control" id="firstName" type="text" name="first_name" placeholder="First Name"/>
                 </div>

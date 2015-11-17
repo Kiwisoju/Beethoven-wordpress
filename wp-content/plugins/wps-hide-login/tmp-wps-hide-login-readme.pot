@@ -1,0 +1,182 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "WPS Hide Login"
+msgstr ""
+
+#. Short description.
+msgid "Change wp-login.php to anything you want."
+msgstr ""
+
+#. Screenshot description.
+msgid "Setting on single site installation"
+msgstr ""
+
+#. Screenshot description.
+msgid "Setting for network wide"
+msgstr ""
+
+#. Found in description header.
+msgid "Compatibility"
+msgstr ""
+
+#. Found in description header.
+msgid "GitHub"
+msgstr ""
+
+#. Found in description header.
+msgid "Description Française"
+msgstr ""
+
+#. Found in description header.
+msgid "Compatibilité"
+msgstr ""
+
+#. Found in description list item.
+msgid "BuddyPress,"
+msgstr ""
+
+#. Found in description list item.
+msgid "bbPress,"
+msgstr ""
+
+#. Found in description list item.
+msgid "Limit Login Attempts,"
+msgstr ""
+
+#. Found in description list item.
+msgid "and User Switching."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<em>WPS Hide Login</em> is a very light plugin that lets you easily and safely change the url of the login form to anything you want. It doesn’t literally rename or change files in core, nor does it add rewrite rules. It simply intercepts page requests and works on any WordPress website. The wp-admin directory and wp-login.php page become inaccessible, so you should bookmark or remember the url. Deactivating this plugin brings your site back exactly to the state it was before."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Requires WordPress 4.1 or higher. All login related things such as the registration form, lost password form, login widget and expired sessions just keep working."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "It’s also compatible with any plugin that hooks in the login form, including"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Obviously it doesn’t work with plugins that <em>hardcoded</em> wp-login.php."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Works with multisite, but not tested with subdomains. Activating it for a network allows you to set a networkwide default. Individual sites can still rename their login page to something else."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "If you’re using a <strong>page caching plugin</strong> other than WP Rocket, you should add the slug of the new login url to the list of pages not to cache. WP Rocket is already fully compatible with the plugin."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "For W3 Total Cache and WP Super Cache this plugin will give you a message with a link to the field you should update."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "https://github.com/tabrisrp/wps-hide-login"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "WPS Hide Login est un plugin très léger qui vous permet facilement et en toute sécurité de modifier l'URL de connexion en ce que vous voulez."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Il ne renomme pas ou ne modifie pas de fichiers dans le noyau, et n'ajoute pas de règles de réécriture.  Il intercepte tout simplement les demandes de page et fonctionne sur n'importe quel site WordPress."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "La page wp-login.php et le répertoire wp-admin deviennent donc inaccessibles, vous devrez donc bookmarker ou vous rappeler l'url. Désactiver ce plugin ramène tout simplement votre site à son état initial."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Nécessite WordPress 4.1 ou supérieur."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Si vous utilisez un plugin de cache autre que WP Rocket, vous devrez ajouter la nouvelle URL de connexion à la liste des pages à ne pas mettre en cache."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to Plugins › Add New."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Search for <em>WPS Hide Login</em>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Look for this plugin, download and activate it."
+msgstr ""
+
+#. Found in installation list item.
+msgid "The page will redirect you to the settings. Change your login url there."
+msgstr ""
+
+#. Found in installation list item.
+msgid "You can change this option any time you want, just go back to Settings › General › WPS Hide Login."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: issue if no 404 template in active theme directory"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Modified priority on hooks to fix a problem with some configurations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Check for Rename wp-login.php activation before activating WPS Hide Login to prevent conflict"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix : CSRF security issue when saving option value in single site and multisite mode. Thanks to @Secupress"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement : changed option location from permalinks to general, because register_setting doesn't work on permalinks page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement : notice after saving is now dismissible (compatibility with WP 4.2)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Uninstall function is now in it's separate file uninstall.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Some cleaning and reordering of code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial version. This is a fork of the Rename wp-login.php plugin, which is unmaintained https://wordpress.org/plugins/rename-wp-login/. All previous changelogs can be found there."
+msgstr ""
+
+#. Found in faq header.
+msgid "I forgot my login url!"
+msgstr ""
+
+#. Found in faq header.
+msgid "I'm locked out!"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Either go to your MySQL database and look for the value of <code>whl_page</code> in the options table, or remove the <code>wps-hide-login</code> folder from your <code>plugins</code> folder, log in through wp-login.php and reinstall the plugin."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "On a multisite install the <code>whl_page</code> option will be in the sitemeta table, if there is no such option in the options table."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This case can come from plugins modifying your .htaccess files to add or change rules, or from an old WordPress MU configuration not updated since Multisite was added."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "First step is to check your .htaccess file and compare it to a regular one, to see if the problem comes from it."
+msgstr ""

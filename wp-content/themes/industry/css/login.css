@@ -1,0 +1,5 @@
+/* Removing the logo from the login register page */
+
+#login h1 {
+    display:none;
+}
