@@ -6,7 +6,7 @@ class FrontPage{
     
     public function FrontPage(){
     // Registering and Enqueing styles and scripts
-		add_action('init', array(&$this, 'register_styles_and_scripts') );
+		add_action( 'init', array(&$this, 'register_styles_and_scripts') );
 		add_action( 'wp_enqueue_scripts', array(&$this, 'enqueue_styles_and_scripts') );
 		
 		//register_nav_menu('primary', __('Primary navigation', 'industry') );
@@ -15,7 +15,9 @@ class FrontPage{
 		add_shortcode('svg', array(&$this, 'svg') );
 		add_shortcode('contact_form', array(&$this, 'industry_contact_form') );
 		
-		
+		include_once('rollbar.php');
+		Rollbar::init(array('access_token' => 'df78d3555a1f4f72a423631a7d7534dd'));
+		Rollbar::report_message("SYSTEM: Cron Initialised", 'info');
 		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
     }
