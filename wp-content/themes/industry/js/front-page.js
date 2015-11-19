@@ -19,6 +19,25 @@ jQuery(function($){
             break;
         }    
     });
+    
+    $(document).ready(function(){
+        glennsFormValidator.init();
+   
+   
+       $('input[type=submit]').attr('disabled', true);
+       
+       $('.required').on('blur', function(){
+          // Checking if there is an error class
+          console.log($('.error').length);
+          if($('.validated').length === $('.required').length){
+             // Enabling the submit button.
+             console.log('enable button');
+             $('input[type=submit]').attr('disabled', false);
+          }else{
+             $('input[type=submit]').attr('disabled', true);
+          }
+       }); 
+    });
 });
 
 jQuery(function($) {
@@ -30,6 +49,7 @@ jQuery(function($) {
     e.stopPropagation();
   });
 });
+
 
 //Prevent the login form from submitting default and send data to ajax processor.
 

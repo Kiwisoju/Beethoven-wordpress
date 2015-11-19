@@ -62,13 +62,14 @@ class FrontPage{
 		wp_register_style('signup-css', get_template_directory_uri().'/css/signup.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
+		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
 		wp_register_script('front-page-js', get_template_directory_uri().'/js/front-page.js', false);
 		wp_register_script('signup-js', get_template_directory_uri().'/js/signup.js', false);
 		wp_register_script('jquery-easing', get_template_directory_uri().'/js/jquery.easing.min.js', false);
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
 		wp_register_script( "login-ajax", get_template_directory_uri().'/js/login-ajax.js', false);
-		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
+		
 	}
 	
 	public function enqueue_styles_and_scripts() {
