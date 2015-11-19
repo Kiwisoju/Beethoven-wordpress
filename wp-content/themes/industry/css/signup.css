@@ -44,3 +44,19 @@ input[type=submit]:hover{
     width:49%;
     
 }
+
+#success-notification{
+    display:block;
+}
+
+div#login_errors{
+    color: #8A1010;
+    background-color: #F2BFBF;
+    margin-bottom:20px;
+    padding-bottom:10px;
+}
+
+#login_errors span{
+    padding-left:15px;
+    vertical-align:middle;
+}

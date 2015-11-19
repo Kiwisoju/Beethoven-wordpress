@@ -116,3 +116,27 @@
 [16-Nov-2015 13:52:18 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
 [16-Nov-2015 13:52:18 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
 [16-Nov-2015 13:52:18 UTC] PHP   4. FormProcessor->ajax_signup() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[18-Nov-2015 03:01:12 UTC] PHP Warning:  include_once(/home/ubuntu/workspace/wp-content/themes/industry/rollbar.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/industry/functions.php on line 18
+[18-Nov-2015 03:01:12 UTC] PHP Stack trace:
+[18-Nov-2015 03:01:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[18-Nov-2015 03:01:12 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[18-Nov-2015 03:01:12 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[18-Nov-2015 03:01:12 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[18-Nov-2015 03:01:12 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
+[18-Nov-2015 03:01:12 UTC] PHP   6. FrontPage->FrontPage() /home/ubuntu/workspace/wp-content/themes/industry/functions.php:110
+[18-Nov-2015 03:01:12 UTC] PHP Warning:  include_once(): Failed opening '/home/ubuntu/workspace/wp-content/themes/industry/rollbar.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/industry/functions.php on line 18
+[18-Nov-2015 03:01:12 UTC] PHP Stack trace:
+[18-Nov-2015 03:01:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[18-Nov-2015 03:01:12 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[18-Nov-2015 03:01:12 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[18-Nov-2015 03:01:12 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[18-Nov-2015 03:01:12 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
+[18-Nov-2015 03:01:12 UTC] PHP   6. FrontPage->FrontPage() /home/ubuntu/workspace/wp-content/themes/industry/functions.php:110
+[18-Nov-2015 03:01:12 UTC] PHP Fatal error:  Class 'Rollbar' not found in /home/ubuntu/workspace/wp-content/themes/industry/functions.php on line 19
+[18-Nov-2015 03:01:12 UTC] PHP Stack trace:
+[18-Nov-2015 03:01:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[18-Nov-2015 03:01:12 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[18-Nov-2015 03:01:12 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[18-Nov-2015 03:01:12 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[18-Nov-2015 03:01:12 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
+[18-Nov-2015 03:01:12 UTC] PHP   6. FrontPage->FrontPage() /home/ubuntu/workspace/wp-content/themes/industry/functions.php:110

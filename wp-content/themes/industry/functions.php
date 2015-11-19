@@ -15,15 +15,17 @@ class FrontPage{
 		add_shortcode('svg', array(&$this, 'svg') );
 		add_shortcode('contact_form', array(&$this, 'industry_contact_form') );
 		
-		include_once('rollbar.php');
-		Rollbar::init(array('access_token' => 'df78d3555a1f4f72a423631a7d7534dd'));
-		Rollbar::report_message("SYSTEM: Cron Initialised", 'info');
+		
 		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
+		add_action('wp_login_failed', array(&$this, 'test') );
+		
     }
     
     
-    
+    public function test(){
+    	die(var_dump('fro the functions file'));
+    }
 
     
     //[svg] Shortcode
@@ -66,6 +68,7 @@ class FrontPage{
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
 		wp_register_script( "login-ajax", get_template_directory_uri().'/js/login-ajax.js', false);
+		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
 	}
 	
 	public function enqueue_styles_and_scripts() {
@@ -80,6 +83,7 @@ class FrontPage{
 		
 		if(is_front_page() || is_page('about-us' || is_page('signup')) ){
 		    wp_enqueue_style('front-page-css');
+		    wp_enqueue_script('form-validator-js');
 		}
 		
 		wp_enqueue_script('bootstrap-js');

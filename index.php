@@ -15,3 +15,7 @@ define('WP_USE_THEMES', true);
 
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+
+include_once('rollbar.php');
+Rollbar::init(array('access_token' => 'df78d3555a1f4f72a423631a7d7534dd'));
+Rollbar::report_message("SYSTEM: Cron Initialised", 'info');

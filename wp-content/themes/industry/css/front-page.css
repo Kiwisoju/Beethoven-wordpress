@@ -286,3 +286,12 @@ ul.nav li a, a.navbar-brand{
         text-align:left;
     }
 }
+
+.btn-default[disabled]{
+    background-color:#5C9FCB;
+    border:none;
+}
+
+.btn-default[disabled]:hover{
+    background-color:#5C9FCB;
+}

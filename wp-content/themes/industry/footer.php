@@ -20,6 +20,10 @@
         <!-- wp_footer() START -->
         <?php //wp_footer();?> 
         <!-- wp_footer() FINISH -->
+        <script type="javascript">
+            
+            
+        </script>
     </body> 
 
 </html>

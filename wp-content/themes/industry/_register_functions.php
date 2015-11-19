@@ -15,8 +15,67 @@ class RegisterFunctions{
 		add_action( 'init', array(&$this, 'register_login_styles_and_scripts') );
 		add_action( 'login_enqueue_scripts', array(&$this, 'enqueue_login_styles_and_scripts') );
 		
+		//do_action( 'wp_login_failed', $username );
+		//add_action('wp_login_failed', array(&$this, 'industry_login_failed'), 10, 1);
+	//	add_action('wp_login_failed', array(&$this, 'test') );
 		
 		
+		//add_filter('authenticate', array(&$this, 'djg_authenticate_login'), 99, 3);
+        //do_action( 'register_post', $sanitized_user_login, $user_email, $errors );
+		add_action('register_post', array(&$this, 'binda_register_fail_redirect'), 99, 3);
+
+        
+    }
+    
+    function binda_register_fail_redirect( $sanitized_user_login, $user_email, $errors ){
+            //this line is copied from register_new_user function of wp-login.php
+            $errors = apply_filters( 'registration_errors', $errors, $sanitized_user_login, $user_email );
+            //this if check is copied from register_new_user function of wp-login.php
+            if ( $errors->get_error_code() ){
+                //setup your custom URL for redirection
+                $redirect_url = get_bloginfo('url') . '/signup';
+                //add error codes to custom redirection URL one by one
+                foreach ( $errors->errors as $e => $m ){
+                    $redirect_url = add_query_arg( $e, '1', $redirect_url );    
+                }
+                
+                //add finally, redirect to your custom page with all errors in attributes
+                wp_redirect( $redirect_url );
+                exit;   
+            }
+    }
+    
+    // function djg_authenticate_login($user, $username, $password){;
+
+    //     if(is_wp_error($user)) :
+    
+    //         $codes = $user->get_error_codes();
+    //         $messages = $user->get_error_messages();
+    
+    //         $user = new WP_Error;
+    
+    //         for($i = 0; $i <= count($codes) - 1; $i++) :
+    
+    //             $code = $codes[$i];
+    //             if(in_array($code, array('empty_username', 'empty_password'))) :
+    //                 $code = 'djg_' . $code;
+    //             endif;
+    
+    //             $user->add($code, $messages[$i]);
+    
+    //         endfor;
+    
+    //     endif;
+    
+    //     return $user;
+    
+    // }
+    public function test(){
+        die(var_dump('potato'));
+    }
+    public function industry_login_failed($username){
+        
+        die(var_dump('oh hi there'));
     }
     
     public function register_login_styles_and_scripts(){
@@ -28,11 +87,9 @@ class RegisterFunctions{
     }
     
     public function industry_preparing_form(){
-    	
-    	if($_POST['user_login']){
+    	if($_POST['user_login'] || $_POST['first_name'] || $_POST['last_name']){
     		$_POST['user_email'] = $_POST['user_login'];
-    		$_POST['redirect_to'] = $_SERVER['HTTP_REFERER'].'?checkemail=registered';
-    		//die(var_dump($_POST));
+    		$_POST['redirect_to'] = $test = 'https://' . $_SERVER['SERVER_NAME'] . '/signup?checkemail=registered';
     	}
     }
     

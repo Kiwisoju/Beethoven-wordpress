@@ -1,15 +1,15 @@
 <h2>Leave a Comment</h2>
 <div id="notification">
-    <span></span>
+    <span class="notification-message"></span>
 </div>
 <form id="contact-form">
     <div class="form-group">
-        <input id="name" name="form[name]" type="text" class="form-control" placeholder="Full name">
+        <input id="name" name="form[name]" type="text" class="form-control required" placeholder="Full name">
     </div>
     <div class="form-group">
-        <input id="email" name="form[email]" type="email" class="form-control"  placeholder="Email Address">
+        <input id="email" name="form[email]" type="email" class="form-control required email"  placeholder="Email Address">
     </div>
-    <textarea id="message" name="form[message]"class="form-control" placeholder="Enter your message here.."></textarea>
+    <textarea id="message" name="form[message]" class="form-control required" placeholder="Enter your message here.."></textarea>
     <input type="submit" class="btn btn-default" value="Send Message">
     <button id="clear_form" type="button" class="btn btn-default">Clear Fields</button>
 </form>
