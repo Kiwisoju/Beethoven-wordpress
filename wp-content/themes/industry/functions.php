@@ -60,6 +60,7 @@ class FrontPage{
 		wp_register_style('main-css', get_template_directory_uri().'/css/main.css', false);
 		wp_register_style('front-page-css', get_template_directory_uri().'/css/front-page.css', false);
 		wp_register_style('signup-css', get_template_directory_uri().'/css/signup.css', false);
+		wp_register_style('teacher-css', get_template_directory_uri().'/css/teacher.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
@@ -103,6 +104,9 @@ class FrontPage{
    			wp_localize_script( 'login-ajax', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
    			wp_enqueue_script('login-ajax');
 		    
+		}
+		if(is_page_template('teacher.php') ){
+			wp_enqueue_style('teacher-css');
 		}
 	}	
 	
