@@ -23,9 +23,9 @@ class FrontPage{
     }
     
     
-    public function test(){
-    	die(var_dump('fro the functions file'));
-    }
+    // public function test(){
+    // 	die(var_dump('fro the functions file'));
+    // }
 
     
     //[svg] Shortcode
@@ -52,6 +52,11 @@ class FrontPage{
 		return $args;
 	}
 	
+	public function test(){
+		ob_start();
+		echo 'HEY THERE';
+		return ob_get_clean();
+	}
     
     public function register_styles_and_scripts(){
     	
@@ -70,6 +75,7 @@ class FrontPage{
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
 		wp_register_script( "login-ajax", get_template_directory_uri().'/js/login-ajax.js', false);
+		wp_register_script( "teacher-js", get_template_directory_uri().'/js/teacher.js', false);
 		
 	}
 	
@@ -107,6 +113,7 @@ class FrontPage{
 		}
 		if(is_page_template('teacher.php') ){
 			wp_enqueue_style('teacher-css');
+			wp_enqueue_script('teacher-js');
 		}
 	}	
 	
@@ -115,4 +122,6 @@ class FrontPage{
 $frontPage = new FrontPage();
 
 include('_register_functions.php');
+
+include('_teacher_functions.php');
 ?>
