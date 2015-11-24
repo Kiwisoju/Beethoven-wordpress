@@ -1,6 +1,5 @@
 <?php
-$postID = $_GET[post];
-
+$studentID = $_GET['edit'];
 if($_GET['edit']):?>
     <h2 class="title">Edit student</h2>
     <p>Use the form below to edit your student's profile.</p><?php
@@ -19,19 +18,27 @@ endif;?>
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-lg-6">
+    <div class="col-xs-12 col-lg-6"><?php
+    if($_GET['edit']): ?>
+        <form class="update-student-form">
+        <input type="hidden" id="user_id" name="form[user_id]" value="<?php echo $_GET['edit'] ?>"/><?php
+    endif;?>
         <form class="enrolment-form">
             <div class="form-group">
                 <label for="first_name" class="sr-only">First Name</label>
-                <input id="first_name" class="form-control required" type="text" name="form[first_name]" placeholder="First Name *"/>
+                <input id="first_name" class="form-control required" type="text" name="form[first_name]" placeholder="First Name *" value="<?php echo get_user_meta($studentID, 'first_name', true) ?>"/>
             </div>
             <div class="form-group">
                 <label for="last_name" class="sr-only">Last Name</label>
-                <input id="last_name" class="form-control required" type="text" name="form[last_name]" placeholder="Last Name *"/>
+                <input id="last_name" class="form-control required" type="text" name="form[last_name]" placeholder="Last Name *" value="<?php echo get_user_meta($studentID, 'last_name', true)?>"/>
             </div>
             <div class="form-group">
-                <label for="user_email" class="sr-only">Email Address</label>
-                <input id="user_email" class="form-control required email" type="text" name="form[user_email]" placeholder="Email Address *"/>
+                <label for="user_email" class="sr-only">Email Address</label><?php
+                if($_GET['edit']): ?>
+                <input id="user_email" disabled class="form-control" type="text" name="form[user_email]" placeholder="Email Address *" value="<?php echo get_user_meta($studentID, 'nickname', true)?>"/><?php
+                else: ?>
+                <input id="user_email" class="form-control required email" type="text" name="form[user_email]" placeholder="Email Address *" value="<?php echo get_user_meta($studentID, 'nickname', true)?>"/><?php
+                endif; ?>
             </div>
             <div class="form-group select-style">
                 <select id="classroom" class="form-control" name="form[classroom]"><?php
@@ -39,15 +46,17 @@ endif;?>
                 // teacher is attached to, and render them into the options values.?>
                     <option value="default">Assign to Classroom</option>
                     <option value="11pt">11pt</option>
-                    <option value="9dy">9DY</option>
+                    <option value="9dy">9DY</option><?php if($_GET['edit']): ?>
+                    <option value="<?php echo get_user_meta($studentID, 'classroom', true) ?>" selected><?php echo get_user_meta($studentID, 'classroom', true) ?></option><?php
+                    endif; ?>
                 </select>
             </div>
             <div class="form-group" id="profile-image-container">
                 <input type="button" class="btn btn-default secondary-button select-image" value="Set Profile Picture"/>
                 <div id="image-container" class="photo"><?php
-                    $photo = (get_post_meta($postID, 'profile_image', true)) ?
-                            get_post_meta($postID, 'profile_image', true) : array();
-                    if($photo) : ?>
+                    $photo = (get_user_meta($studentID, 'profile_image', true)) ?
+                            get_user_meta($studentID, 'profile_image', true) : array();
+                    if($photo != 'none') : ?>
                         <li>
                             <input type="hidden" name="form[profile_image]" value="<?php echo $photo ?>"/>
                             <img src="<?php echo $photo ?>" width="170" height="170"/>

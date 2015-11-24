@@ -13,13 +13,15 @@ class TeacherFunctions{
    } 
    
    public function industry_ajax_processor(){
-        
         if($_POST['formData']){
             $data = $_POST['formData'];
             // Routing the type of processing depending on the type of form.
             switch($data['type']){
                 case 'enrolment':
-                    wp_send_json($this->create_student($data));
+                    wp_send_json($this->create_student($data) );
+                    break;
+                case 'update-student':
+                    wp_send_json($this->update_student($data) );
                     break;
                 case 'create_classroom':
                     $this->create_classroom();
@@ -96,6 +98,8 @@ class TeacherFunctions{
             // If there is a profile image, add this.
             if($formData['profile_image']){
                 $this->assign_profile_image($user_id, $formData['profile_image']);
+            }else{
+                $this->assign_profile_image($user_id, 'none');
             }
             
             // Assigning the student to their teacher
@@ -116,6 +120,34 @@ class TeacherFunctions{
             $response['message'] = 'This email address is already being used.';
         }
         return $response;
+    }
+    
+    /**
+     * Function for updating student's profile
+     **/ 
+    public function update_student($formData){
+        // Update classroom
+        $this->assign_classroom($formData['user_id'], $formData['classroom']);
+        // Update profile image
+        $this->assign_profile_image($formData['user_id'], $formData['profile_image']);
+        
+        $errors = wp_update_user(
+                array(
+                    'ID' => $formData['user_id'],
+                    'first_name' => $formData['first_name'],
+                    'last_name' => $formData['last_name'],
+                    'user_email' => $formData['user_email'],
+                    'user_login' => $formData['user_email'],
+                    'nickname' => $formData['user_email']
+                    )
+            );   
+            
+            if(!is_wp_error($errors) ){
+                $response['message'] = 'Student has been updated';
+            }else{
+                $response['message'] = 'There was an error in updating this student';
+            }
+        return $reponse['message'] = 'Student has been updated';
     }
     
     /**
@@ -149,13 +181,6 @@ class TeacherFunctions{
             add_user_meta($user_id, 'classroom', $classroom);
         }
      }
-     
-    /**
-     * Function for updating student's profile
-     **/ 
-    public function update_student(){
-        
-    }
     
     /**
      * Function for deleting student's profile

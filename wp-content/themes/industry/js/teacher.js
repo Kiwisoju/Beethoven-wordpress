@@ -57,8 +57,16 @@ var app = (function($){
           url: '/wp-admin/admin-ajax.php',
           dataType: 'json',
           success: function(response){
-              console.log(response.message);
-              $('#notification-message').html(response.message);
+              $('.notifications').attr('class', 'notifications-success');
+              if(response.message){
+                  console.log(response.message);
+                $('.notification-message').html(response.message);
+              }else{
+                console.log(response);
+              
+              $('.notification-message').html(response);  
+              }
+              
               
           },
           error: function(err){ console.log(err); },
@@ -100,11 +108,20 @@ var app = (function($){
                 console.log(enrolment_data);
                 // Process the data
                 $.ajax(enrolment_data);
+              },
+              update_student: function(e){
+                e.preventDefault();
+                var update_student_data = ajax_data;
+                update_student_data.data.formData = form_processor('.update-student-form');
+                update_student_data.data.formData['type'] = 'update-student';
+                console.log(update_student_data);
+                $.ajax(update_student_data);
               }
         };
     
     // Bind your processor object to form submit events, etc..
     $(document).on('submit','.enrolment-form', processor.enrolment);
+    $(document).on('submit','.update-student-form', processor.update_student);
 
     return { 
       processor: processor,

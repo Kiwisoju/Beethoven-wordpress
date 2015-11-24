@@ -425,3 +425,18 @@ table.fixed{
 .alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd){
     background-color:#f9f9f9;
 }
+
+.notifications{
+    padding-top:20px;
+    width:65%;
+    height:40px;
+}
+
+.notifications-success{
+    background-color:rgb(219, 255, 219);
+}
+
+.notification-message{
+    padding-left:10px;
+    line-height:35px;
+}
