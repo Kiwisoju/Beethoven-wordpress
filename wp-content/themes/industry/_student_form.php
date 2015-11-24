@@ -13,21 +13,21 @@ endif;?>
 
 <div class="row">
     <div class="col-xs-12 col-lg-6">
-        <form id="student_form">
+        <form class="enrolment-form">
             <div class="form-group">
                 <label for="first_name" class="sr-only">First Name</label>
-                <input id="first_name" class="form-control" type="text" name="student['first_name']" placeholder="First Name *"/>
+                <input id="first_name" class="form-control" type="text" name="form[first_name]" placeholder="First Name *"/>
             </div>
             <div class="form-group">
                 <label for="last_name" class="sr-only">Last Name</label>
-                <input id="last_name" class="form-control" type="text" name="student['last_name']" placeholder="Last Name *"/>
+                <input id="last_name" class="form-control" type="text" name="form[last_name]" placeholder="Last Name *"/>
             </div>
             <div class="form-group">
                 <label for="user_email" class="sr-only">Email Address</label>
-                <input id="user_email" class="form-control" type="text" name="student['user_email']" placeholder="Email Address *"/>
+                <input id="user_email" class="form-control" type="text" name="form[user_email]" placeholder="Email Address *"/>
             </div>
             <div class="form-group select-style">
-                <select id="classroom" class="form-control" name="student['classroom']"><?php
+                <select id="classroom" class="form-control" name="form[classroom]"><?php
                 // Here I need to query from the database to get all of the classes of which the
                 // teacher is attached to, and render them into the options values.?>
                     <option value="default">Assign to Classroom</option>

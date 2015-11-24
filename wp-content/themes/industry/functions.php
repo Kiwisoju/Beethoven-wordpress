@@ -23,6 +23,7 @@ class FrontPage{
     }
     
     
+    
     // public function test(){
     // 	die(var_dump('fro the functions file'));
     // }

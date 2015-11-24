@@ -4,6 +4,7 @@ class TeacherFunctions{
    public function TeacherFunctions(){
        // Shortcodes
        add_shortcode('student_form', array(&$this, 'industry_student_form') );
+       
    } 
    
     // [student_form] Shortcode
