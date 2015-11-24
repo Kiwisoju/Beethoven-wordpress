@@ -6,7 +6,9 @@ class TeacherFunctions{
        $this->db = $wpdb;
         // Shortcodes
         add_shortcode('student_form', array(&$this, 'industry_student_form') );
+        add_shortcode('classroom_form', array(&$this, 'industry_classroom_form') );
         add_shortcode('overview_student', array(&$this, 'industry_overview_student') );
+        add_shortcode('overview_classrooms', array(&$this, 'industry_overview_classrooms') );
        
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
@@ -41,24 +43,40 @@ class TeacherFunctions{
         return ob_get_clean();
     }
     
-    // [overview_student] shortcode
-    public function industry_overview_student(){
-        
-        // if($_POST['log']){
-        //     //$this->db->update('logs', $_POST['log'], array('id' => $_POST['log']['id']));
-        //     //$message = "Updated student profile";
-    
-        // }else{
-        //     $students = $this->db->get_row("SELECT * FROM `logs` WHERE id='".$_GET['edit_log']."'");
-        //     include_once('_log_form.php');
-        //     return;
-        // }
+    // [classroom_form] shortcode
+    public function industry_classroom_form(){
         $sql = "SELECT user_id
                 FROM wp_usermeta
                 WHERE meta_key = 'teacher'
                 AND meta_value = '" . get_current_user_id() . "'";
+              
+        $student_ids = $this->db->get_results($sql);
+        $students = array();
+        for($i = 0 ; $i < count($student_ids); $i++){
+            $fullName = get_user_meta($student_ids[$i]->user_id, 'first_name', true) . ' ' . get_user_meta($student_ids[$i]->user_id, 'last_name', true);
+            $students[$i]['name'] = $fullName;
+        }
+        ob_start();
+        include ('_classroom_form.php');
+        return ob_get_clean();
+    }
+    
+    // [overview_classrooms] shortcode
+    public function industry_overview_classrooms(){
         
-        //die(var_dump($sql) );        
+        ob_start();
+        include('_overview_classrooms.php');
+        return ob_get_clean();
+    }
+    
+    // [overview_student] shortcode
+    public function industry_overview_student(){
+        
+        $sql = "SELECT user_id
+                FROM wp_usermeta
+                WHERE meta_key = 'teacher'
+                AND meta_value = '" . get_current_user_id() . "'";
+              
         $student_ids = $this->db->get_results($sql);
         $students = array();
         for($i = 0 ; $i < count($student_ids); $i++){
@@ -67,7 +85,6 @@ class TeacherFunctions{
             $students[$i]['classroom'] = get_user_meta($student_ids[$i]->user_id, 'classroom', true);
             $students[$i]['user_id'] = $student_ids[$i]->user_id;
         }
-        
         ob_start();
         include '_overview_student.php';
         return ob_get_clean();

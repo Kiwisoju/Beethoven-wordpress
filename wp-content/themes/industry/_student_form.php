@@ -66,8 +66,12 @@ endif;?>
                         </li><?php
                     endif;?>
                 </div>
-            </div>
-            <input class="btn btn-default" type="submit" value="Submit"/>
+            </div><?php
+            if($_GET['edit']): ?>
+            <input class="btn btn-default" type="submit" value="Update Student"/><?php
+            else: ?>
+            <input class="btn btn-default" type="submit" value="Create Student"/><?php
+            endif; ?>
         </form>
     </div>
 </div>

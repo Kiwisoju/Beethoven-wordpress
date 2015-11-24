@@ -440,3 +440,28 @@ table.fixed{
     padding-left:10px;
     line-height:35px;
 }
+
+/* Classroom Styles */
+
+.students{
+    padding-top:20px;
+    margin:0;
+}
+
+.student-pill{
+    background-color:#235795;
+    border-radius:3px;
+    margin-right:14px;
+    margin-top:14px;
+}
+
+.student-name{
+    padding-left:15px;
+    color:#fff;
+    vertical-align:sub;
+}
+
+button.close{
+    color:#fff;
+    margin:3px 6px 0 0;
+}
