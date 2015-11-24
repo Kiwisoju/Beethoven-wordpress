@@ -115,6 +115,8 @@ class FrontPage{
    			wp_enqueue_script('login-ajax');
 		    
 		}
+		
+		
 		if(is_page_template('teacher.php') ){
 			wp_enqueue_style('teacher-css');
 			wp_enqueue_script('teacher-js');
@@ -125,6 +127,8 @@ class FrontPage{
 		    wp_enqueue_script('thickbox');
 		    wp_enqueue_style('thickbox');
 		}
+		
+		
 	}	
 	
 }

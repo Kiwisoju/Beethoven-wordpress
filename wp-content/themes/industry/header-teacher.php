@@ -53,7 +53,7 @@
                 <li>
                     <a href="#"><i class="icon-students-icon icon-2x"></i> STUDENTS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/student"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
+                        <li><a href="/student/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
                         <li><a href="/student"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
                         <li><a href="/student?edit=yes"><span class="fa-stack fa-lg pull-left"></span>Update</a></li>
                     </ul>

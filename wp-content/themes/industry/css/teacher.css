@@ -379,3 +379,49 @@ input[type=submit]:hover{
 #profile-image-container li{
     list-style:none;
 }
+
+
+/** Overview styles **/
+
+table.widefat{
+    background-color:#fff;
+    border:1px solid #e5e5e5;
+    box-shadow:0 1px 1px rgba(0,0,0,.04);
+    margin:0;
+    clear:both;
+    border-spacing:0;
+    width:100%;
+    border-collapse:collapse;
+}
+
+.widefat *{
+    word-wrap:break-word;
+}
+
+.widefat thead tr th{
+    color:#32373c;
+    line-height:1.4em;
+    border-bottom:1px solid #e1e1e1;
+    font-weight:400;
+    text-align:left;
+    font-size:14px;
+}
+
+.widefat th{
+    padding:8px 10px;
+}
+
+.widefat td{
+    color:#555;
+    font-size:14px;
+    line-height:1.5em;
+    padding:8px 10px;
+}
+
+table.fixed{
+    table-layout:fixed;
+}
+
+.alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd){
+    background-color:#f9f9f9;
+}
