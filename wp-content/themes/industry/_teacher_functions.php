@@ -82,6 +82,9 @@ class TeacherFunctions{
                 $this->assign_profile_image($user_id, $formData['profile_image']);
             }
             
+            // Assigning the student to their teacher
+            add_user_meta($user_id, 'teacher', get_current_user_id() );
+            
             // Sending notification email for password reset.
             wp_new_user_notification($user_id, '', 'both');
             $response['message'] = 'Student has been created, their password has been emailed to them.';
