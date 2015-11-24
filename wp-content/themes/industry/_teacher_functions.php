@@ -63,8 +63,6 @@ class TeacherFunctions{
             // return 'You have success with a new student creation mang!';
        // }
         
-        
-        
         if(null == username_exists($formData['user_email']) ){
             $password = wp_generate_password(12, false);
             $user_id = wp_create_user($formData['user_email'], $password, $formData['user_email']);
@@ -78,9 +76,34 @@ class TeacherFunctions{
                     'role' => 'student'
                     )
             );
+            
+            // If there is a profile image, add this.
+            if($formData['profile_image']){
+                $this->assign_profile_image($user_id, $formData['profile_image']);
+            }
+            
+            // Sending notification email for password reset.
             wp_new_user_notification($user_id, '', 'both');
-            return 'it worked?';
+            $response['message'] = 'Student has been created, their password has been emailed to them.';
             //wp_mail($formData['user_email'], 'Welcome!', 'Your Password is: ' . $password );
+        }else{
+            $response['message'] = 'This email address is already being used.';
+        }
+        return $response;
+    }
+    
+    /**
+     * Function for assigning profile images. Handles both
+     * updates and additions.
+     **/ 
+    public function assign_profile_image($user_id, $profile_image){
+        // Check whether an image has already been assigned for user
+        if(get_user_meta($user_id, 'profile_image', true)){
+            update_user_meta($user_id, 'profile_image', $profile_image );
+        }
+        // Otherwise assign profile image as the first
+        else{
+            add_user_meta($user_id, 'profile_image', $profile_image);
         }
     }
     

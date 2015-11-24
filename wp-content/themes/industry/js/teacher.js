@@ -16,14 +16,34 @@ function initMenu() {
     });
 }
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function($){
     initMenu();
     jQuery("#menu-toggle").click(function(e) {
         e.preventDefault();
         console.log('menu toggle 1 clicked');
         jQuery("#wrapper").toggleClass("toggled");
     });
+    
+    glennsFormValidator.init();
+   
+   
+   $('input[type=submit]').attr('disabled', true);
+   
+   $('.required').on('blur', function(){
+      // Checking if there is an error class
+      console.log($('.error').length);
+      if($('.validated').length === $('.required').length){
+         // Enabling the submit button.
+         console.log('enable button');
+         $('input[type=submit]').attr('disabled', false);
+      }else{
+         $('input[type=submit]').attr('disabled', true);
+      }
+      
+   });
 });
+
+
 
 
 
@@ -36,7 +56,11 @@ var app = (function($){
     var ajax_data = {
           url: '/wp-admin/admin-ajax.php',
           dataType: 'json',
-          success: function(response){console.log(response)},
+          success: function(response){
+              console.log(response.message);
+              $('#notification-message').html(response.message);
+              
+          },
           error: function(err){ console.log(err); },
           method: 'POST',
           data: { 
@@ -47,7 +71,7 @@ var app = (function($){
     
     function form_processor(form_name){
         var data = {};
-        $('input[type="text"], option:selected, input:checked, textarea', $(form_name) ).each(function(i, el){
+        $('input[type="text"], input[type="hidden"], option:selected, input:checked, textarea', $(form_name) ).each(function(i, el){
             var value = $(el).val();
             
             // If element is an option

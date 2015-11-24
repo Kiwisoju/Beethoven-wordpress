@@ -3,12 +3,12 @@
     <table class="wp-list-table widefat fixed striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>IP</th>
-                <th>Date</th>
+                <th scope="col" class="manage-column column-primary ">ID</th>
+                <th scope="col" class="manage-column">Name</th>
+                <th scope="col" class="manage-column">Email</th>
+                <th scope="col" class="manage-column">Message</th>
+                <th scope="col" class="manage-column">IP</th>
+                <th scope="col" class="manage-column">Date</th>
             </tr>
         </thead>
         <tbody>

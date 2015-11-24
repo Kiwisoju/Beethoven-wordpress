@@ -15,6 +15,7 @@ class FrontPage{
 		add_shortcode('svg', array(&$this, 'svg') );
 		add_shortcode('contact_form', array(&$this, 'industry_contact_form') );
 		
+		//add_action( 'admin_enqueue_scripts', array(&$this, 'load_admin_things') );
 		
 		//$this->template_name= get_post_meta( $wp_query->post->ID, '_wp_page_template', true );
 	
@@ -22,6 +23,8 @@ class FrontPage{
 		
     }
     
+  
+
     
     
     // public function test(){
@@ -115,6 +118,12 @@ class FrontPage{
 		if(is_page_template('teacher.php') ){
 			wp_enqueue_style('teacher-css');
 			wp_enqueue_script('teacher-js');
+			wp_enqueue_script('form-validator-js');
+			
+			// Loading media upload support
+			wp_enqueue_script('media-upload');
+		    wp_enqueue_script('thickbox');
+		    wp_enqueue_style('thickbox');
 		}
 	}	
 	

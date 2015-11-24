@@ -40,7 +40,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
                 <li class="active">
-                    <a href="#"><i class="icon-dashboard-icon icon-2x"></i> DASHBOARD</a>
+                    <a href="/dashboard"><i class="icon-dashboard-icon icon-2x"></i> DASHBOARD</a>
                 </li>
                 <li>
                     <a href="#"><i class="icon-classroom-icon icon-2x"></i> CLASSROOMS</a>
