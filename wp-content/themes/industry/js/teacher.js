@@ -41,12 +41,12 @@ var app = (function($){
           method: 'POST',
           data: { 
                 action : 'processor',
-                formData : []
+                formData : {}
           }
     };
     
     function form_processor(form_name){
-        var data = [];
+        var data = {};
         $('input[type="text"], option:selected, input:checked, textarea', $(form_name) ).each(function(i, el){
             var value = $(el).val();
             
@@ -66,12 +66,15 @@ var app = (function($){
 
     var processor = {
              enrolment: function(e){
+                // Prevent default submission
                 e.preventDefault();
                 // Copy the ajax_data
                 var enrolment_data = ajax_data;
                 // Define the processor specific data
                 enrolment_data.data.formData = form_processor('.enrolment-form');
-                // Process it
+                enrolment_data.data.formData['type'] = 'enrolment';
+                console.log(enrolment_data);
+                // Process the data
                 $.ajax(enrolment_data);
               }
         };

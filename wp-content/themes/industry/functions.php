@@ -122,7 +122,8 @@ class FrontPage{
 
 $frontPage = new FrontPage();
 
+include('_teacher_functions.php');
+
 include('_register_functions.php');
 
-include('_teacher_functions.php');
 ?>

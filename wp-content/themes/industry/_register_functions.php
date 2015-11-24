@@ -45,36 +45,7 @@ class RegisterFunctions{
             }
     }
     
-    // function djg_authenticate_login($user, $username, $password){;
-
-    //     if(is_wp_error($user)) :
-    
-    //         $codes = $user->get_error_codes();
-    //         $messages = $user->get_error_messages();
-    
-    //         $user = new WP_Error;
-    
-    //         for($i = 0; $i <= count($codes) - 1; $i++) :
-    
-    //             $code = $codes[$i];
-    //             if(in_array($code, array('empty_username', 'empty_password'))) :
-    //                 $code = 'djg_' . $code;
-    //             endif;
-    
-    //             $user->add($code, $messages[$i]);
-    
-    //         endfor;
-    
-    //     endif;
-    
-    //     return $user;
-    
-    // }
-    public function test(){
-        die(var_dump('potato'));
-    }
     public function industry_login_failed($username){
-        
         die(var_dump('oh hi there'));
     }
     

@@ -14,6 +14,7 @@ class FormProcessor{
         global $wpdb;
         $this->db = $wpdb;
         
+        
         // add_action('wp_ajax_login', array(&$this, 'ajax_login') );
         // add_action('wp_ajax_nopriv_login', array(&$this, 'ajax_login') );
         
@@ -26,18 +27,13 @@ class FormProcessor{
         add_action('wp_ajax_contact_log', array(&$this, 'ajax_contact_log') );
         add_action('wp_ajax_nopriv_contact_log', array(&$this, 'ajax_contact_log') );
         
-        add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
-        add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
+        
         
         add_action('admin_menu', array(&$this, 'register_menu_page') );
         
         // add_shortcode('registration_form', array($this, 'industry_registration_form'));
         
        
-    }
-    
-    public function industry_ajax_processor(){
-        die(json_encode(array('test' => 'hovercraft is full of eeels')));
     }
     
     public function register_menu_page(){
