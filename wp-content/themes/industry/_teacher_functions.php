@@ -252,14 +252,16 @@ class TeacherFunctions{
     public function create_classroom($formData){
         $teacherID = get_current_user_id();
         
+        $className = strtolower($formData['class_name']); 
+        
         // First create the classroom for the teacher
-        add_user_meta($teacherID, 'classroom', $formData['class_name']);
+        add_user_meta($teacherID, 'classroom', $className);
         
         // For each of the items in the array of $formdata['students'], assign them
         // to the classroom
         for($i = 0; $i < count($formData['students']); $i++){
             if($formData['students'][$i]){
-                $this->assign_classroom($formData['students'][$i], $formData['class_name']);
+                $this->assign_classroom($formData['students'][$i], $className);
             }
         }
         return $response['message'] = 'You have successfully created your classroom.';
@@ -271,14 +273,25 @@ class TeacherFunctions{
     public function update_classroom($formData){
         $teacherID = get_current_user_id();
         
+        $className = strtolower($formData['class_name']);
+        
+        
+        $sql = "UPDATE wp_usermeta
+                SET meta_value = '" . $className . "'
+                WHERE meta_key = 'classroom'
+                AND meta_value = '" . $formData['old_class_name'] . "'
+                AND user_id = '" . $teacherID . "'";
+                
+                
         // First update the classroom for the teacher
-        update_user_meta($teacherID, 'classoom', $formData['class_name'], $formData['old_class_name'] );
+        $this->db->query($sql);
+        
         
         // For each of the items in the array of $formData['students'], assign them
         // to the updated classroom name.
         for($i = 0; $i < count($formData['students']); $i++){
             if($formData['students'][$i]){
-                $this->assign_classroom($formData['students'][$i], $formData['class_name']);
+                $this->assign_classroom($formData['students'][$i], $className);
             }
         }
         return $response['message'] = 'You have successfully updated your classroom.';
