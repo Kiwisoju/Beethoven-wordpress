@@ -122,7 +122,7 @@ class TeacherFunctions{
             $classrooms[$i]['student_id'] = $usersEnrolled;
             
             // TODO gather all the lessons.
-            $sql = "SELECT lesson_id";
+            $sql = "SELECT lesson_id FROM lessons WHERE classroom_name = '" . $classrooms[$i]['class_name'] . "'";
             
             $numberOfLessons = $this->db->get_results($sql);
             
