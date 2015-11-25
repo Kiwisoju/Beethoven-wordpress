@@ -56,7 +56,7 @@ endif;?>
                 <div id="image-container" class="photo"><?php
                     $photo = (get_user_meta($studentID, 'profile_image', true)) ?
                             get_user_meta($studentID, 'profile_image', true) : array();
-                    if($photo != 'none') : ?>
+                    if($photo != 'none' && $photo) : ?>
                         <li>
                             <input type="hidden" name="form[profile_image]" value="<?php echo $photo ?>"/>
                             <img src="<?php echo $photo ?>" width="170" height="170"/>

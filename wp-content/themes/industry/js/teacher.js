@@ -89,8 +89,8 @@ var app = (function($){
                 var name = $(el).closest('select').attr('name').replace('form[','') .replace(']','');
             }else{
                 var name = $(el).attr('name').replace('form[','') .replace(']','');
+                console.log(name);
             }
-            
             // Get and store value
             data[name] = value;
         });
@@ -117,12 +117,43 @@ var app = (function($){
                 update_student_data.data.formData['type'] = 'update-student';
                 console.log(update_student_data);
                 $.ajax(update_student_data);
+              },
+              classroom: function(e){
+                  e.preventDefault();
+    
+                  var classroom_data = ajax_data;
+                  var formData = $(this).serializeArray();
+                  var students = [];
+                  
+                  jQuery.each( formData, function( i, field ) {
+                      var name = field.name.replace('form[','') .replace(']','');
+                      var value = field.value;
+                      if(name == 'student[]'){
+                          students[i] = value;
+                      }else{
+                          classroom_data.data.formData[name] = value;
+                      }
+                     });
+                  classroom_data.data.formData['students'] = students;
+                  
+                  // Checking whether this is for an update or create classroom request.
+                  if(e.currentTarget.className == 'update'){
+                      classroom_data.data.formData['type'] = 'update-classroom';
+                      
+                  }else if(e.currentTarget.className == 'create'){
+                      classroom_data.data.formData['type'] = 'create-classroom';
+                  }
+                  
+                  console.log(classroom_data);
+                  $.ajax(classroom_data);
               }
         };
     
     // Bind your processor object to form submit events, etc..
     $(document).on('submit','.enrolment-form', processor.enrolment);
     $(document).on('submit','.update-student-form', processor.update_student);
+    $(document).on('submit','#classroom-form', processor.classroom);
+    //$(document).on('submit','.update-classroom-form', processor.update_classroom);
 
     return { 
       processor: processor,

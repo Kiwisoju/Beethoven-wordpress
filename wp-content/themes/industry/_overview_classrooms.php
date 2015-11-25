@@ -11,12 +11,12 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($students as $student): ?>
+            <?php foreach($classrooms as $classroom): ?>
             <tr>
                 <td><a href="../../classrooms?edit=<?php echo $classroom['class_name'] ?>">Edit Classroom</a></td>
                 <td><?php echo $classroom['class_name'] ?></td>
-                <td><?php echo $classroom['num_students'] ?></td>
-                <td><?php echo $classroom['num_lessons'] ?></td>
+                <td><?php echo $classroom['number_of_students'] ?></td>
+                <td><?php echo $classroom['number_of_lessons'] ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

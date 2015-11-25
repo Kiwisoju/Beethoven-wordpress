@@ -25,8 +25,11 @@ class TeacherFunctions{
                 case 'update-student':
                     wp_send_json($this->update_student($data) );
                     break;
-                case 'create_classroom':
-                    $this->create_classroom();
+                case 'create-classroom':
+                    wp_send_json($this->create_classroom($data) );
+                    break;
+                case 'update-classroom':
+                    wp_send_json($this->update_classroom($data) );
                     break;
                 case 'create_lesson':
                     $this->create_lesson();
@@ -45,17 +48,12 @@ class TeacherFunctions{
     
     // [classroom_form] shortcode
     public function industry_classroom_form(){
-        $sql = "SELECT user_id
-                FROM wp_usermeta
-                WHERE meta_key = 'teacher'
-                AND meta_value = '" . get_current_user_id() . "'";
-              
-        $student_ids = $this->db->get_results($sql);
-        $students = array();
-        for($i = 0 ; $i < count($student_ids); $i++){
-            $fullName = get_user_meta($student_ids[$i]->user_id, 'first_name', true) . ' ' . get_user_meta($student_ids[$i]->user_id, 'last_name', true);
-            $students[$i]['name'] = $fullName;
+        
+        $students = $this->get_all_from_students();
+        if($_GET['edit']){
+            $classrooms = $this->get_all_from_classroom();
         }
+        
         ob_start();
         include ('_classroom_form.php');
         return ob_get_clean();
@@ -64,14 +62,48 @@ class TeacherFunctions{
     // [overview_classrooms] shortcode
     public function industry_overview_classrooms(){
         
+        $classrooms = $this->get_all_from_classroom();
+        
         ob_start();
         include('_overview_classrooms.php');
         return ob_get_clean();
     }
     
-    // [overview_student] shortcode
-    public function industry_overview_student(){
+    public function get_all_from_classroom(){
+        $classNumbers = get_user_meta(get_current_user_id(), 'classroom');
+        $classrooms = [];
+        for($i = 0; $i < count($classNumbers); $i++){
+            // Assigning class name
+            $classrooms[$i]['class_name'] = $classNumbers[$i];
+            
+            $sql = "SELECT user_id 
+                    FROM `wp_usermeta` 
+                    WHERE meta_key = 'classroom'
+                    AND meta_value = '" . $classrooms[$i]['class_name'] . "'
+                    AND user_id != '" . get_current_user_id() . "'";
+                
+            $usersEnrolled = $this->db->get_results($sql);
+            
+            // Getting number of students for class
+            $classrooms[$i]['number_of_students'] = count($usersEnrolled);
+            
+            // Getting the student ids
+            $classrooms[$i]['student_id'] = $usersEnrolled;
+            
+            // TODO gather all the lessons.
+            $sql = "SELECT lesson_id";
+            
+            $numberOfLessons = $this->db->get_results($sql);
+            
+            $classrooms[$i]['number_of_lessons'] = count($numberOfLessons);
+        }
+                
         
+        return $classrooms;
+        
+    }
+    
+    public function get_all_from_students(){
         $sql = "SELECT user_id
                 FROM wp_usermeta
                 WHERE meta_key = 'teacher'
@@ -85,6 +117,14 @@ class TeacherFunctions{
             $students[$i]['classroom'] = get_user_meta($student_ids[$i]->user_id, 'classroom', true);
             $students[$i]['user_id'] = $student_ids[$i]->user_id;
         }
+        
+        return $students;
+    }
+    
+    // [overview_student] shortcode
+    public function industry_overview_student(){
+        
+        $students = $this->get_all_from_students();
         ob_start();
         include '_overview_student.php';
         return ob_get_clean();
@@ -209,15 +249,39 @@ class TeacherFunctions{
     /**
      * Function for creation of classroom
      **/ 
-    public function create_classroom(){
+    public function create_classroom($formData){
+        $teacherID = get_current_user_id();
         
+        // First create the classroom for the teacher
+        add_user_meta($teacherID, 'classroom', $formData['class_name']);
+        
+        // For each of the items in the array of $formdata['students'], assign them
+        // to the classroom
+        for($i = 0; $i < count($formData['students']); $i++){
+            if($formData['students'][$i]){
+                $this->assign_classroom($formData['students'][$i], $formData['class_name']);
+            }
+        }
+        return $response['message'] = 'You have successfully created your classroom.';
     }
     
     /**
      * Function for updating classroom
      **/ 
-    public function update_classroom(){
+    public function update_classroom($formData){
+        $teacherID = get_current_user_id();
         
+        // First update the classroom for the teacher
+        update_user_meta($teacherID, 'classoom', $formData['class_name'], $formData['old_class_name'] );
+        
+        // For each of the items in the array of $formData['students'], assign them
+        // to the updated classroom name.
+        for($i = 0; $i < count($formData['students']); $i++){
+            if($formData['students'][$i]){
+                $this->assign_classroom($formData['students'][$i], $formData['class_name']);
+            }
+        }
+        return $response['message'] = 'You have successfully updated your classroom.';
     }
 }
 

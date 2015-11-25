@@ -452,11 +452,12 @@ table.fixed{
     background-color:#235795;
     border-radius:3px;
     margin-right:14px;
+    height:40px;
     margin-top:14px;
 }
 
 .student-name{
-    padding-left:15px;
+    padding-left:5px;
     color:#fff;
     vertical-align:sub;
 }
