@@ -95,7 +95,9 @@ class TeacherFunctions{
     }
     
     public function get_all_from_lesson(){
-        
+        $sql = "SELECT * FROM lessons WHERE teacher_id = '" . get_current_user_id() . "'";
+        $lessons = $this->db->get_results($sql, ARRAY_A);
+        return $lessons;
     }
     
     public function get_all_from_classroom(){
