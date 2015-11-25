@@ -41,6 +41,7 @@ class TeacherFunctions{
    
     // [student_form] shortcode
     public function industry_student_form(){
+        $classrooms = $this->get_all_from_classroom();
         ob_start();
         include '_student_form.php';
         return ob_get_clean();

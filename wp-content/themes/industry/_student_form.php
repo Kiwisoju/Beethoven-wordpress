@@ -1,5 +1,6 @@
 <?php
 $studentID = $_GET['edit'];
+
 if($_GET['edit']):?>
     <h2 class="title">Edit student</h2>
     <p>Use the form below to edit your student's profile.</p><?php
@@ -40,16 +41,14 @@ endif;?>
                 <input id="user_email" class="form-control required email" type="text" name="form[user_email]" placeholder="Email Address *" value="<?php echo get_user_meta($studentID, 'nickname', true)?>"/><?php
                 endif; ?>
             </div>
+            <label for="classroom">Enroll to Classroom</label>
             <div class="form-group select-style">
-                <select id="classroom" class="form-control" name="form[classroom]"><?php
-                // Here I need to query from the database to get all of the classes of which the
-                // teacher is attached to, and render them into the options values.?>
-                    <option value="default">Assign to Classroom</option>
-                    <option value="11pt">11pt</option>
-                    <option value="9dy">9DY</option><?php if($_GET['edit']): ?>
-                    <option value="<?php echo get_user_meta($studentID, 'classroom', true) ?>" selected><?php echo get_user_meta($studentID, 'classroom', true) ?></option><?php
-                    endif; ?>
-                </select>
+                <select id="classroom" class="form-control" name="form[classroom]">
+                    <option value="default">Assign to Classroom</option><?php
+                    foreach($classrooms as $classroom):?>
+                        <option value="<?php echo $classroom['class_name']?>"<?php if($classroom['class_name'] == get_user_meta($studentID, 'classroom', true) ) echo 'selected'; ?>> <?php echo $classroom['class_name'] ?></option><?php
+                    endforeach;     
+                ?></select>
             </div>
             <div class="form-group" id="profile-image-container">
                 <input type="button" class="btn btn-default secondary-button select-image" value="Set Profile Picture"/>
