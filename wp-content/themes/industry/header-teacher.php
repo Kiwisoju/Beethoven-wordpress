@@ -45,22 +45,22 @@
                 <li>
                     <a href="#"><i class="icon-classroom-icon icon-2x"></i> CLASSROOMS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/classrooms/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="/classrooms"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/classrooms/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/classrooms"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-students-icon icon-2x"></i> STUDENTS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/student/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="/student"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/student/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/student"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-lessons-icon icon-2x"></i> LESSONS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/lesson/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="/lesson"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/lesson/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
+                        <li><a href="<?php echo home_url();?>/teacher/lesson"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
                     </ul>
                 </li>
             </ul>

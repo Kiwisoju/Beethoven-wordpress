@@ -146,6 +146,46 @@ var app = (function($){
                   
                   console.log(classroom_data);
                   $.ajax(classroom_data);
+              },
+              lesson: function(e){
+                  e.preventDefault();
+                  var lesson_data = ajax_data;
+                  var formData = $(this).serializeArray();
+                  var classrooms = [];
+                  var questions = [];
+                  var answers = [];
+                  console.log(formData);
+                  jQuery.each( formData, function( i, field ) {
+                      var name = field.name.replace('form[','') .replace(']','');
+                      var value = field.value;
+                      switch(name){
+                          case 'question[]':
+                              questions[i] = value;
+                              break;
+                          case 'answer[]':
+                              answers[i] = value;
+                              break;
+                          case 'classroom[]':
+                              classrooms[i] = value;
+                              break;
+                          default:
+                              lesson_data.data.formData[name] = value;
+                              
+                      }
+                 });
+                 lesson_data.data.formData['questions'] = questions;
+                 lesson_data.data.formData['answers'] = answers;
+                 lesson_data.data.formData['classrooms'] = classrooms;
+                 
+                 // Checking whether this is for an update or create classroom request.
+                  if(e.currentTarget.className == 'update'){
+                      lesson_data.data.formData['type'] = 'update-lesson';
+                      
+                  }else if(e.currentTarget.className == 'create'){
+                      lesson_data.data.formData['type'] = 'create-lesson';
+                  }
+                  console.log(lesson_data);
+                  $.ajax(lesson_data);
               }
         };
     
@@ -153,7 +193,8 @@ var app = (function($){
     $(document).on('submit','.enrolment-form', processor.enrolment);
     $(document).on('submit','.update-student-form', processor.update_student);
     $(document).on('submit','#classroom-form', processor.classroom);
-    //$(document).on('submit','.update-classroom-form', processor.update_classroom);
+    $(document).on('submit','#lesson-form', processor.lesson);
+    
 
     return { 
       processor: processor,

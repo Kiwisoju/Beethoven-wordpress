@@ -470,3 +470,51 @@ button.close{
 .toggle{
     display:none;
 }
+
+/* Lessons page */
+
+.interval-question .select-style{
+    width:48%;
+}
+
+#exercise-container{
+    background-color:#fff;
+    border-radius:3px;
+}
+
+.exercise-title{
+    text-transform:uppercase;
+    line-height:50px;
+}
+
+.question-container{
+    padding:30px 0;
+    background-color:#F5F8FB;
+}
+
+.exercise-select{
+    margin:10px 25px;
+    width:88%;
+}
+
+.exercise-label{
+    margin:0 25px;
+}
+
+button.exercise-close{
+    color:gray;
+}
+
+.exercise-remove{
+    height:30px;
+    width:30px;
+}
+
+.question-number{
+    padding:0px 25px 20px;
+}
+
+.exercise-button{
+    margin-left:25px;
+    margin-bottom:25px;
+}

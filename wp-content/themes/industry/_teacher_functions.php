@@ -123,7 +123,6 @@ class TeacherFunctions{
             
             $classrooms[$i]['number_of_lessons'] = count($numberOfLessons);
         }
-                
         
         return $classrooms;
         
