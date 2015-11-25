@@ -51,14 +51,14 @@
                 </li>
                 <li>
                     <a href="#"><i class="icon-headphones icon-2x"></i> EAR TRAINER</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;"></ul>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <li><a href="<?php echo home_url();?>/student/eartrainer"><span class="fa-stack fa-lg pull-left"></span>Start Ear Trainer</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="icon-analytics icon-2x"></i> RESULTS</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;"></ul>
-                        <li><a href="<?php echo home_url();?>/student/results"><span class="fa-stack fa-lg pull-left"></span>View Results</a></li>
+                    <a href="#"><i class="icon-classroom-icon icon-2x"></i> RESULTS</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="<?php echo home_url();?>/student/eartrainer"><span class="fa-stack fa-lg pull-left"></span>Lelelele</a></li>
                     </ul>
                 </li>
             </ul>
