@@ -41,27 +41,24 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
                 <li class="active">
-                    <a href="/dashboard"><i class="icon-dashboard-icon icon-2x"></i> DASHBOARD</a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon-classroom-icon icon-2x"></i> CLASSROOMS</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="<?php echo home_url();?>/teacher/classrooms/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="<?php echo home_url();?>/teacher/classrooms"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="icon-students-icon icon-2x"></i> STUDENTS</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="<?php echo home_url();?>/teacher/student/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="<?php echo home_url();?>/teacher/student"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
-                    </ul>
+                    <a href="<?php echo home_url(); ?>/student"><i class="icon-dashboard-icon icon-2x"></i> DASHBOARD</a>
                 </li>
                 <li>
                     <a href="#"><i class="icon-lessons-icon icon-2x"></i> LESSONS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="<?php echo home_url();?>/teacher/lesson/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
-                        <li><a href="<?php echo home_url();?>/teacher/lesson"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
+                        <li><a href="<?php echo home_url();?>/student/lessons"><span class="fa-stack fa-lg pull-left"></span>View Lessons</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-headphones icon-2x"></i> EAR TRAINER</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;"></ul>
+                        <li><a href="<?php echo home_url();?>/student/eartrainer"><span class="fa-stack fa-lg pull-left"></span>Start Ear Trainer</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-analytics icon-2x"></i> RESULTS</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;"></ul>
+                        <li><a href="<?php echo home_url();?>/student/results"><span class="fa-stack fa-lg pull-left"></span>View Results</a></li>
                     </ul>
                 </li>
             </ul>
