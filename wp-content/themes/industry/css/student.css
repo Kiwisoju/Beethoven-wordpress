@@ -1,0 +1,26 @@
+/* Sidebar styles */
+#sidebar-wrapper, .dropdown-menu{
+    background: #1D4A7F;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .active, .navbar{
+    background-color:#1D3552;
+}
+
+#menu-toggle:hover, input[type=submit]{
+    background-color:#639FCC;
+}
+
+/* Button styles - Colours */
+
+.secondary-button{
+    background-color:#235795;
+}
+
+.secondary-button:hover{
+    background-color:#163860;
+}
+
+input[type=submit]:hover{
+    background-color:#1B496C;
+}

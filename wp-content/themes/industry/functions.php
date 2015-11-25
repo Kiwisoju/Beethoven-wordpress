@@ -22,16 +22,11 @@ class FrontPage{
 		add_action('wp_login_failed', array(&$this, 'test') );
 		
     }
-    
-  
-
-    
-    
+   
     // public function test(){
     // 	die(var_dump('fro the functions file'));
     // }
 
-    
     //[svg] Shortcode
     public function svg($atts){
     	$atts = shortcode_atts(
@@ -69,7 +64,9 @@ class FrontPage{
 		wp_register_style('main-css', get_template_directory_uri().'/css/main.css', false);
 		wp_register_style('front-page-css', get_template_directory_uri().'/css/front-page.css', false);
 		wp_register_style('signup-css', get_template_directory_uri().'/css/signup.css', false);
+		wp_register_style('dashboard-css', get_template_directory_uri().'/css/dashboard.css', false);
 		wp_register_style('teacher-css', get_template_directory_uri().'/css/teacher.css', false);
+		wp_register_style('student-css', get_template_directory_uri().'/css/student.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
@@ -117,8 +114,11 @@ class FrontPage{
 		}
 		
 		
-		if(is_page_template('teacher.php') ){
-			wp_enqueue_style('teacher-css');
+		
+		
+		if(is_page_template('teacher.php') || is_page_template('student.php') ){
+			wp_enqueue_style('dashboard-css');
+			
 			wp_enqueue_script('teacher-js');
 			wp_enqueue_script('form-validator-js');
 			
@@ -128,6 +128,13 @@ class FrontPage{
 		    wp_enqueue_style('thickbox');
 		}
 		
+		if(is_page_template('teacher.php')){
+			wp_enqueue_style('teacher-css');
+		}
+		
+		if(is_page_template('student.php')){
+			wp_enqueue_style('student-css');
+		}
 		
 	}	
 	
