@@ -151,22 +151,19 @@ var app = (function($){
                   e.preventDefault();
                   var lesson_data = ajax_data;
                   var formData = $(this).serializeArray();
-                  var classrooms = [];
                   var questions = [];
                   var answers = [];
                   console.log(formData);
                   jQuery.each( formData, function( i, field ) {
+                      
                       var name = field.name.replace('form[','') .replace(']','');
                       var value = field.value;
                       switch(name){
                           case 'question[]':
-                              questions[i] = value;
+                              questions[questions.length] = value;
                               break;
                           case 'answer[]':
-                              answers[i] = value;
-                              break;
-                          case 'classroom[]':
-                              classrooms[i] = value;
+                              answers[answers.length] = value;
                               break;
                           default:
                               lesson_data.data.formData[name] = value;
@@ -175,7 +172,6 @@ var app = (function($){
                  });
                  lesson_data.data.formData['questions'] = questions;
                  lesson_data.data.formData['answers'] = answers;
-                 lesson_data.data.formData['classrooms'] = classrooms;
                  
                  // Checking whether this is for an update or create classroom request.
                   if(e.currentTarget.className == 'update'){

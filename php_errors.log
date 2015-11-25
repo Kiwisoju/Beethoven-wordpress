@@ -140,3 +140,46 @@
 [18-Nov-2015 03:01:12 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
 [18-Nov-2015 03:01:12 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
 [18-Nov-2015 03:01:12 UTC] PHP   6. FrontPage->FrontPage() /home/ubuntu/workspace/wp-content/themes/industry/functions.php:110
+[25-Nov-2015 14:23:01 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 2 to be string, array given in /home/ubuntu/workspace/wp-includes/wp-db.php on line 1092
+[25-Nov-2015 14:23:01 UTC] PHP Stack trace:
+[25-Nov-2015 14:23:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[25-Nov-2015 14:23:01 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[25-Nov-2015 14:23:01 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[25-Nov-2015 14:23:01 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[25-Nov-2015 14:23:01 UTC] PHP   5. TeacherFunctions->create_lesson() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:37
+[25-Nov-2015 14:23:01 UTC] PHP   6. wpdb->insert() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:340
+[25-Nov-2015 14:23:01 UTC] PHP   7. wpdb->_insert_replace_helper() /home/ubuntu/workspace/wp-includes/wp-db.php:1780
+[25-Nov-2015 14:23:01 UTC] PHP   8. wpdb->prepare() /home/ubuntu/workspace/wp-includes/wp-db.php:1852
+[25-Nov-2015 14:23:01 UTC] PHP   9. array_walk() /home/ubuntu/workspace/wp-includes/wp-db.php:1228
+[25-Nov-2015 14:23:01 UTC] PHP  10. wpdb->escape_by_ref() /home/ubuntu/workspace/wp-includes/wp-db.php:1228
+[25-Nov-2015 14:23:01 UTC] PHP  11. wpdb->_real_escape() /home/ubuntu/workspace/wp-includes/wp-db.php:1173
+[25-Nov-2015 14:23:01 UTC] PHP  12. mysqli_real_escape_string() /home/ubuntu/workspace/wp-includes/wp-db.php:1092
+[25-Nov-2015 14:23:01 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 2 to be string, array given in /home/ubuntu/workspace/wp-includes/wp-db.php on line 1092
+[25-Nov-2015 14:23:01 UTC] PHP Stack trace:
+[25-Nov-2015 14:23:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[25-Nov-2015 14:23:01 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[25-Nov-2015 14:23:01 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[25-Nov-2015 14:23:01 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[25-Nov-2015 14:23:01 UTC] PHP   5. TeacherFunctions->create_lesson() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:37
+[25-Nov-2015 14:23:01 UTC] PHP   6. wpdb->insert() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:340
+[25-Nov-2015 14:23:01 UTC] PHP   7. wpdb->_insert_replace_helper() /home/ubuntu/workspace/wp-includes/wp-db.php:1780
+[25-Nov-2015 14:23:01 UTC] PHP   8. wpdb->prepare() /home/ubuntu/workspace/wp-includes/wp-db.php:1852
+[25-Nov-2015 14:23:01 UTC] PHP   9. array_walk() /home/ubuntu/workspace/wp-includes/wp-db.php:1228
+[25-Nov-2015 14:23:01 UTC] PHP  10. wpdb->escape_by_ref() /home/ubuntu/workspace/wp-includes/wp-db.php:1228
+[25-Nov-2015 14:23:01 UTC] PHP  11. wpdb->_real_escape() /home/ubuntu/workspace/wp-includes/wp-db.php:1173
+[25-Nov-2015 14:23:01 UTC] PHP  12. mysqli_real_escape_string() /home/ubuntu/workspace/wp-includes/wp-db.php:1092
+[25-Nov-2015 14:23:01 UTC] WordPress database error Unknown column 'classroom' in 'field list' for query INSERT INTO `lessons` (`lesson_name`, `exercise_type`, `classroom`, `questions`, `answers`, `type`) VALUES ('Intervals 101', 'interval_recognition', 'edited yo yo yo ', '', '', 'create-lesson') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:23:01 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('a', '', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:23:01 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('c_sharp', '', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:25:43 UTC] WordPress database error Unknown column 'teacher_id' in 'field list' for query INSERT INTO `lessons` (`lesson_name`, `teacher_id`, `exercise_type`, `classroom`) VALUES ('Intervals 101', '27', 'interval_recognition', 'Three') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:25:43 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('b', '', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:25:43 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('d', '', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:39:37 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''lessons'
+                WHERE lesson_name = 'Intervals 101'' at line 1 for query SELECT * FROM 'lessons'
+                WHERE lesson_name = 'Intervals 101' made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:39:37 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('b', 'per_4', '1') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:40:45 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''lessons'
+                WHERE lesson_name = 'Intervals 101'' at line 1 for query SELECT * FROM 'lessons'
+                WHERE lesson_name = 'Intervals 101' made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:42:44 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('d_sharp', 'min_3', '1') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[25-Nov-2015 14:42:44 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('c_sharp', 'min_3', '1') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson

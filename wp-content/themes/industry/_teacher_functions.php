@@ -33,8 +33,11 @@ class TeacherFunctions{
                 case 'update-classroom':
                     wp_send_json($this->update_classroom($data) );
                     break;
-                case 'create_lesson':
-                    $this->create_lesson();
+                case 'create-lesson':
+                    wp_send_json($this->create_lesson($data) );
+                    break;
+                case 'update-lesson':
+                    $this->update_lesson();
                     break;
             }
         }
@@ -320,6 +323,56 @@ class TeacherFunctions{
             }
         }
         return $response['message'] = 'You have successfully updated your classroom.';
+    }
+    
+    /**
+     * Function for creating lesson
+     **/
+    public function create_lesson($formData){
+        // Create an entry into the lessons table, with the lesson name
+        // the exercise type and the classroom name, also add the teacher's ID
+        //<?php $wpdb->insert( $table, $data, $format );
+        $lessonData['lesson_name'] = $formData['lesson_name'];
+        $lessonData['classroom_name'] = $formData['classroom'];
+        $lessonData['exercise_type'] = $formData['exercise_type'];
+        $lessonData['teacher_id'] = get_current_user_id();
+        
+        // Check whether a lesson already exists with the name
+        $sql = "SELECT * FROM lessons
+                WHERE lesson_name = '" . $lessonData['lesson_name'] . "'";
+        
+        
+        if($this->db->query($sql) ){
+            return $response['message'] = 'A lesson already exists with this name';
+        }        
+        
+        if(!$this->db->insert('lessons', $lessonData)){
+            return $response['message'] = 'There was an error in creating your lesson we apologise for any inconvenience';
+        };
+        
+        $lessonId =  $this->db->insert_id;
+        
+        // Then create an entry in the exercise table with the corresponding
+        // lesson id which was just created. And fill this one up with
+        // the questions and answers. That should be enough really.
+        
+        for($i = 0; $i < count($formData['questions']); $i++){
+            if($formData['questions'][$i]){
+                $exerciseData['question'] = $formData['questions'][$i];
+                $exerciseData['answer'] = $formData['answers'][$i];
+                $exerciseData['lesson_id'] = $lessonId;
+                
+                $this->db->insert('exercises', $exerciseData);
+            }
+        }
+        return $response['message'] = "Your lesson has been created";
+    }
+    
+    /**
+     * Function for updating lesson
+     **/ 
+    public function update_lesson($formData){
+        
     }
 }
 

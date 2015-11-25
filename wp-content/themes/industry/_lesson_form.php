@@ -37,9 +37,9 @@ endif;?>
                     <option class="type_exercise" value="chord_recognition">Chord Recognition</option>
                 </select>
             </div>
-            <label for="classroom">Assign Lesson to Classrooms</label>
+            <label for="classroom">Assign Lesson to Classroom</label>
             <div class="form-group select-style">
-                <select id="classroom" class="form-control">
+                <select name="form[classroom]" id="classroom" class="form-control">
                 <option value="default" selected disabled>Select a Classroom *</option><?php
                     foreach($classrooms as $classroom): ?>
                         <option id="classroom_name" value="<?php echo $classroom['class_name'] ?>"><?php echo $classroom['class_name'] ?></option><?php
@@ -78,15 +78,15 @@ endif;?>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function($){
-        $('select[id=classroom]').on('change',function(){
-           $('.classrooms').append('<div class="student-pill toggle-remove col-lg-5 col-md-5 col-xs-4">'
-                                    + '<span class="classroom-name">'
-                                        + $('option[id=classroom_name]:selected').html() 
-                                    + '</span>' 
-                                    + '<button type="button" class="close" aria-label="Close"><span aria-hidden="true" class="remove">&times;</span></button>'
-                                    + '<input type="hidden" name="form[classroom][]" value="'+ $('option[id=classroom_name]:selected').val() + '"/>'
-                                + '</div>');
-        });
+        // $('select[id=classroom]').on('change',function(){
+        //   $('.classrooms').append('<div class="student-pill toggle-remove col-lg-5 col-md-5 col-xs-4">'
+        //                             + '<span class="classroom-name">'
+        //                                 + $('option[id=classroom_name]:selected').html() 
+        //                             + '</span>' 
+        //                             + '<button type="button" class="close" aria-label="Close"><span aria-hidden="true" class="remove">&times;</span></button>'
+        //                             + '<input type="hidden" name="form[classroom][]" value="'+ $('option[id=classroom_name]:selected').val() + '"/>'
+        //                         + '</div>');
+        // });
         
         $('select[id=exercise_type]').on('change', function(){
            var exercise = $('option[class=type_exercise]:selected').val();
