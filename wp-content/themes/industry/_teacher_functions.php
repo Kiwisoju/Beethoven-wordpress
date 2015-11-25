@@ -316,6 +316,12 @@ class TeacherFunctions{
         // First update the classroom for the teacher
         $this->db->query($sql);
         
+        // Then update any field in the lessons table which is attached to the class.
+        $sql2 = "UPDATE lessons
+                 SET classroom_name = '" . $className . "'
+                 WHERE classroom_name = '" . $formData['old_class_name'] . "'";
+        $this->db->query($sql2);
+        
         
         // For each of the items in the array of $formData['students'], assign them
         // to the updated classroom name.
