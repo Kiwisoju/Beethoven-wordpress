@@ -443,7 +443,7 @@ table.fixed{
 
 /* Classroom Styles */
 
-.students{
+.students, .classrooms{
     padding-top:20px;
     margin:0;
 }
@@ -456,7 +456,7 @@ table.fixed{
     margin-top:14px;
 }
 
-.student-name{
+.student-name, .classroom-name{
     padding-left:5px;
     color:#fff;
     vertical-align:sub;
@@ -465,4 +465,8 @@ table.fixed{
 button.close{
     color:#fff;
     margin:3px 6px 0 0;
+}
+
+.toggle{
+    display:none;
 }

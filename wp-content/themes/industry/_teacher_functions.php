@@ -7,8 +7,10 @@ class TeacherFunctions{
         // Shortcodes
         add_shortcode('student_form', array(&$this, 'industry_student_form') );
         add_shortcode('classroom_form', array(&$this, 'industry_classroom_form') );
+        add_shortcode('lesson_form', array(&$this, 'industry_lesson_form') );
         add_shortcode('overview_student', array(&$this, 'industry_overview_student') );
         add_shortcode('overview_classrooms', array(&$this, 'industry_overview_classrooms') );
+        add_shortcode('overview_lessons', array(&$this, 'industry_overview_lessons') );
        
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
@@ -68,6 +70,29 @@ class TeacherFunctions{
         ob_start();
         include('_overview_classrooms.php');
         return ob_get_clean();
+    }
+    
+    // [lesson_form] shortcode
+    public function industry_lesson_form(){
+        $lessons = $this->get_all_from_lesson();
+        $classrooms = $this->get_all_from_classroom();
+        
+        ob_start();
+        include('_lesson_form.php');
+        return ob_get_clean();
+    }
+    
+    // [overview_lessons] shortcode
+    public function industry_overview_lessons(){
+        $lessons = $this->get_all_from_lesson();
+        
+        ob_start();
+        include('_overview_lessons.php');
+        return ob_get_clean();
+    }
+    
+    public function get_all_from_lesson(){
+        
     }
     
     public function get_all_from_classroom(){
