@@ -170,8 +170,14 @@ var app = (function($){
                               
                       }
                  });
+                 
                  lesson_data.data.formData['questions'] = questions;
-                 lesson_data.data.formData['answers'] = answers;
+                 // For note identification, duplicating questions into answers.
+                  if(lesson_data.data.formData['exercise_type'] == 'note_identification'){
+                      lesson_data.data.formData['answers'] = lesson_data.data.formData['questions'];
+                  }else{
+                    lesson_data.data.formData['answers'] = answers;
+                  }
                  
                  // Checking whether this is for an update or create classroom request.
                   if(e.currentTarget.className == 'update'){
@@ -180,6 +186,8 @@ var app = (function($){
                   }else if(e.currentTarget.className == 'create'){
                       lesson_data.data.formData['type'] = 'create-lesson';
                   }
+                  
+                  
                   console.log(lesson_data);
                   $.ajax(lesson_data);
               }
