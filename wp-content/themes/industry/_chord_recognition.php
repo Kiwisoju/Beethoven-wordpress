@@ -27,8 +27,8 @@
             <option value="maj">Major</option>
             <option value="min">Minor</option>
             <option value="aug">Augmented</option>
-            <option value="dim">Diminished 7</option>
-            <option value="dom">Dominant 7</option>
+            <option value="dim_7">Diminished 7</option>
+            <option value="dom_7">Dominant 7</option>
             <option value="maj_7">Major 7</option>
             <option value="min_7">Minor 7</option>
             <option value="min_7_b5">Minor 7b5</option>

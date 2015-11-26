@@ -10,10 +10,43 @@ class StudentFunctions{
         
         // Shortcodes
         add_shortcode('lessons', array(&$this, 'industry_lessons') );
+        add_shortcode('lesson', array(&$this, 'industry_lesson') );
         
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
+        
     } 
+    
+    //[lesson] shortcode
+    public function industry_lesson(){
+        $lessonId = $_GET['lesson'];
+        
+        $sql = "SELECT *
+                FROM lessons
+                INNER JOIN exercises
+                ON lessons.lesson_id=exercises.lesson_id
+                WHERE lessons.lesson_id = '" . $lessonId . "'";
+                
+        $lessonQuestions = $this->db->get_results($sql);
+        
+        ob_start();
+        include '_lesson_questions.php';
+        return ob_get_clean();
+        
+        // $lessonData = [];
+        // $lessonData['lesson_id'] = $lessonId;
+        // $lessonData['lesson_name'] = $lessonQuestions[0]['lesson_name'];
+        // $lessonData['exercise_type'] = $lessonQuestions[0]['exercise_type'];
+        
+        // for($i = 0; $i < count($lessonQuestions); $i++){
+        //     $lessonData['question'][$i] = $lessonQuestions[$i]['question'];
+        //     $lessonData['answer'][$i] = $lessonQuestions[$i]['answer'];
+        // }
+        
+        // ob_start();
+        // include '_lesson_questions.php';
+        // return ob_get_clean();
+    }
     
     // [lessons] shortcode
     public function industry_lessons(){

@@ -11,7 +11,7 @@
             <tr>
                 <td><?php echo $lesson['lesson_name'] ?></td>
                 <td><?php echo $lesson['exercise_type'] ?></td>
-                <td><a href="<?php echo home_url()?>/student/lessons/lesson?=<?php echo $lesson['lesson_id'] ?>">Start Lesson</a></td>
+                <td><a href="<?php echo home_url()?>/student/lessons/lesson?lesson=<?php echo $lesson['lesson_id'] ?>">Start Lesson</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
