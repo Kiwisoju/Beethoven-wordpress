@@ -144,6 +144,8 @@ $frontPage = new FrontPage();
 
 include('_teacher_functions.php');
 
+include('_student_functions.php');
+
 include('_register_functions.php');
 
 ?>

@@ -389,3 +389,6 @@ table.fixed{
     line-height:35px;
 }
 
+.toggle{
+    display:none;
+}
