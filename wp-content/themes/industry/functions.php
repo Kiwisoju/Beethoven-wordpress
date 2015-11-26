@@ -67,6 +67,7 @@ class FrontPage{
 		wp_register_style('dashboard-css', get_template_directory_uri().'/css/dashboard.css', false);
 		wp_register_style('teacher-css', get_template_directory_uri().'/css/teacher.css', false);
 		wp_register_style('student-css', get_template_directory_uri().'/css/student.css', false);
+		wp_register_style('lesson-css', get_template_directory_uri().'/css/lesson.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
@@ -134,6 +135,10 @@ class FrontPage{
 		
 		if(is_page_template('student.php')){
 			wp_enqueue_style('student-css');
+		}
+		
+		if(is_page_template('lesson.php')){
+			wp_enqueue_style('lesson-css');
 		}
 		
 	}	

@@ -1,0 +1,37 @@
+#title-container{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    top:27%;
+}
+
+#title-container h2{
+    color:#fff;
+    font-size:24px;
+    font-weight:normal;
+}
+
+.header-fixed{
+    background-color:#5C9FCB;
+    height:100px;
+    width:100%;
+    position:fixed;
+}
+
+.progress{
+    margin-top:100px;
+    border-radius:none;
+    background-color:#fff;
+}
+
+.progress-bar-info{
+    background-color:#C9E9FF
+}
+
+#page-content-wrapper{
+    padding-top:100px;
+}
+
+body{
+    background-color:#ECF0F1;
+}

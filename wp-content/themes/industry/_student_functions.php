@@ -31,6 +31,10 @@ class StudentFunctions{
     public function get_all_lessons_from_student(){
         // Selecting all of the lessons attributed to the
         // classroom that the student is in.
+        
+        // Selecting the current assignments
+        
+        // Selecting the past assignments
         $sql = "SELECT * FROM lessons WHERE classroom_name = '" . $this->classroom . "' ";
         $lessons = $this->db->get_results($sql, ARRAY_A);    
         for($i = 0; $i < count($lessons); $i++){
