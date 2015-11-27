@@ -125,13 +125,13 @@ ul.nav li a, a.navbar-brand{
      transition: all .2s ease-in;
 }
 
-#header button{
+#header button, #header a.btn{
     width:40%;   
     margin-right:5%;
     margin-top:6%;
 }
 
-#header button:hover, .footer button:hover, #login-box .btn:hover{
+#header button:hover, #header a.btn:hover, .footer button:hover, #login-box .btn:hover{
     background-color:#5C9FCB;
     color:white;
 }

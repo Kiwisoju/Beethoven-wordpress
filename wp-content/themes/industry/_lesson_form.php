@@ -125,17 +125,17 @@ endif;?>
                                         <select name="form[question][]" class="question form-control">\
                                             <option value="default" selected disabled>Choose Starting Note</option>\
                                             <option value="a">A</option>\
-                                            <option value="a_sharp">A#</option>\
+                                            <option value="a#">A#</option>\
                                             <option value="b">B</option>\
                                             <option value="c">C</option>\
-                                            <option value="c_sharp">C#</option>\
+                                            <option value="c#">C#</option>\
                                             <option value="d">D</option>\
-                                            <option value="d_sharp">D#</option>\
+                                            <option value="d#">D#</option>\
                                             <option value="e">E</option>\
                                             <option value="f">F</option>\
-                                            <option value="f_sharp">F#</option>\
+                                            <option value="f#">F#</option>\
                                             <option value="g">G</option>\
-                                            <option value="g_sharp">G#</option>\
+                                            <option value="g#">G#</option>\
                                         </select>\
                                     </div>\
                                     <label for="" class="exercise-label">Choose Interval</label>\
@@ -174,17 +174,17 @@ endif;?>
                                                 <select name="form[question][]" class="question form-control">\
                                                     <option value="default" selected disabled>Choose Starting Note</option>\
                                                     <option value="a">A</option>\
-                                                    <option value="a_sharp">A#</option>\
+                                                    <option value="a#">A#</option>\
                                                     <option value="b">B</option>\
                                                     <option value="c">C</option>\
-                                                    <option value="c_sharp">C#</option>\
+                                                    <option value="c#">C#</option>\
                                                     <option value="d">D</option>\
-                                                    <option value="d_sharp">D#</option>\
+                                                    <option value="d#">D#</option>\
                                                     <option value="e">E</option>\
                                                     <option value="f">F</option>\
-                                                    <option value="f_sharp">F#</option>\
+                                                    <option value="f#">F#</option>\
                                                     <option value="g">G</option>\
-                                                    <option value="g_sharp">G#</option>\
+                                                    <option value="g#">G#</option>\
                                                 </select>\
                                             </div>\
                                             <label for="" class="exercise-label">Choose Chord Type</label>\
@@ -216,27 +216,27 @@ endif;?>
                                                 <div class="form-group select-style exercise-select">\
                                                     <select name="form[question][]" class="question form-control">\
                                                         <option value="default" selected disabled>Choose Note</option>\
-                                                        <option value="a_flat">Ab</option>\
+                                                        <option value="ab">Ab</option>\
                                                         <option value="a">A</option>\
-                                                        <option value="a_sharp">A#</option>\
-                                                        <option value="b_flat">Bb</option>\
+                                                        <option value="a#">A#</option>\
+                                                        <option value="bb">Bb</option>\
                                                         <option value="b">B</option>\
-                                                        <option value="b_sharp">B#</option>\
-                                                        <option value="c_flat">Cb</option>\
+                                                        <option value="b#">B#</option>\
+                                                        <option value="cb">Cb</option>\
                                                         <option value="c">C</option>\
-                                                        <option value="c_sharp">C#</option>\
-                                                        <option value="d_flat">Db</option>\
+                                                        <option value="c#">C#</option>\
+                                                        <option value="db">Db</option>\
                                                         <option value="d">D</option>\
-                                                        <option value="d_sharp">D#</option>\
-                                                        <option value="e_flat">Eb</option>\
+                                                        <option value="d#">D#</option>\
+                                                        <option value="eb">Eb</option>\
                                                         <option value="e">E</option>\
-                                                        <option value="e_sharp">E#</option>\
-                                                        <option value="f_flat">Fb</option>\
+                                                        <option value="e#">E#</option>\
+                                                        <option value="fb">Fb</option>\
                                                         <option value="f">F</option>\
-                                                        <option value="f_sharp">F#</option>\
-                                                        <option value="g_flat">Gb</option>\
+                                                        <option value="f#">F#</option>\
+                                                        <option value="gb">Gb</option>\
                                                         <option value="g">G</option>\
-                                                        <option value="g_sharp">G#</option>\
+                                                        <option value="g#">G#</option>\
                                                     </select>\
                                                 </div>\
                                             </div>')

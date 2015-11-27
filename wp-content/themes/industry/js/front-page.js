@@ -24,7 +24,7 @@ jQuery(function($){
         glennsFormValidator.init();
    
    
-       $('input[type=submit]').attr('disabled', true);
+       $('#contact-submit').attr('disabled', true);
        
        $('.required').on('blur', function(){
           // Checking if there is an error class

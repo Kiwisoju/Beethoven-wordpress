@@ -44,28 +44,34 @@
                 <span class="left-title">Latest Lessons</span>
             </div> 
             <div class="col-xs-8">
-                <span><?php echo 'title of the lesson'?></span>
-                <!-- Graph goes here -->
+                <span id="graph-lesson-title"></span>
             </div>
           </div>
           <div class="panel-body">
             <div class="col-xs-4 lesson-select">
                 <ul>
-                    <li>Name of a lesson</li>
-                    <li>Another lesson</li>
-                    <li>Ba da bing!</li>
-                    <li>Anotehr one</li>
-                    <li>Ha nice.</li>
-                    <li>Name of a lesson</li>
-                    <li>Another lesson</li>
-                    <li>Ba da bing!</li>
-                    <li>Anotehr one</li>
-                    <li>Ha nice.</li>
+                    <?php foreach($lessons as $lessonId => $data): ?>
+                        <li>
+                            <a class="lesson-item" href="#lesson-<?php echo $lessonId ?>" data-lesson-id="<?php echo $lessonId ?>"><?php echo $data['name'] ?></a>
+                        </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
                 <div class="col-xs-8 text-center">
-                    <!-- Graph goes here -->
+                    <div class="lesson-results-container">
+                        
+                    </div>
+                    <canvas id="graph" width="600" height="200"></canvas>
                 </div>
           </div>
         </div>
 </div>
+
+<script type="text/javascript">
+    window.teacherAdminData = {
+        lessonResults: <?php echo json_encode($lessonResults) ?>,
+        lessons: <?php echo json_encode($lessons) ?>,
+        students: <?php echo json_encode($students) ?>
+    };
+</script>
+

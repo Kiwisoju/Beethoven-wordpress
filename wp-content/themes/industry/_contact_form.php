@@ -10,7 +10,7 @@
         <input id="email" name="form[email]" type="email" class="form-control required email"  placeholder="Email Address">
     </div>
     <textarea id="message" name="form[message]" class="form-control required" placeholder="Enter your message here.."></textarea>
-    <input type="submit" class="btn btn-default" value="Send Message">
+    <input type="submit" id="contact-submit" class="btn btn-default" value="Send Message">
     <button id="clear_form" type="button" class="btn btn-default">Clear Fields</button>
 </form>
 

@@ -19,10 +19,86 @@ class TeacherFunctions{
    
    //[teacher] shortcode - Holds all dashboard modules
    public function industry_teacher(){
+       // Pulling all lesson results data from the database
+       $lessonResults = $this->get_all_lesson_results();
+       $lessons = $this->get_all_lessons();
+       $students = $this->get_all_student_meta();
+      
        ob_start();
        include '_teacher_dashboard.php';
        return ob_get_clean();
    }
+   
+   public function sort_results_by_student_id($resultsData) {
+       $resultsByStudentId = [];
+       
+       foreach ($resultsData as $index => $results) {
+           $studentId = $results['student_id'];
+           
+           if (!isset($resultsByStudentId[$studentId])) {
+               $resultsByStudentId[$studentId] = 0;
+           }
+           
+           $resultsByStudentId[$studentId] += $results['correct'];
+       }
+       
+       return $resultsByStudentId;
+   }
+   
+   public function get_all_lesson_results(){
+       
+       // First get all the lesson ids of the teacher
+       $sql = "SELECT lesson_id FROM lessons WHERE teacher_id = '" . get_current_user_id() . "'";
+       $lessonIds = $this->db->get_results($sql, ARRAY_A);
+       $resultsByLesson = [];
+       for ($i = 0; $i < count($lessonIds); $i++) {
+            $sql = "SELECT results.student_id, results.correct
+                    FROM results
+                    JOIN lessons
+                    ON results.lesson_id=lessons.lesson_id
+                    WHERE results.lesson_id = '" . $lessonIds[$i]['lesson_id'] . "'";
+                    
+            $result = $this->db->get_results($sql, ARRAY_A);
+            
+            if($result){
+                $resultsByLesson[$lessonIds[$i]['lesson_id']] = $this->sort_results_by_student_id($result);
+            }
+       }
+
+       return $resultsByLesson;
+   }
+   
+    public function get_all_lessons(){
+        $sql = "SELECT lesson_id, lesson_name, number_of_questions
+                FROM lessons
+                WHERE teacher_id = '" . get_current_user_id() . "'";
+        
+        $lessonIds = $this->db->get_results($sql, ARRAY_A);
+        $lessons = [];
+        
+        foreach($lessonIds as $lesson){
+            $lessons[$lesson['lesson_id']]['name'] = $lesson['lesson_name'];
+            $lessons[$lesson['lesson_id']]['number_of_questions'] = $lesson['number_of_questions'];
+        }
+        return $lessons;
+    }
+    public function get_all_student_meta(){
+        $sql = "SELECT user_id 
+                FROM wp_usermeta 
+                WHERE meta_key='teacher' 
+                AND meta_value='" . get_current_user_id() . "'";
+                
+        $studentIds = $this->db->get_results($sql, ARRAY_A);
+    
+        $students = [];
+        
+        foreach($studentIds as $student){
+            $fullName = get_user_meta($student['user_id'], 'first_name', true) . ' ' . get_user_meta($student['user_id'], 'last_name', true);
+            $students[$student['user_id']] = $fullName;
+        }
+        
+        return $students;
+    }
    
    public function industry_ajax_processor(){
         if($_POST['formData']){
@@ -398,6 +474,7 @@ class TeacherFunctions{
         $lessonData['classroom_name'] = $formData['classroom'];
         $lessonData['exercise_type'] = $formData['exercise_type'];
         $lessonData['teacher_id'] = get_current_user_id();
+        $lessonData['number_of_questions'] = count($formData['questions']);
         
         // Check whether a lesson already exists with the name
         $sql = "SELECT * FROM lessons

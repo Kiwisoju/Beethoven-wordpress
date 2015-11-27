@@ -81,6 +81,7 @@ class FrontPage{
 		wp_register_script( "teacher-js", get_template_directory_uri().'/js/teacher.js', false);
 		wp_register_script( "lesson-js", get_template_directory_uri().'/js/lesson.js', false);
 		wp_register_script( "vexflow-js", get_template_directory_uri().'/js/vexflow-min.js', false);
+		wp_register_script( "chart-js", get_template_directory_uri().'/js/chart.min.js', false);
 		
 	}
 	
@@ -119,12 +120,10 @@ class FrontPage{
 		    
 		}
 		
-		
-		
-		
 		if(is_page_template('teacher.php') || is_page_template('student.php') ){
 			wp_enqueue_style('dashboard-css');
 			
+			wp_enqueue_script('chart-js');
 			wp_enqueue_script('teacher-js');
 			wp_enqueue_script('form-validator-js');
 			
@@ -132,6 +131,8 @@ class FrontPage{
 			wp_enqueue_script('media-upload');
 		    wp_enqueue_script('thickbox');
 		    wp_enqueue_style('thickbox');
+		    
+		    
 		}
 		
 		if(is_page_template('teacher.php')){
