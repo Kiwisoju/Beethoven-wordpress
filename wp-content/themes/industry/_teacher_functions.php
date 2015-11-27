@@ -65,18 +65,27 @@ class TeacherFunctions{
             $resultsData[$i]['exercise_id'] = $data['exercise_id'][$i - 1];
         }
         
-        return $resultsData;
         foreach($resultsData as $result ){
             $exercise_id = $result['exercise_id']->exercise_id;
             $answer = $result['answers'];
             $student_answer = $result['student_answers'];
             
-            $sql = "INSERT INTO results (student_id, student_answer, exercise_id, lesson_id)
-                    VALUES ('" . get_current_user_id() . "', '" . $student_answer . "', '" . $exercise_id . "', '" . $data['lesson_id'] . "')";
+            if($answer == $student_answer){
+                $correct = true;
+            }else{
+                $correct = false;
+            }
+            
+            $sql = "INSERT INTO results (student_id, student_answer, exercise_id, lesson_id, correct)
+                    VALUES ('" . get_current_user_id() . "', '" . $student_answer . "', '" . $exercise_id . "', '" . $data['lesson_id'] . "', '" . $correct . "')";
             
             $this->db->query($sql);
             
+            
+            
         }
+        // Setting a 'boolean' of the lesson being completed by student.
+        add_user_meta(get_current_user_id(), 'lesson_completed', $data['lesson_id']);
         
         return $response['message'] = 'Results saved to the database';
     }   

@@ -7,11 +7,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($lessons as $lesson): ?>
+            <?php foreach($lessons['current_lessons'] as $lesson): ?>
             <tr>
-                <td><?php echo $lesson['lesson_name'] ?></td>
-                <td><?php echo $lesson['exercise_type'] ?></td>
-                <td><a href="<?php echo home_url()?>/student/lessons/lesson?lesson=<?php echo $lesson['lesson_id'] ?>">Start Lesson</a></td>
+                <td><?php echo $lesson[0]->lesson_name ?></td>
+                <td><?php echo $lesson[0]->exercise_type ?></td>
+                <td><a href="<?php echo home_url()?>/student/lessons/lesson?lesson=<?php echo $lesson[0]->lesson_id ?>">Start Lesson</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -51,7 +51,6 @@ class StudentFunctions{
     // [lessons] shortcode
     public function industry_lessons(){
         $lessons = $this->get_all_lessons_from_student();
-        
         ob_start();
         include '_lessons.php';
         return ob_get_clean();
@@ -62,18 +61,45 @@ class StudentFunctions{
     }
     
     public function get_all_lessons_from_student(){
-        // Selecting all of the lessons attributed to the
-        // classroom that the student is in.
         
-        // Selecting the current assignments
+        $sql = "SELECT lesson_id FROM lessons WHERE classroom_name = '" . $this->classroom . "'";
+        $studentLessonIds = $this->db->get_results($sql, ARRAY_A);
         
-        // Selecting the past assignments
-        $sql = "SELECT * FROM lessons WHERE classroom_name = '" . $this->classroom . "' ";
-        $lessons = $this->db->get_results($sql, ARRAY_A);    
-        for($i = 0; $i < count($lessons); $i++){
-            // Need to get the results for lessons which have them..
-            $lessons[$i]['score'] = '10/10';
+        $studId = [];
+        for ($i = 0; $i < count($studentLessonIds); $i++) {
+             $studId[$i] = $studentLessonIds[$i]['lesson_id'];
         }
+        
+        // Getting the past lessons
+        $pastLessons = [];
+        $pastLessonIds = get_user_meta(get_current_user_id(), 'lesson_completed');
+        
+        for($i = 0; $i < count($pastLessonIds); $i++ ){
+            $sql = "SELECT * FROM lessons WHERE lesson_id = '" . $pastLessonIds[$i] . "'";
+            $pastLessons[$i] = $this->db->get_results($sql);
+            
+            $sql = "SELECT correct 
+                    FROM results 
+                    WHERE lesson_id = '" . $pastLessonIds[$i] . "' 
+                    AND student_id = '" . get_current_user_id() . "'
+                    AND correct = '1'";
+                    
+            $pastLessons[$i]['score'] = $this->db->query($sql);
+        }
+        
+        // Getting the current lessons
+        
+        $currentLessonIds = array_diff($studId, $pastLessonIds);
+        $currentLessons = [];
+        
+        for($i = 0; $i < count($currentLessonIds); $i++ ){
+            $sql = "SELECT * FROM lessons WHERE lesson_id = '" . $currentLessonIds[$i] . "'";
+            $currentLessons[$i] = $this->db->get_results($sql);
+        }
+        
+        $lessons = [];
+        $lessons['past_lessons'] = $pastLessons;
+        $lessons['current_lessons'] = $currentLessons;
         return $lessons;
     }
     
