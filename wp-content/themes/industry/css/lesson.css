@@ -93,3 +93,6 @@ audio {
   color: #fff;
   margin: 20px 0;
 }
+#results-overview span {
+  text-align: center;
+}

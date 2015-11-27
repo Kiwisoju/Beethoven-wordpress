@@ -11,11 +11,47 @@ class StudentFunctions{
         // Shortcodes
         add_shortcode('lessons', array(&$this, 'industry_lessons') );
         add_shortcode('lesson', array(&$this, 'industry_lesson') );
+        add_shortcode('results', array(&$this, 'industry_results') );
         
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
         
     } 
+    
+    public function industry_results(){
+        $lessonId = $_GET['lesson'];
+        $results = [];
+        
+        // Grab the answers for the lesson being shown.
+        $sql = "SELECT answer FROM exercises WHERE lesson_id = '" . $lessonId . "'";
+        $answers = $this->db->get_results($sql, ARRAY_A);
+        // Grab the students answers from the lesson being shown.
+        $sql = "SELECT student_answer FROM results WHERE lesson_id = '" . $lessonId . "'";
+        $studentAnswers = $this->db->get_results($sql, ARRAY_A);
+        
+        for ($i = 0; $i < count($answers); $i++) {
+             $results[$i]['answer'] = $answers[$i]['answer'];
+             $results[$i]['studentAnswer'] = $studentAnswers[$i]['student_answer'];
+        }
+        
+        $lessonName = $this->db->get_results("SELECT lesson_name FROM lessons WHERE lesson_id = '" . $lessonId . "'");
+        
+        $sql = "SELECT correct 
+                    FROM results 
+                    WHERE lesson_id = '" . $lessonId . "' 
+                    AND student_id = '" . get_current_user_id() . "'
+                    AND correct = '1'";
+                              
+        $score = $this->db->query($sql);
+       
+        $results['lesson_name'] = $lessonName;
+        $results['score'] = $score;
+        
+        
+        ob_start();
+        include '_results.php';
+        return ob_get_clean();
+    }
     
     //[lesson] shortcode
     public function industry_lesson(){

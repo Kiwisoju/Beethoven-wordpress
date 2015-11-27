@@ -14,7 +14,7 @@
                 <td><?php echo $lesson[0]->lesson_name ?></td>
                 <td><?php echo $lesson[0]->exercise_type ?></td>
                 <td><?php echo $lesson['score'] ?></td>
-                <td><a href="<?php echo home_url()?>/student/results?=<?php echo $lesson[0]->lesson_id ?>">View Feedback</a></td>
+                <td><a href="<?php echo home_url()?>/student/results?lesson=<?php echo $lesson[0]->lesson_id ?>">View Feedback</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -232,3 +232,17 @@
                     VALUES ('48', 'oct', '', '14') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
 [27-Nov-2015 03:37:18 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`results`, CONSTRAINT `results_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`exercise_id`)) for query INSERT INTO results (student_id, student_answer, exercise_id, lesson_id)
                     VALUES ('48', 'aug', '', '15') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
+[27-Nov-2015 06:08:36 UTC] PHP Parse error:  syntax error, unexpected 'ob_start' (T_STRING) in /home/ubuntu/workspace/wp-content/themes/industry/_student_functions.php on line 30
+[27-Nov-2015 06:08:36 UTC] PHP Stack trace:
+[27-Nov-2015 06:08:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 06:08:36 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[27-Nov-2015 06:08:36 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[27-Nov-2015 06:08:36 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[27-Nov-2015 06:08:36 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
+[27-Nov-2015 06:08:51 UTC] PHP Parse error:  syntax error, unexpected 'ob_start' (T_STRING) in /home/ubuntu/workspace/wp-content/themes/industry/_student_functions.php on line 30
+[27-Nov-2015 06:08:51 UTC] PHP Stack trace:
+[27-Nov-2015 06:08:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 06:08:51 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[27-Nov-2015 06:08:51 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[27-Nov-2015 06:08:51 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[27-Nov-2015 06:08:51 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:329
