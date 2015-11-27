@@ -48,8 +48,35 @@ class TeacherFunctions{
     }
    
    
-    public function store_results(){
-        return $response['message'] = 'this is coming form php';
+    public function store_results($data){
+        $sql = "SELECT exercise_id 
+                FROM exercises 
+                WHERE lesson_id = '" . $data['lesson_id'] . "'";
+        
+        // Getting the exercise id's.
+        $exerciseIds = $this->db->get_results($sql);
+        $data['exercise_id'] = $exerciseIds;
+        $resultsData = [];
+        
+        for($i=1; $i <= count($data['answers']); $i++) {
+            $resultsData[$i]['answers'] = $data['answers']['q'.$i];
+            $resultsData[$i]['student_answers'] = $data['studentAnswers']['q'.$i];
+            $resultsData[$i]['exercise_id'] = $data['exercise_id'][$i];
+        }
+        
+        foreach($resultsData as $result ){
+            $exercise_id = $result['exercise_id']->exercise_id;
+            $answer = $result['answers'];
+            $student_answer = $result['student_answers'];
+            
+            $sql = "INSERT INTO results (student_id, student_answer, exercise_id, lesson_id)
+                    VALUES ('" . get_current_user_id() . "', '" . $student_answer . "', '" . $exercise_id . "', '" . $data['lesson_id'] . "')";
+            
+            $this->db->query($sql);
+            
+        }
+        
+        return $response['message'] = 'Results saved to the database';
     }   
     
     // [student_form] shortcode

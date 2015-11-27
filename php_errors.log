@@ -183,3 +183,40 @@
                 WHERE lesson_name = 'Intervals 101' made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
 [25-Nov-2015 14:42:44 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('d_sharp', 'min_3', '1') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
 [25-Nov-2015 14:42:44 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`exercises`, CONSTRAINT `exercises_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`)) for query INSERT INTO `exercises` (`question`, `answer`, `lesson_id`) VALUES ('c_sharp', 'min_3', '1') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->create_lesson
+[27-Nov-2015 01:45:27 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '16' at line 1 for query 16 made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
+[27-Nov-2015 01:54:46 UTC] PHP Warning:  Illegal string offset 'exercise_id' in /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php on line 61
+[27-Nov-2015 01:54:46 UTC] PHP Stack trace:
+[27-Nov-2015 01:54:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 01:54:46 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[27-Nov-2015 01:54:46 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 01:54:46 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 01:54:46 UTC] PHP   5. TeacherFunctions->store_results() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:43
+[27-Nov-2015 01:54:46 UTC] PHP Warning:  Illegal string offset 'exercise_id' in /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php on line 61
+[27-Nov-2015 01:54:46 UTC] PHP Stack trace:
+[27-Nov-2015 01:54:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 01:54:46 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[27-Nov-2015 01:54:46 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 01:54:46 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 01:54:46 UTC] PHP   5. TeacherFunctions->store_results() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:43
+[27-Nov-2015 02:15:42 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php on line 64
+[27-Nov-2015 02:15:42 UTC] PHP Stack trace:
+[27-Nov-2015 02:15:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 02:15:42 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[27-Nov-2015 02:15:42 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 02:15:42 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 02:15:42 UTC] PHP   5. TeacherFunctions->store_results() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:43
+[27-Nov-2015 02:16:50 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php on line 68
+[27-Nov-2015 02:16:50 UTC] PHP Stack trace:
+[27-Nov-2015 02:16:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[27-Nov-2015 02:16:50 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:89
+[27-Nov-2015 02:16:50 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/wp-includes/plugin.php:503}() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 02:16:50 UTC] PHP   4. TeacherFunctions->industry_ajax_processor() /home/ubuntu/workspace/wp-includes/plugin.php:503
+[27-Nov-2015 02:16:50 UTC] PHP   5. TeacherFunctions->store_results() /home/ubuntu/workspace/wp-content/themes/industry/_teacher_functions.php:43
+[27-Nov-2015 02:29:24 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`results`, CONSTRAINT `results_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`exercise_id`)) for query INSERT INTO results (student_id, student_answer, exercise_id)
+                    VALUES ('48', 'd', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
+[27-Nov-2015 02:29:50 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`results`, CONSTRAINT `results_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`exercise_id`)) for query INSERT INTO results (student_id, student_answer, exercise_id)
+                    VALUES ('48', 'g', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
+[27-Nov-2015 02:31:09 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`results`, CONSTRAINT `results_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`exercise_id`)) for query INSERT INTO results (student_id, student_answer, exercise_id)
+                    VALUES ('48', 'c', '') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
+[27-Nov-2015 02:32:55 UTC] WordPress database error Cannot add or update a child row: a foreign key constraint fails (`c9`.`results`, CONSTRAINT `results_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`exercise_id`)) for query INSERT INTO results (student_id, student_answer, exercise_id, lesson_id)
+                    VALUES ('48', 'f', '', '16') made by do_action('wp_ajax_processor'), call_user_func_array, TeacherFunctions->industry_ajax_processor, TeacherFunctions->store_results
