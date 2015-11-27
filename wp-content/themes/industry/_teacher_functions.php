@@ -57,13 +57,15 @@ class TeacherFunctions{
         $exerciseIds = $this->db->get_results($sql);
         $data['exercise_id'] = $exerciseIds;
         $resultsData = [];
+        $count = count($data['answers']);
         
-        for($i=1; $i <= count($data['answers']); $i++) {
+        for($i = 1; $i <= $count; $i++) {
             $resultsData[$i]['answers'] = $data['answers']['q'.$i];
             $resultsData[$i]['student_answers'] = $data['studentAnswers']['q'.$i];
-            $resultsData[$i]['exercise_id'] = $data['exercise_id'][$i];
+            $resultsData[$i]['exercise_id'] = $data['exercise_id'][$i - 1];
         }
         
+        return $resultsData;
         foreach($resultsData as $result ){
             $exercise_id = $result['exercise_id']->exercise_id;
             $answer = $result['answers'];

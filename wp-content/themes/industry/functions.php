@@ -80,6 +80,7 @@ class FrontPage{
 		wp_register_script( "app-js", get_template_directory_uri().'/js/app.js', false);
 		wp_register_script( "teacher-js", get_template_directory_uri().'/js/teacher.js', false);
 		wp_register_script( "lesson-js", get_template_directory_uri().'/js/lesson.js', false);
+		wp_register_script( "vexflow-js", get_template_directory_uri().'/js/vexflow-min.js', false);
 		
 	}
 	
@@ -143,7 +144,9 @@ class FrontPage{
 		
 		if(is_page_template('lesson.php')){
 			wp_enqueue_style('lesson-css');
+			wp_enqueue_script('vexflow-js');
     		wp_enqueue_script('lesson-js');
+    		
 		}
 		
 		if(!is_front_page()){

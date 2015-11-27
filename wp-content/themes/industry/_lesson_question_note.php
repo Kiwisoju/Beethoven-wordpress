@@ -11,7 +11,7 @@
                                             <span>Question <?php echo $questionNumber+1 ?>: What note is being displayed here?</span>
                                         </div>
                                         <div class="notation-container">
-                                            
+                                            <canvas width="700" height="100" data-value="<?php echo $question->question ?>"></canvas>
                                         </div>
                                     </div>
                                     <div id="interval-answer" class="answer-container row">
