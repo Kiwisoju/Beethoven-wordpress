@@ -39,11 +39,19 @@ class TeacherFunctions{
                 case 'update-lesson':
                     $this->update_lesson();
                     break;
+                case 'results':
+                    wp_send_json($this->store_results($data) );
+                    break;
             }
         }
         die(json_encode(array('test' => 'hovercraft is full of eeels')));
     }
    
+   
+    public function store_results(){
+        return $response['message'] = 'this is coming form php';
+    }   
+    
     // [student_form] shortcode
     public function industry_student_form(){
         $classrooms = $this->get_all_from_classroom();

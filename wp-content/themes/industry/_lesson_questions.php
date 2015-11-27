@@ -13,7 +13,8 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-offset-3 col-md-7 col-xs-12"><?php
+                    <div class="col-md-offset-3 col-md-7 col-xs-12">
+                    <input type="hidden" id="lesson_id" value="<?php echo $lessonQuestions[0]->lesson_id ?>" name="form['lesson_id']"/><?php
                     switch($lessonQuestions[0]->exercise_type):
                         case 'interval_recognition':
                             include('_lesson_question_interval.php');

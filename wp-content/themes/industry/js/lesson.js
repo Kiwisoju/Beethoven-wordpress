@@ -57,9 +57,13 @@ jQuery(function() {
             // Fill the results div with results
             $('.results-container').append(displayResults());
             
-            // Send data ajax?
-            console.log(studentAnswers);
-            console.log(answers);
+            // collate the data
+            var formData = {};
+            formData['answers'] = answers;
+            formData['studentAnswers'] = studentAnswers; 
+            formData['lesson_id'] = $('#lesson_id').val();
+            
+            app.processor.results(formData);
         }
        
     });

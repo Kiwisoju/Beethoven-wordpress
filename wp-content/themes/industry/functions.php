@@ -77,6 +77,7 @@ class FrontPage{
 		wp_register_script('scrolling-nav', get_template_directory_uri().'/js/scrolling-nav.js', false);
 		wp_register_script('waypoint', get_template_directory_uri().'/js/jquery.waypoint.min.js', false);
 		wp_register_script( "login-ajax", get_template_directory_uri().'/js/login-ajax.js', false);
+		wp_register_script( "app-js", get_template_directory_uri().'/js/app.js', false);
 		wp_register_script( "teacher-js", get_template_directory_uri().'/js/teacher.js', false);
 		wp_register_script( "lesson-js", get_template_directory_uri().'/js/lesson.js', false);
 		
@@ -96,6 +97,8 @@ class FrontPage{
 		    wp_enqueue_style('front-page-css');
 		    wp_enqueue_script('form-validator-js');
 		}
+		
+		
 		
 		wp_enqueue_script('bootstrap-js');
 		
@@ -141,6 +144,10 @@ class FrontPage{
 		if(is_page_template('lesson.php')){
 			wp_enqueue_style('lesson-css');
     		wp_enqueue_script('lesson-js');
+		}
+		
+		if(!is_front_page()){
+			wp_enqueue_script('app-js');
 		}
 		
 	}	
