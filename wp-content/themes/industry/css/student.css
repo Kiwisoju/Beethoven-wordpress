@@ -26,3 +26,14 @@ input[type=submit]:hover, .primary-button:hover{
 .lessons-overview-button{
     width:48%;
 }
+
+.module-button{
+    background-color:#1D4A7F;
+    width:180px;
+    color:#fff;
+}
+
+.module-button:hover{
+    background-color:#123258;
+    color:#fff;
+}
