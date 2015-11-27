@@ -18,29 +18,11 @@
                         case 'interval_recognition':
                             include('_lesson_question_interval.php');
                             break;
-                        case 'note_identification':?>
-                            <div id="note-question" class="question-container row">
-                                <div>
-                                    <span class="pull-right question-number">2/<?php echo count($lessonData['question']) ?></span>
-                                </div>
-                            </div>
-                            <div id="note-answer" class="answer-container row">
-                                <div class="question-title">
-                                    <span>Question 1: What note is being displayed?</span>
-                                </div>
-                            </div><?php
+                        case 'note_identification':
+                            include('_lesson_question_note.php');
                             break;
-                        case 'chord_recognition':?>
-                            <div id="chord-question" class="question-container row">
-                                <div>
-                                    <span class="pull-right question-number">2/<?php echo count($lessonData['question']) ?></span>
-                                </div>
-                            </div>
-                            <div id="chord-answer" class="answer-container row">
-                                <div class="question-title">
-                                    <span>Question 1: What chord is being played here?</span>
-                                </div>
-                            </div><?php
+                        case 'chord_recognition':
+                            include('_lesson_question_chord.php');
                             break;
                     endswitch;?>
                         <div class="results toggle">
