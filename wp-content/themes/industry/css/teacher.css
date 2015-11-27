@@ -111,3 +111,14 @@ button.exercise-close{
     margin-left:25px;
     margin-bottom:25px;
 }
+
+.module-button{
+    background-color:#694278;
+    width:180px;
+    color:#fff;
+}
+
+.module-button:hover{
+    background-color:#42214E;
+    color:#fff;
+}

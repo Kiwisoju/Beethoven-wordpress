@@ -11,10 +11,18 @@ class TeacherFunctions{
         add_shortcode('overview_student', array(&$this, 'industry_overview_student') );
         add_shortcode('overview_classrooms', array(&$this, 'industry_overview_classrooms') );
         add_shortcode('overview_lessons', array(&$this, 'industry_overview_lessons') );
+        add_shortcode('teacher', array(&$this, 'industry_teacher') );
        
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
    } 
+   
+   //[teacher] shortcode - Holds all dashboard modules
+   public function industry_teacher(){
+       ob_start();
+       include '_teacher_dashboard.php';
+       return ob_get_clean();
+   }
    
    public function industry_ajax_processor(){
         if($_POST['formData']){

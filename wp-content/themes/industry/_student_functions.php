@@ -12,11 +12,19 @@ class StudentFunctions{
         add_shortcode('lessons', array(&$this, 'industry_lessons') );
         add_shortcode('lesson', array(&$this, 'industry_lesson') );
         add_shortcode('results', array(&$this, 'industry_results') );
+        add_shortcode('student', array(&$this, 'industry_student') );
         
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
         
     } 
+    
+    //[teacher] shortcode - Holds all dashboard modules
+   public function industry_student(){
+       ob_start();
+       include '_student_dashboard.php';
+       return ob_get_clean();
+   }
     
     public function industry_results(){
         $lessonId = $_GET['lesson'];

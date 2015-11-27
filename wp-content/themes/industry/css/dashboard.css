@@ -240,6 +240,10 @@ i{
     font-size:20px;
 }
 
+.icon-8x{
+    font-size:75px;
+}
+
 .nav-stacked>li+li{
     margin-top:0;
 }
@@ -392,3 +396,61 @@ table.fixed{
 .toggle{
     display:none;
 }
+
+/** Styles for dashboard modules */
+
+.module-row{
+    margin-right:-15px;
+    margin-left:-15px;
+}
+
+.module{
+    padding:15px 0
+}
+
+.welcome-container{
+    background-color:#fff;
+    border-radius:3px;
+}
+
+.module-titles{
+    text-transform:uppercase;
+     border-bottom:solid #DEE1E2 1px;
+}
+
+
+.left-title{
+    padding-left:20px;
+}
+
+.module-icon-teacher{
+    color:#694278
+}
+
+.module-border-left{
+    border-left:solid #DEE1E2 1px;
+}
+
+.panel-body, .panel-body-heading{
+    background-color:#fff;
+}
+
+.panel-body-heading{
+    border-bottom:solid #DEE1E2 1px;
+}
+
+.lesson-select{
+    overflow: auto;
+    height:200px;
+}
+
+.lesson-select ul li{
+    list-style:none;
+    height:40px;
+    
+}
+
+.lesson-select ul li:nth-child(even){
+    background-color:#F6F8FB;
+}
+

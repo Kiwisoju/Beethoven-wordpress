@@ -2,7 +2,7 @@
 //die(var_dump($results) );
 ?>
 
-<div class="wrap" id="lessons-overview">
+<div class="wrap" id="results-overview">
     <h2 class="title"><?php echo $results['lesson_name'][0]->lesson_name ?> Results</h2>
     <span>Your Score <?php echo $results['score']?>/<?php echo count($results['answers'])?></span>
     
