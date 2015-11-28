@@ -445,16 +445,37 @@ table.fixed{
 
 .lesson-select{
     overflow: auto;
-    height:200px;
+    height:260px;
+    padding:0;
+}
+
+.panel-body-lesson{
+    padding:15px 0;
 }
 
 .lesson-select ul li{
     list-style:none;
     height:40px;
-    
+}
+
+.lesson-selected{
+    border-left:solid #8E44AD 4px;
+}
+
+.lesson-item{
+    color:#333;
+    padding-left:20px;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+.lesson-item:hover, .lesson-item:active{
+    color:#462852;
+    text-decoration:none;
 }
 
 .lesson-select ul li:nth-child(even){
-    background-color:#F6F8FB;
+    background-color:#EEF3F9;
 }
 

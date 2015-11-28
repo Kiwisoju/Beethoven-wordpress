@@ -29,8 +29,9 @@ input[type=submit]:hover, .primary-button:hover{
 
 .module-button{
     background-color:#1D4A7F;
-    width:180px;
+    width:100%;
     color:#fff;
+    white-space: normal;
 }
 
 .module-button:hover{

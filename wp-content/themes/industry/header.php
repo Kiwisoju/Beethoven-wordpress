@@ -59,7 +59,7 @@
     <!-- Header - Rewrite the copy and set the background image in css -->
     <div id="header">
         <div id="mask" class="row">
-            <div id="header-text" class="col-xs-6 col-xs-offset-6">
+            <div id="header-text" class="col-xs-12 col-lg-6 col-lg-offset-6">
                 <h1>Name of Product</h1>
                 <h2>Online Music Classroom</h2>
                 <p>Steamline your student's workflow with this web application. Manage lessons, homework and exercises for your students and see their progress with this easy online solution</p>

@@ -114,11 +114,21 @@ button.exercise-close{
 
 .module-button{
     background-color:#694278;
-    width:180px;
+    width:100%;
     color:#fff;
+    white-space: normal;
 }
 
 .module-button:hover{
     background-color:#42214E;
     color:#fff;
+}
+
+.container {
+  max-width: 960px;
+}
+
+canvas{
+    height:100%;
+    width:100%;
 }

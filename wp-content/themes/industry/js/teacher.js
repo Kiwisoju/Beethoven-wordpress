@@ -17,6 +17,8 @@ function initMenu() {
 }
 
 jQuery(document).ready(function($){
+    $('.lesson-select').perfectScrollbar();
+    
     initMenu();
     jQuery("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -49,7 +51,11 @@ jQuery(document).ready(function($){
             var lessonItemElement = $(this),
                 lessonId = lessonItemElement.data('lessonId'),
                 lessonName = teacherAdminData.lessons[lessonId]['name'];
-                
+            
+            // Remove selected class from previous selected
+            $('.lesson-selected').attr('class', '');
+            // Add selected class to selected item
+            lessonItemElement.closest('li').attr('class', 'lesson-selected');
             console.log('Lesson: ' + lessonName + ' selected');
             
             updateDashboardLessonResultsContainer(lessonId);
@@ -77,6 +83,7 @@ jQuery(document).ready(function($){
         
         // Check if any results
         if (lessonResults) {
+            resultsContainerElement.html('');
             $.each(lessonResults, function(studentId, score) {
                 // Add data for graph here var myBarChart = new Chart(ctx).Bar(data, options);
                 var studentName = teacherAdminData.students[studentId];
@@ -103,10 +110,12 @@ jQuery(document).ready(function($){
             ctx = canvas.getContext("2d"),
             myBarChart;
         
-        ctx.canvas.height = $('.lesson-results-container').height();
-        ctx.canvas.width = $('.lesson-results-container').width();
+        //ctx.canvas.height = $('.lesson-results-container').height();
+        //ctx.canvas.width = $('.lesson-results-container').width();
         
-        myBarChart = new Chart(ctx).Bar(data);
+        myBarChart = new Chart(ctx).Bar(data, {
+                responsive: true
+            });
     
         };
    

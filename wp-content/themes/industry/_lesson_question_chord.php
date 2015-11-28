@@ -11,11 +11,13 @@
                                             <span>Question <?php echo $questionNumber+1 ?>: What chord is being played here?</span>
                                         </div>
                                         <div class="audio-container">
-                                            <audio controls>
-                                                <source src="<?php echo home_url('/') .'wp-content/themes/industry/sounds/chords/' . $question->question ?>_<?php echo $question->answer?>.ogg" type="audio/ogg">
-                                                <source src="<?php echo home_url('/') .'wp-content/themes/industry/sounds/chords/' . $question->question ?>_<?php echo $question->answer?>.mp3" type="audio/mpeg">
-                                                Your browser does not support the audio element.
-                                            </audio>
+                                            <div class="player">
+                                                <audio controls>
+                                                    <source src="<?php echo home_url('/') .'wp-content/themes/industry/sounds/chords/' . $question->question ?>_<?php echo $question->answer?>.ogg" type="audio/ogg">
+                                                    <source src="<?php echo home_url('/') .'wp-content/themes/industry/sounds/chords/' . $question->question ?>_<?php echo $question->answer?>.mp3" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                            </div>
                                         </div>
                                     </div>
                                     <div id="interval-answer" class="answer-container row">

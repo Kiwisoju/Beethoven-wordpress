@@ -31,7 +31,6 @@ jQuery(function() {
         var stave = new Vex.Flow.Stave(10, 0, 500);
         stave.addClef("treble").setContext(ctx).draw();
         
-        
         // Create the notes
         var notes = [ new Vex.Flow.StaveNote({ keys: [note + "/4"], duration: "w" }) ];
         
@@ -41,16 +40,16 @@ jQuery(function() {
             resolution: Vex.Flow.RESOLUTION
           });
         
-          // Add notes to voice
-          voice.addTickables(notes);
+        // Add notes to voice
+        voice.addTickables(notes);
         
-          // Format and justify the notes to 500 pixels
-          var formatter = new Vex.Flow.Formatter().
-            joinVoices([voice]).format([voice], 500);
+        // Format and justify the notes to 500 pixels
+        var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 500);
         
-          // Render voice
-          voice.draw(ctx, stave);
+        // Render voice
+        voice.draw(ctx, stave);
     }
+    
     // Handle click of question answer options
     $('.question-options button').click(function() {
         var buttonElement = $(this);
@@ -60,7 +59,6 @@ jQuery(function() {
         
         // Record actual answer
         answers['q' + currentQuestionNum] = $('.answer-'+currentQuestionNum).val();
-        
         
         // Update the progress bar 
         updateProgressBar(currentQuestionNum, totalQuestionsNum);
@@ -75,27 +73,44 @@ jQuery(function() {
                 console.log(note);
                 renderNotation(note);
             }
+            
         } else {
-            // Do something, all questions answered and recorded in studentAnswers object
-            // Display their results up against the actual answers with a button to go back
-            // to the lesson overview page.
+            // All answers recorded
             showNextQuestion(currentQuestionNum, ++currentQuestionNum);
             // Display the results div
             $('.results').show();
             
-            // collate the data
+            // Collate the data
             var formData = {};
             formData['answers'] = answers;
             formData['studentAnswers'] = studentAnswers; 
             formData['lesson_id'] = $('#lesson_id').val();
+            // Send to app.processor to AJAX data to PHP script
             app.processor.results(formData);
         }
        
     });
     
     $(document).on('ready', function(){
-       if($('canvas') ){
-           renderNotation();
-       } 
+        (function(d, p){
+            var a = new XMLHttpRequest(),
+                b = d.body;
+            a.open("GET", p, true);
+            a.send();
+            a.onload = function(){
+                var c = d.createElement("div");
+                c.style.display = "none";
+                c.innerHTML = a.responseText;
+                b.insertBefore(c, b.childNodes[0]);
+            }
+            })(document, "../../../wp-content/themes/industry/images/svg/sprite.svg");
+            
+        plyr.setup();
+        
+        if($('canvas') ){
+            renderNotation();
+        }
     });
-})
+    
+});
+  

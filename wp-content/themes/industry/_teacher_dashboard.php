@@ -1,35 +1,35 @@
-<div id="welcome-container" class="container">
+<div id="welcome-container">
     <div class="panel panel-default">
           <div class="panel-body panel-body-heading">
-            <div class="col-xs-4">
+            <div class="col-md-4 col-xs-12">
                 <span class="left-title">Welcome <?php echo get_user_meta(get_current_user_id(), 'first_name', true)?></span>
             </div> 
-            <div class="col-xs-8 text-center">
-                <div class="col-xs-4">
+            <div class="col-md-8 col-xs-12 text-center">
+                <div class="col-xs-4 hidden-xs hidden-sm">
                     <span>Lesson</span>    
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-4 hidden-xs hidden-sm">
                     <span>Classroom</span>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-4 hidden-xs hidden-sm">
                     <span>Students</span>
                 </div>
             </div>
           </div>
           <div class="panel-body">
-            <div class="col-xs-4">
+            <div class="col-md-4 col-xs-12">
                 <span>Welcome to your dashboard!<br>Create some students profiles, enroll them into a class and create some lessons!</span>
             </div>
-                <div class="col-xs-8 text-center">
-                    <div class="col-xs-4">
+                <div class="col-md-8 col-xs-12 text-center">
+                    <div class="col-md-4 col-xs-12">
                         <i class="icon-lessons-icon icon-8x module-icon-teacher"></i>
                         <a class="module-button btn" href="<?php echo home_url();?>/teacher/lesson">New Lesson</a>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-md-4 col-xs-12">
                         <i class="icon-classroom-icon icon-8x module-icon-teacher"></i>
                         <a class="module-button btn" href="<?php echo home_url();?>/teacher/student/overview">View Students</a>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-md-4 col-xs-12">
                         <i class="icon-students-icon icon-8x module-icon-teacher"></i>
                         <a class="module-button btn" href="<?php echo home_url();?>/teacher/classrooms/overview">View Classrooms</a>
                     </div>
@@ -37,18 +37,18 @@
           </div>
         </div>
 </div>
-<div id="lessons-container" class="container">
+<div id="lessons-container">
     <div class="panel panel-default">
           <div class="panel-body panel-body-heading">
-            <div class="col-xs-4">
+            <div class="col-md-4 col-xs-12">
                 <span class="left-title">Latest Lessons</span>
             </div> 
-            <div class="col-xs-8">
+            <div class="col-md-8 col-xs-12">
                 <span id="graph-lesson-title"></span>
             </div>
           </div>
-          <div class="panel-body">
-            <div class="col-xs-4 lesson-select">
+          <div class="panel-body panel-body-lesson">
+            <div class="col-md-4 col-xs-12 lesson-select">
                 <ul>
                     <?php foreach($lessons as $lessonId => $data): ?>
                         <li>
@@ -57,7 +57,7 @@
                     <?php endforeach ?>
                 </ul>
             </div>
-                <div class="col-xs-8 text-center">
+                <div class="col-md-8 col-xs-12 text-center ">
                     <div class="lesson-results-container">
                         
                     </div>

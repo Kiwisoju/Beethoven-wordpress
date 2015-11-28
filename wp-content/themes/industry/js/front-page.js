@@ -21,6 +21,20 @@ jQuery(function($){
     });
     
     $(document).ready(function(){
+        
+        (function(d, p){
+            var a = new XMLHttpRequest(),
+                b = d.body;
+            a.open("GET", p, true);
+            a.send();
+            a.onload = function(){
+                var c = d.createElement("div");
+                c.style.display = "none";
+                c.innerHTML = a.responseText;
+                b.insertBefore(c, b.childNodes[0]);
+            }
+        })(document, "wp-content/themes/industry/images/svg/sprite.svg");
+        
         glennsFormValidator.init();
    
    
@@ -37,6 +51,33 @@ jQuery(function($){
              $('input[type=submit]').attr('disabled', true);
           }
        }); 
+       
+        plyr.setup({
+                    debug: 	true,
+                    volume: 9,
+                    title: 	"Video demo",
+                    html: 	templates.controls.render({}),
+                    tooltips: true,
+                    captions: {
+                    defaultActive: true
+                },
+                onSetup: function() {
+                    if(!("media" in this)) {
+                        return;
+                    }
+            
+                    var player 	= this,
+                        type 	= player.media.tagName.toLowerCase(),
+                        toggle 	= document.querySelector("[data-toggle='fullscreen']");
+                    
+                    console.log("✓ Setup done for <" + type + ">");
+                    
+                    if(type === "video" && toggle) {
+                        toggle.addEventListener("click", player.toggleFullscreen, false);
+                    }
+                }
+        });
+        
     });
 });
 
@@ -112,3 +153,9 @@ jQuery(function($) {
 //             // },'json');
 //     });
 // });
+
+jQuery(function($){
+    $(document).on('ready', function(){
+       plyr.setup();        
+    });
+});
