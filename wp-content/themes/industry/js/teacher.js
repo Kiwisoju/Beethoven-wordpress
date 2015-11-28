@@ -65,10 +65,10 @@ jQuery(document).ready(function($){
             graphData = {
                 labels: [],
                 datasets: [{
-                    fillColor: "rgba(151,187,205,0.5)",
-                    strokeColor: "rgba(151,187,205,0.8)",
-                    highlightFill: "rgba(151,187,205,0.75)",
-                    highlightStroke: "rgba(151,187,205,1)",
+                    fillColor: "rgba(211,179,233,0.7)",
+                    strokeColor: "rgba(194,137,216,0.7)",
+                    highlightFill: "rgba(197,155,213,0.7)",
+                    highlightStroke: "rgba(181,124,202,0.7)",
                     data: []
                 }]
             };
@@ -97,12 +97,18 @@ jQuery(document).ready(function($){
     }
     
     function updateResultsGraph(data) {
+        $('#graph').remove();
+        $('.lesson-results-container').append('<canvas id="graph"><canvas>');
         var canvas = $('#graph')[0],
             ctx = canvas.getContext("2d"),
             myBarChart;
         
+        ctx.canvas.height = $('.lesson-results-container').height();
+        ctx.canvas.width = $('.lesson-results-container').width();
+        
         myBarChart = new Chart(ctx).Bar(data);
-    }
+    
+        };
    
    initDashboardLessonResults();
    
