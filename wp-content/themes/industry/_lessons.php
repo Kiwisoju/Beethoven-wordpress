@@ -1,6 +1,3 @@
-<?php 
-//die(var_dump($lessons['past_lessons']));
-?>
 <div class="wrap" id="lessons-overview">
     <h2 class="title">Lessons Overview</h2>
     

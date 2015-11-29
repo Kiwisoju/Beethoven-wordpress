@@ -57,7 +57,7 @@
                     <?php endforeach ?>
                 </ul>
             </div>
-                <div class="col-md-8 col-xs-12 text-center ">
+                <div class="col-md-8 col-xs-12 text-center">
                     <div class="lesson-results-container">
                         
                     </div>

@@ -7,7 +7,7 @@
     background-color:#331F3A;
 }
 
-#menu-toggle:hover, input[type=submit]{
+#menu-toggle:hover, input[type=submit], .primary-button{
     background-color:#694278;
 }
 
@@ -21,7 +21,11 @@
     background-color:#163860;
 }
 
-input[type=submit]:hover{
+.primary-button, .primary-button:hover{
+    color:#fff;
+}
+
+input[type=submit]:hover, .primary-button:hover{
     background-color:#42214F;
 }
 
@@ -131,4 +135,13 @@ button.exercise-close{
 canvas{
     height:100%;
     width:100%;
+}
+
+.lesson-selected{
+    border-left:solid #8E44AD 4px;
+}
+
+.lesson-item:hover, .lesson-item:active{
+    color:#694278;
+    text-decoration:none;
 }

@@ -445,7 +445,7 @@ table.fixed{
 
 .lesson-select{
     overflow: auto;
-    height:260px;
+    height:310px;
     padding:0;
 }
 
@@ -453,14 +453,19 @@ table.fixed{
     padding:15px 0;
 }
 
+.lesson-select ul{
+    border-right:1px solid #DEE1E2;
+    padding-top:-15px;
+}
+
 .lesson-select ul li{
     list-style:none;
     height:40px;
+    border-top: 1px solid #DEE1E2;
+    border-top: 1px solid #DEE1E2;
 }
 
-.lesson-selected{
-    border-left:solid #8E44AD 4px;
-}
+
 
 .lesson-item{
     color:#333;
@@ -470,10 +475,7 @@ table.fixed{
     height:100%;
 }
 
-.lesson-item:hover, .lesson-item:active{
-    color:#462852;
-    text-decoration:none;
-}
+
 
 .lesson-select ul li:nth-child(even){
     background-color:#EEF3F9;

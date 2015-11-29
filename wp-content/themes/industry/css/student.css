@@ -38,3 +38,16 @@ input[type=submit]:hover, .primary-button:hover{
     background-color:#123258;
     color:#fff;
 }
+
+.title{
+    color:#1D4A7F;
+}
+
+.lesson-selected{
+    border-left:solid #1776B6 4px;
+}
+
+.lesson-item:hover, .lesson-item:active{
+    color:#1776B6;
+    text-decoration:none;
+}

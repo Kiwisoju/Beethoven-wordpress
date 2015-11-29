@@ -12,10 +12,92 @@ class TeacherFunctions{
         add_shortcode('overview_classrooms', array(&$this, 'industry_overview_classrooms') );
         add_shortcode('overview_lessons', array(&$this, 'industry_overview_lessons') );
         add_shortcode('teacher', array(&$this, 'industry_teacher') );
+        add_shortcode('classrooms_results', array(&$this, 'industry_classrooms_results') );
+        add_shortcode('students_results', array(&$this, 'industry_students_results') );
+        add_shortcode('lessons_results', array(&$this, 'industry_lessons_results') );
        
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
    } 
+   
+   //[classrooms_results] shortcode
+   public function industry_classrooms_results(){
+       $classroomName = $_GET['classroom'];
+       $lessons = $this->get_lessons_from_classroom($classroomName);
+       $results = $this->get_results_from_classroom($classroomName);
+        ob_start();
+        include '_teacher_classrooms_results.php';
+        return ob_get_clean();
+   }
+   
+   public function get_lessons_from_classroom($classroomName){
+       //Get all lessons from classroom
+       $sql = "SELECT lesson_name, lesson_id, number_of_questions FROM lessons WHERE classroom_name = '" . $classroomName . "'";
+       $lessons = $this->db->get_results($sql, ARRAY_A);
+       
+       return $lessons;
+   }
+   
+   public function get_results_from_classroom($classroomName){
+       
+       $lessons = $this->get_lessons_from_classroom($classroomName);
+       
+       // Gather all the students from the classroom
+       $sql = "SELECT user_id FROM wp_usermeta WHERE meta_key = 'classroom' AND meta_value = '" . $classroomName . "'";
+       $students = $this->db->get_results($sql, ARRAY_A);
+       
+       $results = [];
+       // Now gather each students results and store them up into results
+       foreach($students as $student){
+            //die(var_dump($student) );
+            for ($i = 0; $i < count($lessons); $i++) {
+                // Gather the students results from each lesson
+                $sql = "SELECT correct 
+                        FROM results 
+                        WHERE student_id = '" . $student['user_id'] . "' 
+                        AND lesson_id = '" . $lessons[$i]['lesson_id'] . "'";
+                $result = $this->db->get_results($sql, ARRAY_A);
+                
+                $firstName = get_user_meta($student['user_id'], 'first_name', true);
+                $lastName = get_user_meta($student['user_id'], 'last_name', true);
+                
+                
+                
+                $results[$student['user_id']]['student_name'] = $firstName . ' ' . $lastName;
+                if(!$result){
+                    $results[$student['user_id']]['score'][$lessons[$i]['lesson_id']]['answer'] = 'Not ';
+                    $results[$student['user_id']]['score'][$lessons[$i]['lesson_id']]['number_of_questions'] = 'completed';
+                }else{
+                    // Get the students results for particular lesson
+                    $score = '';
+                    for ($a = 0; $a < count($result); $a++) {
+                        $score += $result[$a]['correct'];
+                    }
+                    
+                    //die(var_dump($score) );
+                    
+                    $results[$student['user_id']]['score'][$lessons[$i]['lesson_id']]['answer'] = $score . '/';
+                    $results[$student['user_id']]['score'][$lessons[$i]['lesson_id']]['number_of_questions'] = $lessons[$i]['number_of_questions'];
+                }
+            }
+       }
+       //die(var_dump($results[48]));
+       return $results;
+   }
+   
+   //[students_results] shortcode
+   public function industry_students_results(){
+        ob_start();
+        include '_teacher_students_results.php';
+        return ob_get_clean();
+   }
+   
+   //[lessons_results] shortcode
+   public function industry_lessons_results(){
+        ob_start();
+        include '_teacher_lessons_results.php';
+        return ob_get_clean();
+   }
    
    //[teacher] shortcode - Holds all dashboard modules
    public function industry_teacher(){

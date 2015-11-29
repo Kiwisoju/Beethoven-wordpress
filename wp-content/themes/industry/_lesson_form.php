@@ -113,6 +113,7 @@ endif;?>
     
     jQuery(document).on('ready', function(){
         jQuery('#interval-button').on('click', function(e){
+            app.dashboardFunctions.setSideMenuHeight();
             e.preventDefault();
             // Need to get the count of .question-containers to get the next Q number.
             var questionNumber = jQuery('.question-container').length + 1;

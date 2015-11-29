@@ -60,7 +60,7 @@ endif;?>
                             <input type="hidden" name="form[profile_image]" value="<?php echo $photo ?>"/>
                             <img src="<?php echo $photo ?>" width="170" height="170"/>
                             <div>
-                                <button type="button" class="delete btn btn-danger">Delete</button>
+                                <button type="button" class="delete btn btn-danger">Remove Image</button>
                             </div>
                         </li><?php
                     endif;?>
@@ -93,7 +93,7 @@ endif;?>
             $li.append('<input type="hidden" name="form[profile_image]" value="' + pathToImage + '"/>');
             $li.append('<img src="' + pathToImage + '" width="170" height="170"/>');
             $li.append('<div>');
-            $li.append('<button type="button" class="delete btn btn-danger">Delete</button>');
+            $li.append('<button type="button" class="delete btn btn-danger">Remove Image</button>');
             $li.append('</div>');
             $('.photo').append($li);
             tb_remove();

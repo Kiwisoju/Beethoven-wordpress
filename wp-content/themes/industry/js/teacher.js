@@ -1,48 +1,4 @@
-function initMenu() {
-    jQuery('#menu ul').hide();
-    jQuery('#menu ul').children('.current').parent().show();
-    //jQuery('#menu ul:first').show();
-    jQuery('#menu li a').click(function(){
-        console.log('clicked menu item');
-        var checkElement = jQuery(this).next();
-        if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-            return false;
-        }
-        if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-            jQuery('#menu ul:visible').slideUp('normal');
-            checkElement.slideDown('normal');
-            return false;
-        }
-    });
-}
-
-jQuery(document).ready(function($){
-    $('.lesson-select').perfectScrollbar();
-    
-    initMenu();
-    jQuery("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        console.log('menu toggle 1 clicked');
-        jQuery("#wrapper").toggleClass("toggled");
-    });
-    
-    glennsFormValidator.init();
-   
-   
-   $('input[type=submit]').attr('disabled', true);
-   
-   $('.required').on('blur', function(){
-      // Checking if there is an error class
-      console.log($('.error').length);
-      if($('.validated').length === $('.required').length){
-         // Enabling the submit button.
-         console.log('enable button');
-         $('input[type=submit]').attr('disabled', false);
-      }else{
-         $('input[type=submit]').attr('disabled', true);
-      }
-   });
-   
+jQuery(function($){
    function initDashboardLessonResults() {
         var teacherAdminData = window.teacherAdminData, 
             resultsContainerElement = $('.lesson-results-container');
@@ -76,7 +32,8 @@ jQuery(document).ready(function($){
                     highlightFill: "rgba(197,155,213,0.7)",
                     highlightStroke: "rgba(181,124,202,0.7)",
                     data: []
-                }]
+                }],
+                test:[]
             };
             
         graphLessonTitleElement.html(lessonName);
@@ -110,11 +67,8 @@ jQuery(document).ready(function($){
             ctx = canvas.getContext("2d"),
             myBarChart;
         
-        //ctx.canvas.height = $('.lesson-results-container').height();
-        //ctx.canvas.width = $('.lesson-results-container').width();
-        
         myBarChart = new Chart(ctx).Bar(data, {
-                responsive: true
+                responsive: true,
             });
     
         };

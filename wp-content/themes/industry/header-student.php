@@ -40,7 +40,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-                <li class="active">
+                <li>
                     <a href="<?php echo home_url(); ?>/student"><i class="icon-dashboard-icon icon-2x"></i> DASHBOARD</a>
                 </li>
                 <li>

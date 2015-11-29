@@ -20,11 +20,141 @@ class StudentFunctions{
     } 
     
     //[teacher] shortcode - Holds all dashboard modules
-   public function industry_student(){
-       ob_start();
-       include '_student_dashboard.php';
-       return ob_get_clean();
-   }
+    public function industry_student(){
+        $lessons = $this->get_all_lessons();
+        
+        ob_start();
+        include '_student_dashboard.php';
+        return ob_get_clean();
+    }
+    
+    
+    /**
+     * Takes in results and student answers and
+     * returns full words
+     **/
+     
+    public function answer_filter($answer){
+        switch($answer){
+            case 'maj':
+                $filtered = 'Major';
+                break;
+            case 'min':
+                $filtered = 'Minor';
+                break;
+            case 'aug':
+                $filtered = 'Augmented';
+                break;
+            case 'dim_7':
+                $filtered = 'Diminished 7th';
+                break;
+            case 'dom_7':
+                $filtered = 'Dominant 7th';
+                break;
+            case 'maj_7':
+                $filtered = 'Major 7th';
+                break;
+            case 'min_7':
+                $filtered = 'Minor 7th';
+                break;
+            case 'min_2':
+                $filtered = 'Minor 2nd';
+                break;
+            case 'maj_2':
+                $filtered = 'Major 2nd';
+                break;
+            case 'min_3':
+                $filtered = 'Minor 3rd';
+                break;
+            case 'maj_3':
+                $filtered = 'Major 3rd';
+                break;
+            case 'per_4':
+                $filtered = 'Perfect 4th';
+                break;
+            case 'aug_4':
+                $filtered = 'Tritone';
+                break;
+            case 'per_5':
+                $filtered = 'Minor 5th';
+                break;
+            case 'min_6':
+                $filtered = 'Minor 6th';
+                break;
+            case 'maj_6':
+                $filtered = 'Major 6th';
+                break;
+            case 'oct':
+                $filtered = 'Octave';
+                break;
+            case 'a':
+                $filtered = 'A';
+                break;
+            case 'a#':
+                $filtered = 'A#';
+                break;
+            case 'b':
+                $filtered = 'B';
+                break;
+            case 'c':
+                $filtered = 'C';
+                break;
+            case 'c#':
+                $filtered = 'C#';
+                break;
+            case 'd':
+                $filtered = 'D';
+                break;
+            case 'd#':
+                $filtered = 'D#';
+                break;
+            case 'e':
+                $filtered = 'E';
+                break;
+            case 'f':
+                $filtered = 'F';
+                break;
+            case 'f#':
+                $filtered = 'F#';
+                break;
+            case 'g':
+                $filtered = 'G';
+                break;
+            case 'g#':
+                $filtered = 'G#';
+                break;
+        }
+        return $filtered;
+    }
+    
+    public function get_all_lessons(){
+        $sql = "SELECT lesson_id, lesson_name FROM lessons WHERE classroom_name = '" . $this->classroom . "'";
+        
+        $studentsLessons = $this->db->get_results($sql, ARRAY_A);
+        //die(var_dump($studentsLessons[0]['lesson_id']) );
+        $lessons = [];
+        
+        foreach($studentsLessons as $lesson){
+            $lessons[$lesson['lesson_id']]['lesson_name'] = $lesson['lesson_name'];
+            
+            $sql = "SELECT answer FROM exercises WHERE lesson_id = '" . $lesson['lesson_id'] . "'";
+            $answers = $this->db->get_results($sql, ARRAY_A);
+            $filteredAnswers = [];
+            
+            $sql = "SELECT student_answer FROM results WHERE lesson_id = '" . $lesson['lesson_id'] . "'";
+            $studentAnswers = $this->db->get_results($sql, ARRAY_A);
+            
+            // Filtering database answers to user-friendly answers
+            for ($i = 0; $i < count($answers); $i++) {
+                 $filteredAnswers[$i]['answer'] = $this->answer_filter($answers[$i]['answer']);
+                 $filteredStudentAnswers[$i]['student_answer'] = $this->answer_filter($studentAnswers[$i]['student_answer']);
+            }
+            
+            $lessons[$lesson['lesson_id']]['answers'] = $filteredAnswers;
+            $lessons[$lesson['lesson_id']]['studentAnswers'] = $filteredStudentAnswers; 
+        }
+        return $lessons;
+    }
     
     public function industry_results(){
         $lessonId = $_GET['lesson'];
@@ -38,8 +168,8 @@ class StudentFunctions{
         $studentAnswers = $this->db->get_results($sql, ARRAY_A);
         
         for ($i = 0; $i < count($answers); $i++) {
-             $results[$i]['answer'] = $answers[$i]['answer'];
-             $results[$i]['studentAnswer'] = $studentAnswers[$i]['student_answer'];
+             $results[$i]['answer'] = $this->answer_filter($answers[$i]['answer']);
+             $results[$i]['studentAnswer'] = $this->answer_filter($studentAnswers[$i]['student_answer']);
         }
         
         $lessonName = $this->db->get_results("SELECT lesson_name FROM lessons WHERE lesson_id = '" . $lessonId . "'");
@@ -94,7 +224,7 @@ class StudentFunctions{
     
     // [lessons] shortcode
     public function industry_lessons(){
-        $lessons = $this->get_all_lessons_from_student();
+        $lessons = $this->get_all_lessons_filtered_past_current();
         ob_start();
         include '_lessons.php';
         return ob_get_clean();
@@ -104,7 +234,7 @@ class StudentFunctions{
         return get_user_meta(get_current_user_id(), 'classroom', true);
     }
     
-    public function get_all_lessons_from_student(){
+    public function get_all_lessons_filtered_past_current(){
         
         $sql = "SELECT lesson_id FROM lessons WHERE classroom_name = '" . $this->classroom . "'";
         $studentLessonIds = $this->db->get_results($sql, ARRAY_A);

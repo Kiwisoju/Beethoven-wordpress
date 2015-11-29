@@ -69,7 +69,8 @@ class FrontPage{
 		wp_register_style('student-css', get_template_directory_uri().'/css/student.css', false);
 		wp_register_style('lesson-css', get_template_directory_uri().'/css/lesson.css', false);
 		wp_register_style('plyr-css', get_template_directory_uri().'/css/plyr.css', false);
-		wp_register_style('perfect-scrollbar-css', get_template_directory_uri().'/css/perfect-scrollbar.css', false);
+		wp_register_style('perfect-scrollbar-teacher-css', get_template_directory_uri().'/css/perfect-scrollbar-teacher.css', false);
+		wp_register_style('perfect-scrollbar-student-css', get_template_directory_uri().'/css/perfect-scrollbar-student.css', false);
 		
 		wp_register_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery') );
 		wp_register_script( "form-validator-js", get_template_directory_uri().'/js/form-validator.js', false);
@@ -86,6 +87,8 @@ class FrontPage{
 		wp_register_script( "chart-js", get_template_directory_uri().'/js/chart.min.js', false);
 		wp_register_script( "plyr-js", get_template_directory_uri().'/js/plyr.js', false);
 		wp_register_script( "perfect-scrollbar-js", get_template_directory_uri().'/js/perfect-scrollbar.jquery.js', false);
+		wp_register_script( "dashboard-js", get_template_directory_uri().'/js/dashboard.js', false);
+		wp_register_script( "student-js", get_template_directory_uri().'/js/student.js', false);
 		
 	}
 	
@@ -127,13 +130,16 @@ class FrontPage{
 		    
 		}
 		
+		if(!is_front_page()){
+			wp_enqueue_script('app-js');
+		}
+		
 		if(is_page_template('teacher.php') || is_page_template('student.php') ){
 			wp_enqueue_style('dashboard-css');
-			wp_enqueue_style('perfect-scrollbar-css');
 			
+			wp_enqueue_script('dashboard-js');
 			wp_enqueue_script('perfect-scrollbar-js');
 			wp_enqueue_script('chart-js');
-			wp_enqueue_script('teacher-js');
 			wp_enqueue_script('form-validator-js');
 			
 			// Loading media upload support
@@ -146,10 +152,14 @@ class FrontPage{
 		
 		if(is_page_template('teacher.php')){
 			wp_enqueue_style('teacher-css');
+			wp_enqueue_style('perfect-scrollbar-teacher-css');
+			wp_enqueue_script('teacher-js');
 		}
 		
 		if(is_page_template('student.php')){
 			wp_enqueue_style('student-css');
+			wp_enqueue_style('perfect-scrollbar-student-css');
+			wp_enqueue_script('student-js');
 		}
 		
 		if(is_page_template('lesson.php')){
@@ -163,9 +173,7 @@ class FrontPage{
     		
 		}
 		
-		if(!is_front_page()){
-			wp_enqueue_script('app-js');
-		}
+		
 		
 	}	
 	

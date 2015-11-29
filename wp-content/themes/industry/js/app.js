@@ -148,8 +148,101 @@ var app = (function($){
                   console.log(lesson_data);
                   $.ajax(lesson_data);
               }
-        };
-    
+        },
+        dashboardFunctions = {
+            setSideMenuHeight : function(){
+                var height = window.outerHeight,
+                sideMenu = $('#sidebar-wrapper');
+                sideMenu.css('height', height);
+              },
+            studentActiveMenuItem: function(filePath){
+              // Remove student from the
+              var slug = filePath.substr(8);
+              var page = slug.substr(0, slug.indexOf('/') );
+              
+              switch(page){
+                case 'results':
+                  $('a:contains(RESULTS)').closest('li').attr('class', 'active');
+                  break;
+                case 'eartrainer':
+                  $('a:contains(EAR TRAINER)').closest('li').attr('class', 'active');
+                  break;
+                case 'lessons':
+                  $('a:contains(LESSONS)').closest('li').attr('class', 'active');
+                  break;
+                default:
+                 $('a:contains(DASHBOARD)').closest('li').attr('class', 'active');
+                  break;
+              }
+            },
+            teacherActiveMenuItem: function(filePath){
+              // Remove student from the
+              var slug = filePath.substr(8);
+              var page = slug.substr(0, slug.indexOf('/') );
+              
+              switch(page){
+                case 'classrooms':
+                  $('a:contains(CLASSROOMS)').closest('li').attr('class', 'active');
+                  break;
+                case 'student':
+                  $('a:contains(STUDENTS)').closest('li').attr('class', 'active');
+                  break;
+                case 'lesson':
+                  $('a:contains(LESSONS)').closest('li').attr('class', 'active');
+                  break;
+                case 'results':
+                  $('a:contains(RESULTS)').closest('li').attr('class', 'active');
+                  break;
+                default:
+                 $('a:contains(DASHBOARD)').closest('li').attr('class', 'active');
+                  break;
+              }
+            },
+            initMenu: function(){
+              jQuery('#menu ul').hide();
+              jQuery('#menu ul').children('.current').parent().show();
+              //jQuery('#menu ul:first').show();
+              jQuery('#menu li a').click(function(){
+                  var checkElement = jQuery(this).next();
+                  if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                      return false;
+                  }
+                  if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                      jQuery('#menu ul:visible').slideUp('normal');
+                      checkElement.slideDown('normal');
+                      return false;
+                  }
+              });
+            },
+            validator: function(){
+              jQuery(document).ready(function($){
+                $('.lesson-select').perfectScrollbar();
+                
+                jQuery("#menu-toggle").click(function(e) {
+                    e.preventDefault();
+                    jQuery("#wrapper").toggleClass("toggled");
+                });
+                
+                glennsFormValidator.init();
+               
+               
+               $('input[type=submit]').attr('disabled', true);
+               
+               $('.required').on('blur', function(){
+                  // Checking if there is an error class
+                  if($('.validated').length === $('.required').length){
+                     // Enabling the submit button.
+                     $('input[type=submit]').attr('disabled', false);
+                  }else{
+                     $('input[type=submit]').attr('disabled', true);
+                  }
+               });
+            });
+              
+            }
+        }
+            
+        
     // Bind your processor object to form submit events, etc..
     $(document).on('submit','.enrolment-form', processor.enrolment);
     $(document).on('submit','.update-student-form', processor.update_student);
@@ -159,6 +252,6 @@ var app = (function($){
 
     return { 
       processor: processor,
-      other: 'other stuff'
+      dashboardFunctions: dashboardFunctions
     };
 })(jQuery);
