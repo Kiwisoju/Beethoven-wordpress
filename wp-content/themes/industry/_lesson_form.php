@@ -199,9 +199,6 @@ endif;?>
                                                     <option value="dom">Dominant 7</option>\
                                                     <option value="maj_7">Major 7</option>\
                                                     <option value="min_7">Minor 7</option>\
-                                                    <option value="min_7_b5">Minor 7b5</option>\
-                                                    <option value="maj_6">Major 6</option>\
-                                                    <option value="min_6">Minor 6</option>\
                                                 </select>\
                                             </div>\
                                         </div>');

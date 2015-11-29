@@ -41,7 +41,7 @@ class TeacherFunctions{
        $lessons = $this->get_lessons_from_classroom($classroomName);
        
        // Gather all the students from the classroom
-       $sql = "SELECT user_id FROM wp_usermeta WHERE meta_key = 'classroom' AND meta_value = '" . $classroomName . "'";
+       $sql = "SELECT user_id FROM wp_usermeta WHERE meta_key = 'classroom' AND meta_value = '" . $classroomName . "' AND user_id !='" . get_current_user_id() . "'";
        $students = $this->db->get_results($sql, ARRAY_A);
        
        $results = [];

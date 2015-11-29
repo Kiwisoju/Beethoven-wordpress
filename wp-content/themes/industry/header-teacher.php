@@ -42,8 +42,6 @@
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <li><a href="<?php echo home_url();?>/teacher/classrooms/overview"><span class="fa-stack fa-lg pull-left"></span>Overview</a></li>
                         <li><a href="<?php echo home_url();?>/teacher/classrooms"><span class="fa-stack fa-lg pull-left"></span>Add New</a></li>
-                        <li><a href="<?php echo home_url();?>/teacher/results/classrooms"><span class="fa-stack fa-lg pull-left"></span>Classrooms Results</a></li>
-
                     </ul>
                 </li>
                 <li>
