@@ -6,33 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php wp_title(); ?></title>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <!-- wp_head() START -->
     <?php wp_head();?>
-    <!-- wp_head() FINISH -->
 </head>
 
 <body>
     <nav class="navbar navbar-default no-margin">
-    <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header fixed-brand">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="#">LOGO</a>
             
-        </div><!-- navbar-header-->
-        <ul class="nav navbar-nav pull-right">
-                <li><a href="#">HELP/SUPPORT</a></li>
-                <li><img id="profile-image" src="<?php if(get_user_meta(get_current_user_id(), 'profile_image', true)) echo get_user_meta(get_current_user_id(), 'profile_image', true) ?>"></img>
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><?php echo get_user_meta(get_current_user_id(), 'first_name', true) . ' ' . get_user_meta(get_current_user_id(), 'last_name', true) ?><strong class="caret"></strong></a>
-                    <div class="dropdown-menu">
-                        <a href="<?php echo wp_logout_url( home_url() );?>">Logout</a>
-                    </div>
-                </li>
-            </ul>
+        <ul class="profile-wrap">
+            <li id="help-support-link"><a href="#">HELP/SUPPORT</a></li>
+            <li><img id="profile-image" src="<?php if(get_user_meta(get_current_user_id(), 'profile_image', true)) echo get_user_meta(get_current_user_id(), 'profile_image', true) ?>"></img>
+                <span><?php echo get_user_meta(get_current_user_id(), 'first_name', true) . ' ' . get_user_meta(get_current_user_id(), 'last_name', true) ?></span>
+            </li>
+        </ul>
     </nav>
     <div id="wrapper">
        
@@ -52,6 +44,12 @@
                     <a href="#"><i class="icon-headphones icon-2x"></i> EAR TRAINER</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <li><a href="<?php echo home_url();?>/student/eartrainer"><span class="fa-stack fa-lg pull-left"></span>Start Ear Trainer</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-students-icon icon-2x"></i> PROFILE</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="<?php echo wp_logout_url( home_url() );?>"><span class="fa-stack fa-lg pull-left"></span>Logout</a></li>
                     </ul>
                 </li>
             </ul>

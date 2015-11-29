@@ -39,10 +39,55 @@ svg{
     min-width:20%;
 }
 
-#logo{
-    font-size:24px;
+.logo, .profile-wrap li span, .profile-wrap li a{
     color:white;
 }
+
+.logo, .profile-wrap li{
+    line-height:65px;
+}
+
+.profile-wrap{
+    text-align:center;
+    float:right;
+    list-style:none;
+}
+
+.profile-wrap>li>.dropdown-menu{
+    margin-top:0;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+}
+
+.profile-wrap li{
+    display:inline-block;
+    padding-right:20px;
+    position:relative;
+}
+
+@media(max-width:565px) {
+    .profile-wrap{
+        display:none;
+    }
+}
+
+#profile-image{
+    float:left;
+    width:48px;
+    height:48px;
+    margin-top:10px;
+    margin-right:20px;
+}
+
+.logo{
+    font-size:24px;
+    padding-left:40px;
+}
+
+.logo:hover, .profile-wrap li a:hover{
+    text-decoration:none;
+}
+
 
 #triangle g{
     fill:white
@@ -98,9 +143,7 @@ svg{
     position: relative;
     margin-right: 0px; 
 }
-.fixed-brand{
-    width: auto;
-}
+
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -257,11 +300,6 @@ i{
     margin-left:15px;
 }
 
-.navbar-default .navbar-brand{
-    color:#fff;
-    font-size:24px;
-}
-
 .navbar-default .navbar-toggle .icon-bar{
     background-color:white;
 }
@@ -282,10 +320,6 @@ nav{
     height:70px;
 }
 
-.navbar-brand{
-    padding:25px 15px;
-}
-
 .navbar-nav{
     padding:10px 0;
 }
@@ -294,14 +328,8 @@ nav{
     margin-top:18px;
 }
 
-#profile-image{
-    float:left;
-    padding-right:20px;
-}
 
-.nav>li, .navbar-brand{
-    width:200px;
-}
+
 
 /** Page content styles **/
 
@@ -480,4 +508,3 @@ table.fixed{
 .lesson-select ul li:nth-child(even){
     background-color:#EEF3F9;
 }
-

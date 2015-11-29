@@ -1,3 +1,8 @@
+/* Navbar styles */
+.logo:hover, .profile-wrap li a:hover{
+    color:#2E69AF;
+}
+
 /* Sidebar styles */
 #sidebar-wrapper, .dropdown-menu{
     background: #1D4A7F;

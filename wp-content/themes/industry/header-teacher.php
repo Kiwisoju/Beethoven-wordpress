@@ -14,26 +14,20 @@
 <body>
    
     <nav class="navbar navbar-default no-margin">
-    <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header fixed-brand">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="#">LOGO</a>
             
-        </div><!-- navbar-header-->
-        <ul class="nav navbar-nav pull-right">
-                <li><a href="#">HELP/SUPPORT</a></li>
-                <li><img id="profile-image" src="https://placehold.it/48x48"></img>
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><?php echo get_user_meta(get_current_user_id(), 'first_name', true) . ' ' . get_user_meta(get_current_user_id(), 'last_name', true) ?><strong class="caret"></strong></a>
-                    <div class="dropdown-menu">
-                        <a href="<?php echo wp_logout_url( home_url() );?>">Logout</a>
-                    </div>
-                </li>
-            </ul>
+        <ul class="profile-wrap">
+            <li id="help-support-link"><a href="#">HELP/SUPPORT</a></li>
+            <li>
+                <span><?php echo get_user_meta(get_current_user_id(), 'first_name', true) . ' ' . get_user_meta(get_current_user_id(), 'last_name', true) ?></span>
+            </li>
+        </ul>
     </nav>
     <div id="wrapper">
        
@@ -70,6 +64,12 @@
                     <a href="#"><i class="icon-classroom-icon icon-2x"></i> RESULTS</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <li><a href="<?php echo home_url();?>/teacher/classrooms/overview"><span class="fa-stack fa-lg pull-left"></span>Classrooms</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-students-icon icon-2x"></i> PROFILE</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="<?php echo wp_logout_url( home_url() );?>"><span class="fa-stack fa-lg pull-left"></span>Logout</a></li>
                     </ul>
                 </li>
             </ul>
