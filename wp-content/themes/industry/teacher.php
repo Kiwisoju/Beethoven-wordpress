@@ -28,7 +28,7 @@ if($current_user->roles[0] === 'teacher' || $current_user->roles[0] === 'adminis
                             endwhile;
                         // If no content, include the "No posts found" template.
                         else :
-                            echo 'Uh oh, nothing fooooooooooound.';
+                            echo 'This page was not found';
                             echo is_single();
                         endif;
     		    ?></div>
@@ -37,12 +37,11 @@ if($current_user->roles[0] === 'teacher' || $current_user->roles[0] === 'adminis
     </div>
     <?php
     
-    // Call to the footer for the teacher
-    get_footer('teacher');
+    // Call to the footer for dashboard pages
+    get_footer('dashboard');
     
 }else{
-    // Otherwise they don't have permissions to be here.
-    // Need to display a message somewhere..
+    // Redirect to home page
     wp_redirect( home_url() );
     exit;
 }

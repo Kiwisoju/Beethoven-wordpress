@@ -9,7 +9,7 @@ $slugs = explode( ',', $homepageSections->option_value);
 get_header();?>
 
     <!-- Main Content Area -->
-    <div id="primary" class="content-area"><?php 
+    <div id="primary" class="container"><?php 
         
         //die(var_dump($args) );
         foreach($slugs as $slug){
@@ -20,18 +20,18 @@ get_header();?>
             if ( $my_query->have_posts() ) : 
     			// Start the loop.
     			while ( $my_query->have_posts() ) : $my_query->the_post();
-    			    echo '<div id="'.$slug.'" class="'.$slug.'-content row">';
+    			    echo '<div id="'.$slug.'" class="'.$slug.'-content row content-row">';
                     echo the_content();
                     echo '</div>';
                     
     			// End the loop.
     			endwhile;
     		// If no content, include the "No posts found" template.
-    		else :
-    			echo 'Uh oh, nothing fooooooooooound.';
-    			echo is_single();
-    		endif;
+            else :
+                echo 'This page was not found';
+                echo is_single();
+            endif;
         }
-		?>    
-<?php get_footer();?>
+        
+		get_footer('front-page'); ?>
 

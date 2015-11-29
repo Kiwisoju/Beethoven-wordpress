@@ -16,10 +16,6 @@
                 </div>
             </footer>  
         </div>
-        
-        <!-- wp_footer() START -->
-        <?php //wp_footer();?> 
-        <!-- wp_footer() FINISH -->
+        <?php wp_footer();?> 
     </body> 
-
 </html>

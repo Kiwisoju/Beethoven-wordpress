@@ -125,13 +125,13 @@ ul.nav li a, a.navbar-brand{
      transition: all .2s ease-in;
 }
 
-#header button, #header a.btn{
-    width:40%;   
+#header a.btn{
+    width:60%;   
     margin-right:5%;
     margin-top:6%;
 }
 
-#header button:hover, #header a.btn:hover, .footer button:hover, #login-box .btn:hover{
+#header a.btn:hover, .footer button:hover, #login-box .btn:hover{
     background-color:#5C9FCB;
     color:white;
 }
@@ -141,22 +141,16 @@ ul.nav li a, a.navbar-brand{
 }
 
 .container{
-    width:960px;
+    max-width:960px;
     margin:auto;
 }
 
 
 /* Content Area */
 
-.content-area{
-    max-width:960px;
-    margin:auto;
-}
-
-.row{
+.content-row{
     padding:32px 0;
 }
-
 
 .buckets, .support-content, .footer{
     background-color:#264468;
@@ -172,6 +166,15 @@ ul.nav li a, a.navbar-brand{
 
 .support-container{
     padding-bottom:60px;
+}
+
+.centered-container{
+    margin:0 auto;
+    float:none;
+}
+
+.player{
+    padding-bottom:20px;
 }
 
 #about-us{
@@ -240,9 +243,19 @@ ul.nav li a, a.navbar-brand{
 /* Footer */
 
 .footer{
-  /* Set the fixed height of the footer here */
-  width: 100%;
-  color:white;
+    width: 100%;
+    color:white;
+    text-align:center;
+    height:135px;
+}
+
+#footer{
+    padding-bottom:0;    
+}
+
+.footer-centered{
+    margin:0 auto;
+    float:none;
 }
 
 .footer-nav{
@@ -258,7 +271,7 @@ ul.nav li a, a.navbar-brand{
     text-decoration:none;
 }
 .footer li{
-    width:120px;
+    width:25%;
     text-align:center;
 }
 
@@ -275,6 +288,9 @@ ul.nav li a, a.navbar-brand{
     .nav>li,.navbar-brand{
         width:152px;
     }
+    #header-text{
+        padding-top:50px;
+    }
 }
 
 @media screen and (max-width : 768px){
@@ -284,6 +300,17 @@ ul.nav li a, a.navbar-brand{
     
     .nav>li a, .navbar-brand{
         text-align:left;
+    }
+    #header-text{
+        padding-top:20px;
+        padding-left:5%;
+    }
+    
+    #header p{
+        width:60%;
+    }
+    .footer{
+        height:200px;
     }
 }
 
