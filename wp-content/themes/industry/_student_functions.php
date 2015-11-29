@@ -33,7 +33,6 @@ class StudentFunctions{
      * Takes in results and student answers and
      * returns full words
      **/
-     
     public function answer_filter($answer){
         switch($answer){
             case 'maj':

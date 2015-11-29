@@ -4,6 +4,7 @@
     <div class="table-container"><?php
     if(!$lessons):?>
     <span>This classroom has no lessons!</span><br><br>
+    
     <div>
         <a class="btn primary-button" href="<?php echo home_url('/')?>teacher/lesson">Create a Lesson</a>
     </div><?php

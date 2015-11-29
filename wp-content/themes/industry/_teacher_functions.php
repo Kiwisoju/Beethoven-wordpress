@@ -13,8 +13,6 @@ class TeacherFunctions{
         add_shortcode('overview_lessons', array(&$this, 'industry_overview_lessons') );
         add_shortcode('teacher', array(&$this, 'industry_teacher') );
         add_shortcode('classrooms_results', array(&$this, 'industry_classrooms_results') );
-        add_shortcode('students_results', array(&$this, 'industry_students_results') );
-        add_shortcode('lessons_results', array(&$this, 'industry_lessons_results') );
        
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
@@ -83,20 +81,6 @@ class TeacherFunctions{
        }
        //die(var_dump($results[48]));
        return $results;
-   }
-   
-   //[students_results] shortcode
-   public function industry_students_results(){
-        ob_start();
-        include '_teacher_students_results.php';
-        return ob_get_clean();
-   }
-   
-   //[lessons_results] shortcode
-   public function industry_lessons_results(){
-        ob_start();
-        include '_teacher_lessons_results.php';
-        return ob_get_clean();
    }
    
    //[teacher] shortcode - Holds all dashboard modules

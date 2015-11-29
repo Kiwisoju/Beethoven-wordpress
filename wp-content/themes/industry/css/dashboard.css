@@ -60,12 +60,12 @@ svg{
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #wrapper.toggled {
     padding-left: 250px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #sidebar-wrapper {
