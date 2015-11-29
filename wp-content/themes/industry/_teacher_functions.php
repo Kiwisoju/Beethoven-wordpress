@@ -426,11 +426,10 @@ class TeacherFunctions{
             );   
             
             if(!is_wp_error($errors) ){
-                $response['message'] = 'Student has been updated';
+                return $response['message'] = 'Student has been updated';
             }else{
-                $response['message'] = 'There was an error in updating this student';
+                return $response['message'] = 'There was an error in updating this student';
             }
-        return $reponse['message'] = 'Student has been updated';
     }
     
     /**
@@ -438,14 +437,14 @@ class TeacherFunctions{
      * updates and additions.
      **/ 
     public function assign_profile_image($user_id, $profile_image){
-        // Check whether an image has already been assigned for user
-        if(get_user_meta($user_id, 'profile_image', true)){
-            update_user_meta($user_id, 'profile_image', $profile_image );
-        }
-        // Otherwise assign profile image as the first
-        else{
-            add_user_meta($user_id, 'profile_image', $profile_image);
-        }
+        // Setting profile image to blank to update with data
+        add_user_meta($user_id, 'profile_image', 'blank', true);
+        
+        $sql = "UPDATE wp_usermeta
+                SET meta_value='" . $profile_image . "'
+                WHERE meta_key='profile_image' AND user_id = '" . $user_id . "'";
+        
+        $this->db->query($sql);
     }
     
     
