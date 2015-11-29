@@ -27,12 +27,12 @@ if($_GET['email_exists']){
 get_header('signup');
 ?>
 
-<div id="primary" class="content-area row">
-    <div class='row'>
-        <div id="image-container" class="col-xs-6">
+<div id="primary" class="container content-row">
+    <div class='content-row row'>
+        <div id="image-container" class="col-sm-6 hidden-xs img-responsive">
             <img src="https://placehold.it/400x400"></img>
         </div>
-        <div id="signup-form" name="signup-form" class="col-xs-6">
+        <div id="signup-form" name="signup-form" class="col-sm-6 col-xs-12">
             <h1>Sign Up</h1>
             <div class="notification-box">
                 <span class="notification-message">
@@ -71,4 +71,4 @@ get_header('signup');
             </form>
         </div>
     </div>
-<?php get_footer(); ?>
+<?php get_footer('front-page'); ?>
