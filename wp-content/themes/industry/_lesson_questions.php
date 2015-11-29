@@ -27,12 +27,20 @@
                             break;
                     endswitch;?>
                         <div class="results toggle">
-                            <div class="results-container">
+                            <div class="results-container"><?php
+                            if($_GET['type']): ?>
+                                <h3>Your ear training is complete</h3>
+                                <span>You got <span id="score"></span>/50 correct.</span>
+                                <div>
+                                    <a class="btn primary-button" href="<?php echo home_url('/')?>student/eartrainer">Go back to Ear Trainer</a>
+                                </div>
+                            <?php else: ?>
                                 <h3>You have completed your lesson</h3>
                                 <span>You can see your results in your past lessons table.</span>
                                 <div>
                                     <a class="btn primary-button" href="<?php echo home_url('/')?>student/lessons">Go back to Lessons</a>
                                 </div>
+                            <?php endif; ?>
                             </div>
                         </div>
                         

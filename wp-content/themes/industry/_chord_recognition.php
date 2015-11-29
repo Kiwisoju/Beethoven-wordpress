@@ -7,17 +7,17 @@
         <select name="form[question][]" class="question form-control">
             <option value="default" selected disabled>Choose Starting Note</option>
             <option value="a">A</option>
-            <option value="a#">A#</option>
+            <option value="a_sharp">A#</option>
             <option value="b">B</option>
             <option value="c">C</option>
-            <option value="c#">C#</option>
+            <option value="c_sharp">C#</option>
             <option value="d">D</option>
-            <option value="d#">D#</option>
+            <option value="d_sharp">D#</option>
             <option value="e">E</option>
             <option value="f">F</option>
-            <option value="f#">F#</option>
+            <option value="f_sharp">F#</option>
             <option value="g">G</option>
-            <option value="g#">G#</option>
+            <option value="g_sharp">G#</option>
         </select>
     </div>
     <label for="" class="exercise-label">Choose Chord Type</label>

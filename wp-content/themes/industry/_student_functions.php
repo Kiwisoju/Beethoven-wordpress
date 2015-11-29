@@ -13,13 +13,15 @@ class StudentFunctions{
         add_shortcode('lesson', array(&$this, 'industry_lesson') );
         add_shortcode('results', array(&$this, 'industry_results') );
         add_shortcode('student', array(&$this, 'industry_student') );
+        add_shortcode('eartrainer', array(&$this, 'industry_eartrainer') );
+        add_shortcode('eartrainer_view', array(&$this, 'industry_eartrainer_view') );
         
         add_action('wp_ajax_processor', array(&$this, 'industry_ajax_processor') );
         add_action('wp_ajax_nopriv_processor', array(&$this, 'industry_ajax_processor') );
         
     } 
     
-    //[teacher] shortcode - Holds all dashboard modules
+    //[student] shortcode - Holds all dashboard modules
     public function industry_student(){
         $lessons = $this->get_all_lessons();
         
@@ -28,6 +30,69 @@ class StudentFunctions{
         return ob_get_clean();
     }
     
+    public function prepare_eartrainer($exerciseType){
+        switch($exerciseType){
+            case 'note_identification':
+                $sql = "SELECT answer FROM ear_trainer WHERE exercise_type = 'note_identification' ORDER BY RAND() LIMIT 1";
+                break;
+            case 'interval_recognition':
+                $sql = "SELECT answer FROM ear_trainer WHERE exercise_type = 'interval_recognition' ORDER BY RAND() LIMIT 1";
+                $sql2 = "SELECT answer FROM ear_trainer WHERE exercise_type = 'note_identification' ORDER BY RAND() LIMIT 1";
+                break;
+            case 'chord_recognition':
+                $sql = "SELECT answer FROM ear_trainer WHERE exercise_type = 'chord_recognition' ORDER BY RAND() LIMIT 1";
+                $sql2 = "SELECT answer FROM ear_trainer WHERE exercise_type = 'note_identification' ORDER BY RAND() LIMIT 1";
+                break;
+        }
+        
+        $eartrainerAnswers = [];
+        $eartrainerQuestions = [];
+        for ($i = 0; $i < 50; $i++) {
+            $randomAnswer = $this->db->get_results($sql);
+            $eartrainerAnswers[$i] = $randomAnswer[0]->answer;     
+        }
+        
+        if($sql2){
+            for ($i = 0; $i < 50; $i++) {
+                $randomQuestions = $this->db->get_results($sql2);
+                $eartrainerQuestions[$i] = $randomQuestions[0]->answer;     
+            }
+            
+        }else{
+            $eartrainerQuestions = $eartrainerAnswers;
+        }
+        
+        $lessonQuestions = [];
+    
+        for ($i = 0; $i < count($eartrainerAnswers); $i++) {
+            $lessonQuestions[$i] = new stdClass();
+            
+            $lessonQuestions[$i]->lesson_name = 'Ear Trainer: ' . $exerciseType;
+            $lessonQuestions[$i]->exercise_type = $exerciseType;
+            $lessonQuestions[$i]->question = $eartrainerQuestions[$i];
+            $lessonQuestions[$i]->answer = $eartrainerAnswers[$i];
+        }
+        
+        return $lessonQuestions;
+    }
+    
+    //[eartrainer_view] shortcode
+    public function industry_eartrainer_view(){
+        $exercise_type = $_GET['type'];
+        
+        $lessonQuestions = $this->prepare_eartrainer($exercise_type);
+        
+        ob_start();
+        include '_lesson_questions.php';
+        return ob_get_clean();
+    }
+    
+    //[eartrainer] shortcode
+    public function industry_eartrainer(){
+        ob_start();
+        include '_student_eartrainer.php';
+        return ob_get_clean();
+    }
     
     /**
      * Takes in results and student answers and
@@ -224,6 +289,7 @@ class StudentFunctions{
     // [lessons] shortcode
     public function industry_lessons(){
         $lessons = $this->get_all_lessons_filtered_past_current();
+        //die(var_dump($lessons['current_lessons']));
         ob_start();
         include '_lessons.php';
         return ob_get_clean();
@@ -265,9 +331,9 @@ class StudentFunctions{
         $currentLessonIds = array_diff($studId, $pastLessonIds);
         $currentLessons = [];
         
-        for($i = 0; $i < count($currentLessonIds); $i++ ){
-            $sql = "SELECT * FROM lessons WHERE lesson_id = '" . $currentLessonIds[$i] . "'";
-            $currentLessons[$i] = $this->db->get_results($sql);
+        foreach($currentLessonIds as $lessonId){
+            $sql = "SELECT * FROM lessons WHERE lesson_id = '" . $lessonId . "'";
+            $currentLessons[$lessonId] = $this->db->get_results($sql); 
         }
         
         $lessons = [];
